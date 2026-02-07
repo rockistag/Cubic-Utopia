@@ -1,0 +1,23 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "crafting:recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "cubic:spiked_echo_shard"
+            },
+            {
+                "item": "cubic:outpost_token"
+            }
+        ],
+        "result": {
+            "item": "cubic:infectious_pearl",
+            "count": 1
+        }
+    }
+}

@@ -1,0 +1,5 @@
+gamerule keepinventory true
+gamerule playerssleepingpercentage 1
+gamerule commandblockoutput false
+gamerule sendcommandfeedback false
+

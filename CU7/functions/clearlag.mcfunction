@@ -1,0 +1,5 @@
+kill @e[type=xp_orb]
+execute at @a run kill @e[type=boat, rm=15]
+execute at @a run kill @e[type=minecart, rm=15]
+kill @e[type=tnt_minecart]
+kill @e[type=item, name=!"Trial Key", name=!"Ominous Trial Key"]

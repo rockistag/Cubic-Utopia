@@ -1,0 +1,9 @@
+scoreboard players operation "Rocked isabotrn" displaypoints = "Rocked isabotrn" points
+effect @a[tag=bot] invisibility 11 255 true
+effect @a[tag=bot] resistance 11 255 true
+effect @a[tag=bot] fire_resistance 11 255 true
+clear @a[tag=Rbot]
+scoreboard players reset @a[tag=Rbot] points
+scoreboard players reset @a[tag=Rbot] minutes
+scoreboard players reset @a[tag=Rbot] hours
+tag @a[tag=Rbot] remove Valid

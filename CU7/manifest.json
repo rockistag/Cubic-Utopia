@@ -1,0 +1,37 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Official BP 7.0",
+    "name": "Cubic Utopia Behavior Pack 7.0 ALPHA",
+    "uuid": "779b1d56-23af-4216-8e87-5e261733f95a",
+    "version": [7, 0, 0],
+    "min_engine_version": [1, 20, 100]
+  },
+  "modules": [
+    {
+      "description": "Official BP",
+      "type": "data",
+      "uuid": "731b098a-cbcc-48f3-9bc3-bc3f963a53d7",
+      "version": [7, 0, 0]
+    },
+    {
+      "description": "Official BP",
+      "type": "script",
+      "language": "javascript",
+      "uuid": "ec26b4a2-5676-4579-ae62-2c9291150a48",
+      "version": [7, 0, 0],
+      "entry": "scripts/index.js"
+    }
+  ],
+  "capabilities": ["script_eval"],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "beta"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.1.0-beta"
+    }
+  ]
+}
