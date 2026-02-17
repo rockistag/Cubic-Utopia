@@ -1,7 +1,14 @@
 ﻿import { world, system, Player, EntityTypes } from "@minecraft/server";
 import { ActionFormData, ModalFormData, FormCancelationReason, MessageFormData } from "@minecraft/server-ui"
-import compassMenu from "./Events/compassMenu";
-import * as MCE from "./Modules/MinecraftEssentials";
+
+system.runInterval(() => {
+    for (const player of world.getAllPlayers()) {
+        if (player.hasTag('cubicmenu')) {
+            main(player);
+            player.runCommand('tag @s remove cubicmenu');
+        }
+    }
+});
 
 world.beforeEvents.itemUse.subscribe((e) => {
     if (e.itemStack.typeId == 'cubic:ui') 
@@ -10,12 +17,11 @@ world.beforeEvents.itemUse.subscribe((e) => {
       system.run(() =>  { rulespre(e.source) })
     if (e.itemStack.typeId == 'minecraft:golden_shovel') 
       system.run(() =>  { landd(e.source) })
-
 });
 
 world.afterEvents.playerSpawn.subscribe((e) => {
     const player = e.player;
-    if (!player.hasTag("menuGot")) {
+    if (!player.hasTag("menuGot") && player.hasTag("Valid")) {
         player.runCommand('give @s[hasitem={item=cubic:ui, quantity=0}] cubic:ui 1 0 {"item_lock":{"mode":"lock_in_inventory"}}')
     } 
     else {
@@ -170,7 +176,7 @@ function main(player) {
          break;
       
       case 6:
-         return MCE.runCommand(player, `report`);
+         player.addTag('reportmenu')
          break;
       
       //case 7:   

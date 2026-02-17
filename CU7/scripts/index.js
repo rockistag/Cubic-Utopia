@@ -1,4 +1,7 @@
 import { world, ItemStack, system, Player } from "@minecraft/server";
+import "./adminui.js";
+import "./gui_menu.js";
+import "./report.js";
 
 world.beforeEvents.itemUse.subscribe((e) => {
     if (e.itemStack.typeId == 'cubic:insta_pearl') 
