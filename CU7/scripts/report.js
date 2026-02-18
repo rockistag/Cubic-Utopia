@@ -1,7 +1,8 @@
 import { world, system, Player } from "@minecraft/server";
 import { ActionFormData, ModalFormData, MessageFormData } from "@minecraft/server-ui";
 
-let activeReports = [];
+const formsstring = world.getDynamicProperty("forms");
+let activeReports = JSON.parse(formsstring);
 
 system.runInterval(() => {
     for (const player of world.getAllPlayers()) {
@@ -69,6 +70,8 @@ function showReportForm(player) {
 
         activeReports.push(newReport);
         player.playSound("random.levelup");
+
+        world.setDynamicProperty("forms", JSON.stringify(activeReports));
 
 
         player.sendMessage("Form successfully made!");
