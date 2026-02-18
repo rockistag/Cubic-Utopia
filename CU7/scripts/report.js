@@ -48,7 +48,7 @@ function showMainMenu(player) {
 function showReportForm(player) {
     const form = new ModalFormData()
         .title("Forms")
-        .textField("Form Subject", "Request or Report? What for?")
+        .textField("Form Subject: What or Who for?", "Request or Report?")
         .textField("Reason for Form", "Explain your Report or Request");
 
     form.show(player).then((response) => {
