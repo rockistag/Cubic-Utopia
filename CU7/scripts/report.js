@@ -18,8 +18,6 @@ world.beforeEvents.itemUse.subscribe((eventData) => {
     }
 });
 
-
-
 function showMainMenu(player) {
     const form = new ActionFormData()
 
@@ -101,7 +99,7 @@ function showAdminDashboard(admin) {
 
         const selectedReport = activeReports[response.selection];
         if (!selectedReport) {
-            admin.sendMessage({ translate: "Form not found." });
+            admin.sendMessage("Form not found.");
             showAdminDashboard(admin);
             return;
         }
