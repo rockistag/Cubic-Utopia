@@ -1,8 +1,8 @@
 import { world, system, Player } from "@minecraft/server";
 import { ActionFormData, ModalFormData, MessageFormData } from "@minecraft/server-ui";
 
-const formsstring = world.getDynamicProperty("forms");
-let activeReports = JSON.parse(formsstring);
+
+let activeReports = [];
 
 system.runInterval(() => {
     for (const player of world.getAllPlayers()) {
@@ -20,6 +20,8 @@ world.beforeEvents.itemUse.subscribe((eventData) => {
 });
 
 function showMainMenu(player) {
+    const formsstring = world.getDynamicProperty("forms");
+    if (formsstring !== undefined) activeReports = JSON.parse(formsstring);
     const form = new ActionFormData()
 
         form.title("Forms")
@@ -128,6 +130,7 @@ function showReportDetails(admin, report, index) {
             if (activeReports[index] && activeReports[index].id === report.id) {
                 activeReports.splice(index, 1);
                 admin.sendMessage({ translate: "Form Deleted." });
+                world.setDynamicProperty("forms", JSON.stringify(activeReports));
             } else {
                 admin.sendMessage({ translate: "List changed, Form not found." });
             }
