@@ -128,11 +128,11 @@ function confirm(player) {
 
 function main(player) {
   const main = new ActionFormData();
-  main.title('§5CU §uv6.2 §2- Menu');
+  main.title('§5CU §1v7.0 §2- Menu');
   main.body('§eWelcome to Cubic Utopia 6! Head to the FAQ section to find more information about our realms unique functions!');
-  main.button('§2QUICK TELEPORT\n§0[Spawn TP & Random TP]', 'textures/items/cu1');
-  main.button('§vPLAYER HUB\n§0[Tpa, Homes, Auctions]', 'textures/items/cu2');
-  main.button('§dQUESTS\n§0[Story & Achievements]', 'textures/items/cu19');
+  main.button('Quick Teleport', 'textures/items/cu1');
+  main.button('Personal Utilities', 'textures/items/cu2');
+  main.button('Adventure', 'textures/items/cu19');
   main.button('§sWARPS\n§0[Biomes, Structures, Realm]', 'textures/items/cu3');
   main.button('§1FAQ\n§0[Tutorials & Docs]', 'textures/items/cu4');
   main.button('§cSETTINGS\n§0[Cosmetics & UI]', 'textures/items/cu5');
@@ -146,7 +146,7 @@ function main(player) {
          break;
         
       case 1:
-         return MCE.runCommand(player, `menu`);
+         player.addTag('utilitymenu');
          break;
       
       case 2:
@@ -248,7 +248,7 @@ function quest(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         qAchieve(player);
+         player.runCommand('tag @s add advancementmenu');
          break;
         
       case 1:
