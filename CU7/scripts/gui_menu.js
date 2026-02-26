@@ -128,16 +128,15 @@ function confirm(player) {
 
 function main(player) {
   const main = new ActionFormData();
-  main.title('§5CU §1v7.0 §2- Menu');
+  main.title('Cubic Utopia 7');
   main.body('§eWelcome to Cubic Utopia 6! Head to the FAQ section to find more information about our realms unique functions!');
   main.button('Quick Teleport', 'textures/items/cu1');
-  main.button('Personal Utilities', 'textures/items/cu2');
-  main.button('Adventure', 'textures/items/cu19');
-  main.button('§sWARPS\n§0[Biomes, Structures, Realm]', 'textures/items/cu3');
-  main.button('§1FAQ\n§0[Tutorials & Docs]', 'textures/items/cu4');
-  main.button('§cSETTINGS\n§0[Cosmetics & UI]', 'textures/items/cu5');
-  main.button('§vFORMS\n§0[Reports & Requests]', 'textures/items/cu11');
-  main.button('§4EXIT');
+  main.button('Player Utilities', 'textures/items/cu2');
+  main.button('Featured Warps', 'textures/items/cu3');
+  main.button('Quests Hub', 'textures/items/cu19');
+  main.button('Settings', 'textures/items/cu4');
+  main.button('Forms', 'textures/items/cu5');
+  main.button('Wiki', 'textures/items/cu11');
   main.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
       switch(selection) {
@@ -150,6 +149,10 @@ function main(player) {
          break;
       
       case 2:
+         warp(player);
+         break;
+        
+      case 3: 
          player.runCommand('execute at @s[scores={quests=3}] run tag @s add ql2');
          player.runCommand('execute at @s[scores={quests=4}] run tag @s add ql2');
          player.runCommand('execute at @s[scores={quests=5}] run tag @s add ql2');
@@ -162,21 +165,17 @@ function main(player) {
          player.runCommand('execute at @s[scores={quests=12}] run tag @s add ql3');
          quest(player);
          break;
-        
-      case 3: 
-         warp(player);
-         break;
-
+              
       case 4:
-         faqs(player);
-         break;
-      
-      case 5:
          settings(player);
          break;
       
-      case 6:
+      case 5:
          player.addTag('reportmenu')
+         break;
+      
+      case 6:
+         faqs(player);
          break;
       
       //case 7:   
@@ -2953,4 +2952,5 @@ function resetCon(player) {
          break;
       }
   })
+
 }
