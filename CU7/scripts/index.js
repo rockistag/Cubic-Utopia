@@ -1,5 +1,5 @@
 import { world, ItemStack, system, Player } from "@minecraft/server";
-import "./adminui.js";
+import "./onitemuse.js";
 import "./gui_menu.js";
 import "./report.js";
 
