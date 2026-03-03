@@ -37,28 +37,16 @@ world.afterEvents.playerSpawn.subscribe((e) => {
         player.runCommand('execute as @s run tellraw @a {"rawtext":[{"text":"[§aNew Player§r]§d "},{"selector":"@s"},{"text":"§b has joined for the first time!"}]}');
         player.runCommand('tellraw @a {"rawtext":[{"text":"§bThere are now §d"},{"score":{"name":"playersJoined","objective":"points"}},{"text":" players §bwho have joined §uSeason Six."}]}');
     }
+    if (!player.hasTag("e"))
+    {
+        player.runCommand('tag @s add e');
+    }
     if (!player.hasTag("Valid")) {
         start(player);
     } 
     else {
         return;
     }
-});
-
-world.afterEvents.entityDie.subscribe(({ damageSource: { damagingEntity }, deadEntity }) => {
-  if (deadEntity.typeId === 'minecraft:ender_dragon') {
-     damagingEntity.addTag('dragonKilled');
-     damagingEntity.runCommand('execute at @a[r=100] run tellraw @a {“rawtext”:[{"text":"[§5Boss§r] §d"},{"selector":"@p"},{"text":"§b has defeated the §5ender dragon."}]}');
-     damagingEntity.runCommand('scoreboard players add @a[rm=3, r=100] points 1000');
-     damagingEntity.runCommand('playsound mob.enderdragon.death @a[scores={sound=!2}]');
-  }
-  if (deadEntity.typeId === 'minecraft:wither') {
-     damagingEntity.addTag('witherKilled');
-     damagingEntity.runCommand('execute at @p run tellraw @a {“rawtext”:[{"text":"[§5Boss§r] §d"},{"selector":"@p"},{"text":"§b has defeated the §5wither."}]}');
-  }
-  if (deadEntity.typeId === 'minecraft:elder_guardian') {
-     damagingEntity.addTag('elderKilled');
-  }
 });
 
 function landd(player) {
@@ -2958,3 +2946,4 @@ function resetCon(player) {
   })
 
 }
+
