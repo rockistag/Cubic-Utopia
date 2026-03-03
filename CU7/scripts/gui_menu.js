@@ -21,8 +21,12 @@ world.beforeEvents.itemUse.subscribe((e) => {
 
 world.afterEvents.playerSpawn.subscribe((e) => {
     const player = e.player;
-    if (!player.hasTag("menuGot") && player.hasTag("Valid")) {
+    if (!player.hasTag("menuGot")) {
         player.runCommand('give @s[hasitem={item=cubic:ui, quantity=0}] cubic:ui 1 0 {"item_lock":{"mode":"lock_in_inventory"}}')
+        if (!player.hasTag("Valid"))
+        {
+            player.runCommand('clear @s')
+        }
     } 
     else {
         return;
