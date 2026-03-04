@@ -15,8 +15,6 @@ world.beforeEvents.itemUse.subscribe((e) => {
       system.run(() =>  { main(e.source) })
     if (e.itemStack.typeId == 'cubic:start_ui') 
       system.run(() =>  { rulespre(e.source) })
-    if (e.itemStack.typeId == 'minecraft:golden_shovel') 
-      system.run(() =>  { landd(e.source) })
 });
 
 world.afterEvents.playerSpawn.subscribe((e) => {
@@ -48,12 +46,6 @@ world.afterEvents.playerSpawn.subscribe((e) => {
         return;
     }
 });
-
-function landd(player) {
-   player.runCommand('tellraw @p[r=5] {"rawtext":[{"text":"You have "},{"score":{"name":"@p","objective":"claimblocks"}},{"text":" available claimblocks. These are gained based on playtime or from the market."}]}');
-   player.sendMessage('To set the end corner of your land, crouch and use the same shovel. Type .land claim in chat to claim the land from the corners you set.')
-};
-
 
 function start(player) {
   const main = new ActionFormData();
@@ -2946,4 +2938,5 @@ function resetCon(player) {
   })
 
 }
+
 
