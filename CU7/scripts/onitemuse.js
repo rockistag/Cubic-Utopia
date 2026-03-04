@@ -15,6 +15,8 @@ world.beforeEvents.itemUse.subscribe((e) => {
       system.run(() =>  { very_rare(e.source) })
     if (e.itemStack.typeId == 'cubic:super_mob_key') 
       system.run(() =>  { sper(e.source) })
+    if (e.itemStack.typeId == 'minecraft:golden_shovel') 
+      system.run(() =>  { landd(e.source) })
 });
 
 function admin(player) {
@@ -122,4 +124,9 @@ function sper(player) {
   player.playSound('block.creaking_heart.step')
   player.runCommand('title @s[tag=Restrict] title You cannot use that here!')
   player.runCommand('tag @s remove Restrict')
+};
+
+function landd(player) {
+   player.runCommand('tellraw @p[r=5] {"rawtext":[{"text":"You have "},{"score":{"name":"@p","objective":"claimblocks"}},{"text":" available claimblocks. These are gained based on playtime or from the market."}]}');
+   player.sendMessage('To set the end corner of your land, crouch and use the same shovel. Type .land claim in chat to claim the land from the corners you set.')
 };
