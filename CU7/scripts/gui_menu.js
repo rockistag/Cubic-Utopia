@@ -125,7 +125,7 @@ function main(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         spawn(player);
+         quick(player);
          break;
         
       case 1:
@@ -137,16 +137,6 @@ function main(player) {
          break;
         
       case 3: 
-         player.runCommand('execute at @s[scores={quests=3}] run tag @s add ql2');
-         player.runCommand('execute at @s[scores={quests=4}] run tag @s add ql2');
-         player.runCommand('execute at @s[scores={quests=5}] run tag @s add ql2');
-         player.runCommand('execute at @s[scores={quests=6}] run tag @s add ql2');
-         player.runCommand('execute at @s[scores={quests=7}] run tag @s add ql2');
-         player.runCommand('execute at @s[scores={quests=8}] run tag @s add ql2');
-         player.runCommand('execute at @s[scores={quests=9}] run tag @s add ql3');
-         player.runCommand('execute at @s[scores={quests=10}] run tag @s add ql3');
-         player.runCommand('execute at @s[scores={quests=11}] run tag @s add ql3');
-         player.runCommand('execute at @s[scores={quests=12}] run tag @s add ql3');
          quest(player);
          break;
               
@@ -161,12 +151,6 @@ function main(player) {
       case 6:
          faqs(player);
          break;
-      
-      //case 7:   
-      //   if (player.hasTag('tag_ex')) warp(player); 
-      //   else faqs(player);
-      //   break;
-         
       }
   })
 }
@@ -176,16 +160,21 @@ function main(player) {
 
 //spawn
 
-function spawn(player) {
+function quick(player) {
   const spawn = new ActionFormData();
   spawn.title('Quick Teleport');
   spawn.body('Choose an option to conveniently teleport.');
   spawn.button('Warp directly to spawn', 'textures/items/ender_pearl');
-  spawn.button('Get Insta-Pearls for later', 'textures/items/insta_pearl');
+  spawn.button('Get Insta-Pearls for spawn', 'textures/items/insta_pearl');
   spawn.button('Randomly Teleport', 'textures/items/infectious_pearl')
+  // spawn.button('Realm Market', 'textures/items/infectious_pearl')
+  // spawn.button('Combat Central', 'textures/items/infectious_pearl')
+  // spawn.button('Public Warps', 'textures/items/infectious_pearl')
+  // spawn.button('Depths Central', 'textures/items/infectious_pearl')
+  // spawn.button('Enderman XP Farm', 'textures/items/infectious_pearl')
   spawn.button('Back');
   spawn.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
+      if (canceled) main(player);
       switch(selection) {
       case 0:
          player.runCommand('execute in overworld run tp @s 0 73 0')
