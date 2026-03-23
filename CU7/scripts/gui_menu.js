@@ -167,17 +167,22 @@ function quick(player) {
   spawn.button('Warp directly to spawn', 'textures/items/ender_pearl');
   spawn.button('Get Insta-Pearls for spawn', 'textures/items/insta_pearl');
   spawn.button('Randomly Teleport', 'textures/items/infectious_pearl')
-  // spawn.button('Realm Market', 'textures/items/infectious_pearl')
-  // spawn.button('Combat Central', 'textures/items/infectious_pearl')
-  // spawn.button('Public Warps', 'textures/items/infectious_pearl')
-  // spawn.button('Depths Central', 'textures/items/infectious_pearl')
-  // spawn.button('Enderman XP Farm', 'textures/items/infectious_pearl')
+  if (player.hasTag('warp1')) spawn.button('Realm Market', 'textures/items/infectious_pearl')
+  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
+  if (player.hasTag('warp2')) spawn.button('Combat Central', 'textures/items/infectious_pearl')
+  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
+  if (player.hasTag('warp3')) spawn.button('Public Warps', 'textures/items/infectious_pearl')
+  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
+  if (player.hasTag('warp4')) spawn.button('Depths Central', 'textures/items/infectious_pearl')
+  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
+  if (player.hasTag('warp5')) spawn.button('Enderman XP Farm', 'textures/items/infectious_pearl')
+  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
   spawn.button('Back');
   spawn.show(player).then(({ selection, canceled }) => {
       if (canceled) main(player);
       switch(selection) {
       case 0:
-         player.runCommand('execute in overworld run tp @s 0 73 0')
+         player.runCommand('execute in overworld run tp @s 0 -50 0')
          player.sendMessage('Teleported to spawn.')
          player.playSound('random.levelup')
          break;
@@ -193,7 +198,7 @@ function quick(player) {
          player.playSound('random.levelup')
          break;
 
-      case 3:
+      case 8:
          main(player);
          break;
       }
