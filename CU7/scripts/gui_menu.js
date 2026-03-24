@@ -218,8 +218,8 @@ function quest(player) {
   quests.body('New for Season Six! Complete unique tasks and journeys to earn rewards!\n§eQuests are in early access. Expect many more to be added over time.');
   quests.button('Achievements \n§0[Undergo unique tasks]', 'textures/items/ender_pearl');
   quests.button('Story \n§0[Discover the infection]', 'textures/items/infectious_pearl');
-  quests.button('Progression \n§0[Game-loop quests]', 'textures/items/ender_eye');
-  quests.button('Tiered \n§0[Playtime tiered]', 'textures/items/insta_pearl');
+  quests.button('Cubic Quests \n§0[Game-loop quests]', 'textures/items/ender_eye');
+  quests.button('Playtime Rewards \n§0[Playtime shtuff]', 'textures/items/insta_pearl');
   quests.button('Back');
   quests.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
