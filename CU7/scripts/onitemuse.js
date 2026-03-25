@@ -20,23 +20,24 @@ world.beforeEvents.itemUse.subscribe((e) => {
 });
 
 function admin(player) {
-   return MCE.runCommand(player, `adminpanel`);
+  player.addTag('utilitymenu');
 };
 
 function pearl(player) {
   player.runCommand('execute if block ~ -63 ~ air run tag @s add Restrict')
-  player.runCommand('execute if block ~ -63 ~ bedrock run tp @p 0 73 0')
+  player.runCommand('execute if block ~ -63 ~ bedrock run tp @p 0 -50 0')
   player.playSound('portal.travel')
-  player.runCommand('execute if block ~ 0 ~ bedrock in overworld run tp @p 0 73 0')
-  player.runCommand('execute in the_end if block ~ 0 ~ air in overworld run tp @p 0 73 0')
-  player.runCommand('execute in the_end if block ~ 0 ~ deny in overworld run tp @p 0 73 0')
-  player.runCommand('execute in nether if block ~ 0 ~ deny in overworld run tp @s 0 73 0')
+  player.runCommand('execute if block ~ 0 ~ bedrock in overworld run tp @p 0 -50 0')
+  player.runCommand('execute in the_end if block ~ 0 ~ air in overworld run tp @p 0 -50 0')
+  player.runCommand('execute in the_end if block ~ 0 ~ deny in overworld run tp @p 0 -50 0')
+  player.runCommand('execute in nether if block ~ 0 ~ deny in overworld run tp @s 0 -50 0')
   player.runCommand('clear @s[tag=!Restrict] cubic:insta_pearl 0 1')
   player.runCommand('title @s[tag=Restrict] title You cannot use that here!')
   player.runCommand('tag @s remove Restrict')
 };
 
 function shrieker(player) {
+// will be 40% nau, 30% cam, 30% sul cube
   player.runCommand('execute if block ~ -64 ~ deny run tag @s add Restrict')
   player.runCommand('execute at @s[tag=!Restrict, scores={random=1}] run summon nautilus')
   player.runCommand('execute at @s[tag=!Restrict, scores={random=2}] run summon nautilus')
