@@ -1,22 +1,54 @@
 import { world, ItemStack, system, Player } from "@minecraft/server";
 
 world.beforeEvents.itemUse.subscribe((e) => {
+    let player = e.source;
+    let pos = e.source.location;
     if (e.itemStack.typeId == 'cubic:admin_ui') 
       system.run(() =>  { admin(e.source) })
-    if (e.itemStack.typeId == 'cubic:insta_pearl') 
+    else if (e.itemStack.typeId == 'cubic:insta_pearl') 
       system.run(() =>  { pearl(e.source) })
-    if (e.itemStack.typeId == 'cubic:shrieker_mob_key') 
+    else if ((e.itemStack.typeId == 'cubic:ui') || (e.itemStack.typeId == 'cubic:insta_pearl')) // Excluded from spawn prot
+      e.cancel = false;  
+    else if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 0) {
+        if (!player.hasTag('admin')) {
+            e.cancel = true;
+            player.sendMessage("You cannot use non-menu items at spawn!");
+        }
+    }
+    else if (e.itemStack.typeId == 'cubic:shrieker_mob_key') 
       system.run(() =>  { shrieker(e.source) })
-    if (e.itemStack.typeId == 'cubic:uncommon_mob_key') 
+    else if (e.itemStack.typeId == 'cubic:uncommon_mob_key') 
       system.run(() =>  { uncommon(e.source) })
-    if (e.itemStack.typeId == 'cubic:rare_mob_key') 
+    else if (e.itemStack.typeId == 'cubic:rare_mob_key') 
       system.run(() =>  { rare(e.source) })
-    if (e.itemStack.typeId == 'cubic:very_rare_mob_key') 
+    else if (e.itemStack.typeId == 'cubic:very_rare_mob_key') 
       system.run(() =>  { very_rare(e.source) })
-    if (e.itemStack.typeId == 'cubic:super_mob_key') 
+    else if (e.itemStack.typeId == 'cubic:super_mob_key') 
       system.run(() =>  { sper(e.source) })
-    if (e.itemStack.typeId == 'minecraft:golden_shovel') 
+    else if (e.itemStack.typeId == 'minecraft:golden_shovel') 
       system.run(() =>  { landd(e.source) })
+});
+
+world.beforeEvents.playerBreakBlock.subscribe((e) => {
+    let player = e.player;
+    let pos = e.block.location;
+    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 0) {
+        if (!player.hasTag('admin')) { 
+            e.cancel = true;
+            player.sendMessage("You cannot break blocks at spawn!");
+        }
+    }
+});
+
+world.beforeEvents.playerPlaceBlock.subscribe((e) => {
+    let player = e.player;
+    let pos = e.block.location;
+    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 0) {
+        if (!player.hasTag('admin')) {
+            e.cancel = true;
+            player.sendMessage("You cannot place blocks at spawn!");
+        }
+    }
 });
 
 function admin(player) {

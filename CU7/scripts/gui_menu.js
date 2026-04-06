@@ -195,9 +195,75 @@ function quick(player) {
          break;
 
       case 2:
-         return MCE.runCommand(player, `rtp`);
          player.playSound('random.levelup')
+         player.sendMessage('Randomly Teleported.')
+         player.runCommand('function rtp')
          break;
+
+      case 3:
+         if (player.hasTag('warp1')) {
+             player.runCommand('execute in overworld run tp @s 100.50 -47.00 0.50')
+             player.sendMessage('Teleported to market.')
+             player.playSound('random.levelup')
+             break;
+         }
+
+         else {
+             main(player);
+             break;
+         }
+
+      case 4:
+         if (player.hasTag('warp2')) {
+             player.runCommand('execute in overworld run tp @s 63.00 -47.00 -87.00')
+             player.sendMessage('Teleported to combat hub.')
+             player.playSound('random.levelup')
+             break;
+         }
+
+         else {
+             main(player);
+             break;
+         }
+      
+      case 5:
+         if (player.hasTag('warp3')) {
+             player.runCommand('execute in overworld run tp @s 63.00 -47.00 98.00')
+             player.sendMessage('Teleported to community hub.')
+             player.playSound('random.levelup')
+             break;
+         }
+
+         else {
+             main(player);
+             break;
+         }
+
+      case 6:
+         if (player.hasTag('warp4')) {
+             player.runCommand('execute in overworld run tp @s 321.50 -25.00 580.50')
+             player.sendMessage('Teleported to the depths of deepslate.')
+             player.playSound('random.levelup')
+             break;
+         }
+
+         else {
+             main(player);
+             break;
+         }
+      
+      case 7:
+         if (player.hasTag('warp5')) {
+             player.runCommand('execute in the_end run tp @s 155.50 7.00 0.50')
+             player.sendMessage('Teleported to xp farm.')
+             player.playSound('random.levelup')
+             break;
+         }
+
+         else {
+             main(player);
+             break;
+         }
 
       case 8:
          main(player);
@@ -219,7 +285,7 @@ function quest(player) {
   quests.body('New for Season Six! Complete unique tasks and journeys to earn rewards!\n§eQuests are in early access. Expect many more to be added over time.');
   quests.button('Achievements \n§0[Undergo unique tasks]', 'textures/items/ender_pearl');
   quests.button('Story \n§0[Discover the infection]', 'textures/items/infectious_pearl');
-  quests.button('Cubic Quests \n§0[Game-loop quests]', 'textures/items/ender_eye');
+  quests.button('Quests \n§0[Game-loop quests]', 'textures/items/ender_eye');
   quests.button('Playtime Rewards \n§0[Playtime shtuff]', 'textures/items/insta_pearl');
   quests.button('Back');
   quests.show(player).then(({ selection, canceled }) => {
@@ -1386,7 +1452,7 @@ function server(player) {
       switch(selection) {
       case 0:
          player.runCommand('execute in overworld run tp @s 29.50 -49.00 0.50')
-         player.sendMessage('Teleported to shop.')
+         player.sendMessage('Teleported to market.')
          player.playSound('random.levelup')
          break;
         
