@@ -18,6 +18,7 @@ world.beforeEvents.itemUse.subscribe((e) => {
 });
 
 world.afterEvents.playerSpawn.subscribe((e) => {
+// Note: Needs to be updated to include giving player the alylica adv book on join and then clear it so that menu actually works
     const player = e.player;
     if (!player.hasTag("menuGot")) {
         player.runCommand('give @s[hasitem={item=cubic:ui, quantity=0}] cubic:ui 1 0 {"item_lock":{"mode":"lock_in_inventory"}}')
@@ -2245,7 +2246,7 @@ function settings(player) {
          break;
 
       case 2:
-         return MCE.runCommand(player, `land setting`);
+         player.runCommand('give @s slc:claim_shovel');
          break;
 
       case 3:
