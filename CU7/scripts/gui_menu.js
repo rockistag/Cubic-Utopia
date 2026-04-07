@@ -7,6 +7,10 @@ system.runInterval(() => {
             main(player);
             player.runCommand('tag @s remove cubicmenu');
         }
+        if (player.hasTag('startmenu')) {
+            rulespre(player);
+            player.runCommand('tag @s remove startmenu');
+        }
     }
 });
 
@@ -304,7 +308,7 @@ function quest(player) {
          break;
 
       case 3:
-         qTiered(player);
+         playtime(player);
          break;
 
       case 4:
@@ -1157,253 +1161,179 @@ function ach_beg(player) {
   })
 }
 
-function qTiered(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('Achievements involve sequential tasks like obtaining items and defeating mobs. You unlock higher level quests the more you complete! If you do not see any, it is because you are not yet at Crafter tier.');
-  if (player.hasTag('crafter')) quests.button('Crafter Quests', 'textures/items/ender_pearl');
-  if (player.hasTag('pro')) quests.button('Pro Quests', 'textures/items/insta_pearl');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
+function playtime(player) {
+    const que = new ActionFormData();
+    que.title('Playtime')
+    que.body('Redeem playtime rewards!')
+    if (player.hasTag('p1') && player.hasTag('pr1')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p1')) que.button('§21 Hour: Golden Apple', 'textures/items/cu9')
+    else que.button('§0You have not reached 1 Hour', 'textures/items/cu11')
+    if (player.hasTag('p2') && player.hasTag('pr2')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p2')) que.button('§25 Hours: Dune Trim', 'textures/items/cu9')
+    else que.button('§0You have not reached 5 Hours', 'textures/items/cu11')
+    if (player.hasTag('p3') && player.hasTag('pr3')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p3')) que.button('§210 Hours: Spire Trim', 'textures/items/cu9')
+    else que.button('§0You have not reached 10 Hours', 'textures/items/cu11')
+    if (player.hasTag('p4') && player.hasTag('pr4')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p4')) que.button('§215 Hours: Rare Mob Key', 'textures/items/cu9')
+    else que.button('§0You have not reached 15 Hours', 'textures/items/cu11')
+    if (player.hasTag('p5') && player.hasTag('pr5')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p5')) que.button('§220 Hours: Snout Trim', 'textures/items/cu9')
+    else que.button('§0You have not reached 20 Hours', 'textures/items/cu11')
+    if (player.hasTag('p6') && player.hasTag('pr6')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p6')) que.button('§230 Hours: Very Rare Mob Key', 'textures/items/cu9')
+    else que.button('§0You have not reached 30 Hours', 'textures/items/cu11')
+    if (player.hasTag('p7') && player.hasTag('pr7')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p7')) que.button('§240 Hours: Ward Trim', 'textures/items/cu9')
+    else que.button('§0You have not reached 40 Hours', 'textures/items/cu11')
+    if (player.hasTag('p8') && player.hasTag('pr8')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p8')) que.button('§250 Hours: Super Mob Key', 'textures/items/cu9')
+    else que.button('§0You have not reached 50 Hours', 'textures/items/cu11')
+    if (player.hasTag('p9') && player.hasTag('pr9')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p9')) que.button('§275 Hours: Jump Boost Perm Effect', 'textures/items/cu9')
+    else que.button('§0You have not reached 75 Hours', 'textures/items/cu11')
+    if (player.hasTag('p10') && player.hasTag('pr10')) que.button('§0Reward Redeemed', 'textures/items/cu7')
+    else if (player.hasTag('p10')) que.button('§2100 Hours: Night Vision Perm Effect', 'textures/items/cu9')
+    else que.button('§0You have not reached 100 Hours', 'textures/items/cu11')
+    que.button('Back')
+    que.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
       switch(selection) {
       case 0:
-         if (player.hasTag('crafter')) qTiered1(player);
-         else quest(player);
-         break;
+         if (player.hasTag('p1') && !(player.hasTag('pr1'))) {
+            player.runCommand('give @s golden_apple')
+            player.runCommand('tag @s add pr1')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
         
       case 1:
-         if (player.hasTag('pro')) qTiered2(player);
-         else quest(player);
-         break;
+         if (player.hasTag('p2') && !(player.hasTag('pr2'))) {
+            player.runCommand('give @s dune_armor_trim_smithing_template')
+            player.runCommand('tag @s add pr2')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
 
       case 2:
+         if (player.hasTag('p3') && !(player.hasTag('pr3'))) {
+            player.runCommand('give @s spire_armor_trim_smithing_template')
+            player.runCommand('tag @s add pr3')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+
+      case 3:
+         if (player.hasTag('p4') && !(player.hasTag('pr4'))) {
+            player.runCommand('give @s cubic:rare_mob_key')
+            player.runCommand('tag @s add pr4')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+
+      case 4:
+         if (player.hasTag('p5') && !(player.hasTag('pr5'))) {
+            player.runCommand('give @s snout_armor_trim_smithing_template')
+            player.runCommand('tag @s add pr5')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+      
+      case 5:
+         if (player.hasTag('p6') && !(player.hasTag('pr6'))) {
+            player.runCommand('give @s cubic:very_rare_mob_key')
+            player.runCommand('tag @s add pr6')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+
+      case 6:
+         if (player.hasTag('p7') && !(player.hasTag('pr7'))) {
+            player.runCommand('give @s ward_armor_trim_smithing_template')
+            player.runCommand('tag @s add pr7')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+      
+      case 7:
+         if (player.hasTag('p8') && !(player.hasTag('pr8'))) {
+            player.runCommand('give @s cubic:super_mob_key')
+            player.runCommand('tag @s add pr8')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+
+      case 8:
+         if (player.hasTag('p9') && !(player.hasTag('pr9'))) {
+            player.runCommand('scoreboard players set @s peffect3 1')
+            player.runCommand('tag @s add pr9')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+      case 9:
+         if (player.hasTag('p10') && !(player.hasTag('pr10'))) {
+            player.runCommand('scoreboard players set @s peffect4 1')
+            player.runCommand('tag @s add pr10')
+            player.sendMessage('Reward Redeemed!');
+            player.playSound('random.orb')
+            break;
+         }
+         else { 
+            quest(player);
+            break;
+         }
+
+      case 10:
          quest(player);
          break;
       }
   })
 }
-
-function qTiered1(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('Crafter Tier Quests');
-  if (player.hasTag('ach_gar')) quests.button('Gardener\n§2[Complete]', 'textures/items/flower_pot');
-  else if (player.hasTag('ach_garIN')) quests.button('Gardener\n§1[In Progress]', 'textures/items/flower_pot');
-  else quests.button('Gardener\n§0[Green Thumb it is]', 'textures/items/flower_pot');
-  if (player.hasTag('ach_fri')) quests.button('Friendly Frolics\n§2[Complete]', 'textures/items/sniffer_egg');
-  else if (player.hasTag('ach_friIN')) quests.button('Friendly Frolics\n§1[In Progress]', 'textures/items/sniffer_egg');
-  else quests.button('Friendly Frolics\n§0[Get friend(s)]', 'textures/items/sniffer_egg');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         ach_gar(player);
-         break;
-        
-      case 1:
-         ach_fri(player);
-         break;
-
-      case 2:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function ach_gar(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§6Crafter Achievement - Gardener\n§eStep 1- Flower Pot (10 Pts) \nStep 2- Cactus Flower (100 Pts) \nStep 3- Creaking Heart (1000 Pts)\n§vGet the flowers and the... hearts? Not sure this is ethical gardening...\n');
-  if (player.hasTag('ach_gar')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_garIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_gar')) {
-            qTiered1(player)
-            break;
-         }
-         else if (player.hasTag('ach_garIN')) {
-            player.runCommand('tag @s[scores={ach_gar=3}] add flower_pot')
-            player.runCommand('tag @s[scores={ach_gar=2}] add flower_pot')
-            player.runCommand('tag @s[scores={ach_gar=3}] add cactus_flower')
-            player.runCommand('tag @s remove ach_garIN')
-            player.runCommand('scoreboard players set @s ach_gar 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_garIN')
-            player.runCommand('scoreboard players set @s ach_gar 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qTiered1(player);
-         break;
-      }
-  })
-}
-
-function ach_fri(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§6Crafter Achievement - Friendly Frolics\n§eStep 1- Bone (10 Pts) \nStep 2- Saddle (100 Pts) \nStep 3- Sniffer Egg (1000 Pts)\n§vFriends are nice! Go get some! Please?\n');
-  if (player.hasTag('ach_fri')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_friIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_fri')) {
-            qTiered1(player)
-            break;
-         }
-         else if (player.hasTag('ach_friIN')) {
-            player.runCommand('tag @s[scores={ach_fri=3}] add bone')
-            player.runCommand('tag @s[scores={ach_fri=2}] add bone')
-            player.runCommand('tag @s[scores={ach_fri=3}] add saddle')
-            player.runCommand('tag @s remove ach_friIN')
-            player.runCommand('scoreboard players set @s ach_fri 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_friIN')
-            player.runCommand('scoreboard players set @s ach_fri 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qTiered1(player);
-         break;
-      }
-  })
-}
-
-function qTiered2(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('Pro Tier Quests');
-  if (player.hasTag('ach_pay')) quests.button('Payback\n§2[Complete]', 'textures/items/phantom_membrane');
-  else if (player.hasTag('ach_payIN')) quests.button('Payback\n§1[In Progress]', 'textures/items/phantom_membrane');
-  else quests.button('Payback\n§0[Get Revenge]', 'textures/items/phantom_membrane');
-  if (player.hasTag('ach_cav')) quests.button('Cave Diver\n§2[Complete]', 'textures/items/coal');
-  if (player.hasTag('ach_cavIN')) quests.button('Cave Diver\n§1[In Progress]', 'textures/items/coal');
-  else quests.button('Cave Diver\n§0[Wife and 2 kids]', 'textures/items/coal');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         ach_pay(player);
-         break;
-        
-      case 1:
-         ach_cav(player);
-         break;
-
-      case 2:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function ach_pay(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§dPro Achievement - Gardener\n§eStep 1- Gunpowder (10 Pts) \nStep 2- Phantom Membrane (100 Pts) \nStep 3- Ghast Tear (1000 Pts)\n§vThe mobs that have torrented you for years are finally recieving their reckoning.\n');
-  if (player.hasTag('ach_pay')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_payIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_pay')) {
-            qTiered2(player)
-            break;
-         }
-         else if (player.hasTag('ach_payIN')) {
-            player.runCommand('tag @s[scores={ach_pay=3}] add gunpowder')
-            player.runCommand('tag @s[scores={ach_pay=2}] add gunpowder')
-            player.runCommand('tag @s[scores={ach_pay=3}] add phantom_membrane')
-            player.runCommand('tag @s remove ach_payIN')
-            player.runCommand('scoreboard players set @s ach_pay 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_payIN')
-            player.runCommand('scoreboard players set @s ach_pay 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qTiered2(player);
-         break;
-      }
-  })
-}
-
-function ach_cav(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§dPro Achievement - Cave Diver\n§eStep 1- Pointed Dripstone (10 Pts) \nStep 2- Spore Blossom (100 Pts) \nStep 3- Sculk Shrieker (1000 Pts)\n§vYea this meme is way too old to be relevant but go explore the caves anyway idc\n');
-  if (player.hasTag('ach_cav')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_cavIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_cav')) {
-            qTiered2(player)
-            break;
-         }
-         else if (player.hasTag('ach_cavIN')) {
-            player.runCommand('tag @s[scores={ach_cav=3}] add pointed_dripstone')
-            player.runCommand('tag @s[scores={ach_cav=2}] add pointed_dripstone')
-            player.runCommand('tag @s[scores={ach_cav=3}] add spore_blossom')
-            player.runCommand('tag @s remove ach_cavIN')
-            player.runCommand('scoreboard players set @s ach_cav 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_cavIN')
-            player.runCommand('scoreboard players set @s ach_cav 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qTiered2(player);
-         break;
-      }
-  })
-}
-
-
-
 
 
 //warps
@@ -1411,8 +1341,7 @@ function ach_cav(player) {
 function warp(player) {
     const warps = new ActionFormData();
     warps.title('Warps');
-    warps.body('NOTICE: Rtp has been relocated to the quick teleport menu. This menu holds all public warps besides spawn.');
-    warps.button('Realm Locations\n§0[Market, Nether Hub, Farms]', 'textures/items/ui');
+    warps.body('NOTICE: Server locations have been relocated to the quick menu. This menu holds all non-discoverable warps.');
     warps.button('Structures\n§0[Natural structures]', 'textures/items/trial_key');
     warps.button('Biomes\n§0[Nearly all overworld biomes]', 'textures/items/resin_clump');
     warps.button('Back')
@@ -1433,49 +1362,6 @@ function warp(player) {
 
       case 3:
          main(player);
-         break;
-      }
-  })
-}
-
-function server(player) {
-    const warps = new ActionFormData();
-    warps.title('Realm Warps')
-    warps.body('All the big locations to teleport to.')
-    warps.button('Realm Market', 'textures/items/diamond')
-    warps.button('Combat & Events Central', 'textures/items/diamond_sword')
-    warps.button('Trading & Player Central', 'textures/items/insta_pearl')
-    warps.button('XP Farm & Enchantment Table', 'textures/items/ender_pearl')
-    warps.button('Back')
-    warps.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         player.runCommand('execute in overworld run tp @s 29.50 -49.00 0.50')
-         player.sendMessage('Teleported to market.')
-         player.playSound('random.levelup')
-         break;
-        
-      case 1:
-         player.runCommand('execute in overworld run tp @s 0.44 74.00 -21.69')
-         player.sendMessage('Teleported to central.')
-         player.playSound('random.levelup')
-         break;
-
-      case 2: 
-         player.runCommand('execute in overworld run tp @s 0.50 74.00 26.50')
-         player.sendMessage('Teleported to Sugarcane Farm.')
-         player.playSound('random.levelup')
-         break;
-        
-      case 3: 
-         player.runCommand('execute in the_end run tp @s 114.47 38.00 0.54')
-         player.sendMessage('Teleported to XP Farm.')
-         player.playSound('random.levelup')
-         break;
-
-      case 4:
-         warp(player);
          break;
       }
   })
