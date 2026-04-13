@@ -1,4 +1,7 @@
 execute as @a[scores={minutes=10, tier=1}] run playsound note.bell @s[scores={sound=0}]
+execute as @a[scores={minutes=10, tier=0}] run scoreboard players add @s points 100 
+execute as @a[scores={minutes=10, tier=0}] run tellraw @a {"rawtext":[{"text":"[§vTiers§r]§d "},{"selector":"@s"},{"text":"§b has reached Tier Two, §6Crafter!"}]}
+execute as @a[scores={minutes=10, tier=0}] run tellraw @s {"rawtext":[{"text":"[§vTiers§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Tier One, §lBeginner§r§b. Tiers are based off of playtime, so keep playing to gain more levels and tiers! §dYou have received 100 points as a reward of playing for 10 minutes."}]}
 execute as @a[scores={hours=0, minutes=30, level=1}] run playsound note.bell @s[scores={sound=0}]
 execute as @a[scores={hours=1, level=2}] run playsound note.bell @s[scores={sound=0}]
 execute as @a[scores={hours=2, level=3}] run playsound note.bell @s[scores={sound=0}]

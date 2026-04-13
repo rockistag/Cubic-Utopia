@@ -8,6 +8,3 @@ execute as @a[scores={hours=2, level=3}] run give @s golden_apple
 execute as @a[scores={hours=2, level=3}] run tellraw @s {"rawtext":[{"text":"[§vTiers§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Tier 1, Level 4. §dYou have received a golden apple as a reward."}]}
 execute as @a[scores={hours=3, level=4}] run give @s cubic:uncommon_mob_key
 execute as @a[scores={hours=3, level=4}] run tellraw @s {"rawtext":[{"text":"[§vTiers§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Tier 1, Level 5. §dYou have received an §euncommon mob key§d as a reward. You can use this as if it were a spawn egg to get a random uncommon mob, more info in the FAQ of the Cubic Menu!"}]}
-
-
-
