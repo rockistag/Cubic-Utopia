@@ -36,6 +36,8 @@ world.afterEvents.playerSpawn.subscribe((e) => {
     }
     if (!player.hasTag("joined")) {
         player.addTag("joined");
+        player.runCommand('function add');
+        player.runCommand('scoreboard players add @s score 0');
         player.runCommand('scoreboard players add playersJoined points 1');
         player.runCommand('execute as @s run tellraw @a {"rawtext":[{"text":"[§aNew Player§r]§d "},{"selector":"@s"},{"text":"§b has joined for the first time!"}]}');
         player.runCommand('tellraw @a {"rawtext":[{"text":"§bThere are now §d"},{"score":{"name":"playersJoined","objective":"points"}},{"text":" players §bwho have joined §uSeason Six."}]}');
