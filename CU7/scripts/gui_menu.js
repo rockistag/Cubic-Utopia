@@ -1171,7 +1171,7 @@ function playtime(player) {
     else if (player.hasTag('p1')) que.button('§21 Hour: Golden Apple', 'textures/items/cu9')
     else que.button('§0You have not reached 1 Hour', 'textures/items/cu11')
     if (player.hasTag('p2') && player.hasTag('pr2')) que.button('§0Reward Redeemed', 'textures/items/cu7')
-    else if (player.hasTag('p2')) que.button('§25 Hours: Dune Trim', 'textures/items/cu9')
+    else if (player.hasTag('p2')) que.button('§25 Hours: Mob Key', 'textures/items/cu9')
     else que.button('§0You have not reached 5 Hours', 'textures/items/cu11')
     if (player.hasTag('p3') && player.hasTag('pr3')) que.button('§0Reward Redeemed', 'textures/items/cu7')
     else if (player.hasTag('p3')) que.button('§210 Hours: Spire Trim', 'textures/items/cu9')
@@ -1216,9 +1216,9 @@ function playtime(player) {
         
       case 1:
          if (player.hasTag('p2') && !(player.hasTag('pr2'))) {
-            player.runCommand('give @s dune_armor_trim_smithing_template')
+            player.runCommand('give @s cubic:uncommon_mob_key')
             player.runCommand('tag @s add pr2')
-            player.sendMessage('Reward Redeemed!');
+            player.sendMessage('Mob Key Redeemed! You can use this to spawn a mob from a selection of 3. Go to the wiki to find more out about this key!');
             player.playSound('random.orb')
             break;
          }
