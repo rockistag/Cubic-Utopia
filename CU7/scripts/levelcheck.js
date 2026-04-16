@@ -25,7 +25,52 @@ system.runInterval(() => {
             player.runCommand('scoreboard players set @s level 3');
             player.runCommand('tag @s remove rank:§6Apprentice');
             player.runCommand('tag @s add rank:§gArtisan');
-            player.runCommand('give @s bucket');
+            player.runCommand('give @s dune_armor_trim_smithing_template');
+            player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Two, §l§6Apprentice§r§b. Tiers are based off of playtime, so keep playing to gain more levels and tiers! §dYou have received 100 points as a reward of playing for 10 minutes."}]}');
+            player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Two, §bBeginner!"}]}');
+        }
+        if ((score.getScore(player) >= 5000) && !player.hasTag('l4')) {
+            player.runCommand('tag @s add l4');
+            player.runCommand('scoreboard players set @s level 4');
+            player.runCommand('tag @s remove rank:§gArtisan');
+            player.runCommand('tag @s add rank:§9Pro');
+            player.runCommand('give @s netherite_upgrade_smithing_template');
+            player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Two, §l§6Apprentice§r§b. Tiers are based off of playtime, so keep playing to gain more levels and tiers! §dYou have received 100 points as a reward of playing for 10 minutes."}]}');
+            player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Two, §bBeginner!"}]}');
+        }
+        if ((score.getScore(player) >= 10000) && !player.hasTag('l5')) {
+            player.runCommand('tag @s add l5');
+            player.runCommand('scoreboard players set @s level 5');
+            player.runCommand('tag @s remove rank:§9Pro');
+            player.runCommand('tag @s add rank:§2Expert');
+            player.runCommand('scoreboard players set @s peffect5 1');
+            player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Two, §l§6Apprentice§r§b. Tiers are based off of playtime, so keep playing to gain more levels and tiers! §dYou have received 100 points as a reward of playing for 10 minutes."}]}');
+            player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Two, §bBeginner!"}]}');
+        }
+        if ((score.getScore(player) >= 25000) && !player.hasTag('l6')) {
+            player.runCommand('tag @s add l6');
+            player.runCommand('scoreboard players set @s level 6');
+            player.runCommand('tag @s remove rank:§2Expert');
+            player.runCommand('tag @s add rank:§dUtopian');
+            player.runCommand('scoreboard players set @s peffect2 1');
+            player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Two, §l§6Apprentice§r§b. Tiers are based off of playtime, so keep playing to gain more levels and tiers! §dYou have received 100 points as a reward of playing for 10 minutes."}]}');
+            player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Two, §bBeginner!"}]}');
+        }
+        if ((score.getScore(player) >= 100000) && !player.hasTag('l7')) {
+            player.runCommand('tag @s add l7');
+            player.runCommand('scoreboard players set @s level 7');
+            player.runCommand('tag @s remove rank:§dUtopian');
+            player.runCommand('tag @s add rank:§4Super_Utopian');
+            player.runCommand('scoreboard players set @s peffect6 1');
+            player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Two, §l§6Apprentice§r§b. Tiers are based off of playtime, so keep playing to gain more levels and tiers! §dYou have received 100 points as a reward of playing for 10 minutes."}]}');
+            player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Two, §bBeginner!"}]}');
+        }
+        if ((score.getScore(player) >= 250000) && !player.hasTag('l8')) {
+            player.runCommand('tag @s add l8');
+            player.runCommand('scoreboard players set @s level 8');
+            player.runCommand('tag @s remove rank:§4Super_Utopian');
+            player.runCommand('tag @s add rank:§5Ultra_Utopian');
+            player.runCommand('scoreboard players set @s peffect1 1');
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Two, §l§6Apprentice§r§b. Tiers are based off of playtime, so keep playing to gain more levels and tiers! §dYou have received 100 points as a reward of playing for 10 minutes."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Two, §bBeginner!"}]}');
         }
