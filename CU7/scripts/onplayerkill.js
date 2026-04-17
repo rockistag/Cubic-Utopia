@@ -37,7 +37,7 @@ world.afterEvents.entityDie.subscribe((e) => {
 				sourceEntity.runCommand('scoreboard players add @s score 35');
 				victim.runCommand('scoreboard players remove @s points 1000');
 			}
-			else if (level.getScore(victim) == 6) {
+			else if (level.getScore(victim) >= 6) {
 				sourceEntity.runCommand('scoreboard players add @s points 2000');
 				sourceEntity.runCommand('scoreboard players add @s score 50');
 				victim.runCommand('scoreboard players remove @s points 1500');
@@ -69,7 +69,7 @@ world.afterEvents.entityDie.subscribe((e) => {
 		else if (level.getScore(victim) == 5) {
 			victim.runCommand('scoreboard players remove @s points 1000')
 		}
-		else if (level.getScore(victim) == 6) {
+		else if (level.getScore(victim) >= 6) {
 			victim.runCommand('scoreboard players remove @s points 1500')
 		}
 	}
