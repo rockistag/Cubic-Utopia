@@ -5,7 +5,6 @@ system.runInterval(() => {
     world.getDimension("overworld").runCommand("function bot");
     world.getDimension("overworld").runCommand("function cosmetics");
     world.getDimension("overworld").runCommand("function illegalg");
-    const score = world.scoreboard.getObjective('score');
     for (const player of world.getAllPlayers()) {
         if ((player.hasTag('rank1')) || (player.hasTag('rank2')))
         {
