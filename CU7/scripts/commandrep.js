@@ -5,10 +5,15 @@ system.runInterval(() => {
     world.getDimension("overworld").runCommand("function bot");
     world.getDimension("overworld").runCommand("function cosmetics");
     world.getDimension("overworld").runCommand("function illegalg");
+    const points = world.scoreboard.getObjective('points');
     for (const player of world.getAllPlayers()) {
         if ((player.hasTag('rank1')) || (player.hasTag('rank2')))
         {
             player.runCommand('function rank');
+        }
+        if (points.getScore(player) < 0)
+        {
+            player.runCommand('scoreboard players set @s points 0');
         }
     }
 });
