@@ -21,6 +21,12 @@ world.beforeEvents.itemUse.subscribe((e) => {
       system.run(() =>  { rulespre(e.source) })
 });
 
+world.afterEvents.playerLeave.subscribe((e) => {
+    world.getDimension("overworld").runCommand("scoreboard objectives remove displaypoints");
+    world.getDimension("overworld").runCommand('scoreboard objectives add displaypoints dummy "§l§5Player Points"');
+    world.getDimension("overworld").runCommand('scoreboard objectives setdisplay sidebar displaypoints');
+});
+
 world.afterEvents.playerSpawn.subscribe((e) => {
 // Note: Needs to be updated to include giving player the alylica adv book on join and then clear it so that menu actually works
     const player = e.player;
