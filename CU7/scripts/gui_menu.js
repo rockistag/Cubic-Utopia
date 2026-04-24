@@ -11,6 +11,11 @@ system.runInterval(() => {
             rulespre(player);
             player.runCommand('tag @s remove startmenu');
         }
+        if (player.hasTag('firstpvp')) {
+            firstpvp(player);
+            player.runCommand('tag @s add firstpvpdone');
+            player.runCommand('tag @s remove firstpvp');
+        }
     }
 });
 
@@ -59,6 +64,27 @@ world.afterEvents.playerSpawn.subscribe((e) => {
         return;
     }
 });
+
+function firstpvp(player) {
+  const main = new ActionFormData();
+  main.title('NOTICE');
+  main.body("Hey there! Looks like you're about to enter an arena. There's a couple things you should know before you start:\n\n1. This realm has a thing called a PVP tag which is used to regulate pvp. If you have not already disabled it (which can be done via the cubic menu settings section), players will be allowed to kill you without consequence. If you kill other players while not having it on, you can also be punished.\n\n2. Your PVP Tag will be automatically applied in PVP arenas. It will be temporary, however in order for it to be automatically disabled after leaving you will have to use a quick warp.\n\nWith these things in mind, happy fighting!");
+  main.button('Enable PVP Tag');
+  main.button('Disable PVP Tag');
+  main.show(player).then(({ selection, canceled }) => {
+      if (canceled) firstpvp(player);
+      switch(selection) {
+      case 0:
+         player.runCommand('tag @s add pvp');
+         player.playSound('note.bell')
+         break;
+      case 1:
+         player.runCommand('tag @s remove pvp');
+         player.playSound('note.bell')
+         break;
+      }
+  })
+}
 
 function start(player) {
   const main = new ActionFormData();
