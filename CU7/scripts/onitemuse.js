@@ -1,10 +1,12 @@
 import { world, ItemStack, system, Player } from "@minecraft/server";
+import { ActionFormData, ModalFormData, FormCancelationReason, MessageFormData } from "@minecraft/server-ui";
 
 world.beforeEvents.itemUse.subscribe((e) => {
     let player = e.source;
     let pos = e.source.location;
     if (e.itemStack.typeId == 'cubic:admin_ui') 
-      system.run(() =>  { admin(e.source) })
+      if e.source.hasTag('admin')
+        system.run(() =>  { admin(e.source) })
     else if (e.itemStack.typeId == 'cubic:insta_pearl') 
       system.run(() =>  { pearl(e.source) })
     else if ((e.itemStack.typeId == 'cubic:ui') || (e.itemStack.typeId == 'cubic:insta_pearl')) // Excluded from spawn prot
@@ -52,7 +54,26 @@ world.beforeEvents.playerPlaceBlock.subscribe((e) => {
 });
 
 function admin(player) {
-  player.addTag('utilitymenu');
+  const main = new ActionFormData();
+  main.title('Admin Menu');
+  main.body("Please check reports frequently and record your actions in the discord.");
+  main.button('Admin Utils');
+  main.button('Reports');
+  main.button('Teleport to admin hub');
+  main.show(player).then(({ selection, canceled }) => {
+      if (canceled) firstpvp(player);
+      switch(selection) {
+      case 0:
+         player.runCommand('tag @s add utilitymenu');
+         break;
+      case 1:
+         player.runCommand('tag @s add reportmenu');
+         break;
+      case 2:
+         player.runCommand('tp @s[tag=admin] 300 10 0');
+         break;
+      }
+  })
 };
 
 function pearl(player) {
