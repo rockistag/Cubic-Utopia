@@ -9,7 +9,11 @@ system.runInterval(() => {
     world.getDimension("overworld").runCommand("execute at @a[tag=!bot] run scoreboard players operation @p displaypoints = @p points");
     const points = world.scoreboard.getObjective('points');
     for (const player of world.getAllPlayers()) {
-        if ((player.hasTag('rank1')) || (player.hasTag('rank2')))
+        if ((player.hasTag('rank1')) && !(player.hasTag('rank1done')))
+        {
+            player.runCommand('function rank');
+        }
+        else if ((player.hasTag('rank2')) && !(player.hasTag('rank2done')))
         {
             player.runCommand('function rank');
         }
