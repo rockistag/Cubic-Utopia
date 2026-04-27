@@ -11,7 +11,7 @@ system.runInterval(() => {
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level One, §lBeginner§r§b. Levels are based off your score, so keep playing to gain more levels! §dYou have received a bucket as a reward for gaining 10 score."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level One!"}]}');
         }
-        if ((score.getScore(player) >= 500) && !player.hasTag('l2')) {
+        else if ((score.getScore(player) >= 500) && !player.hasTag('l2')) {
             player.runCommand('tag @s add l2');
             player.runCommand('tag @s add rank:§6Apprentice');
             player.runCommand('tag @s remove rank:§bBeginner');
@@ -20,7 +20,7 @@ system.runInterval(() => {
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Two, §l§6Apprentice§r§b. §dYou have received an ender chest as a reward for getting 500 score."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Two, §6Apprentice!"}]}');
         }
-        if ((score.getScore(player) >= 2000) && !player.hasTag('l3')) {
+        else if ((score.getScore(player) >= 2000) && !player.hasTag('l3')) {
             player.runCommand('tag @s add l3');
             player.runCommand('scoreboard players set @s level 3');
             player.runCommand('tag @s remove rank:§6Apprentice');
@@ -29,7 +29,7 @@ system.runInterval(() => {
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Three, §l§gArtisan§r§b. §dYou have received a dune trim as a reward for getting 2000 score."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Three, §gArtisan!"}]}');
         }
-        if ((score.getScore(player) >= 5000) && !player.hasTag('l4')) {
+        else if ((score.getScore(player) >= 5000) && !player.hasTag('l4')) {
             player.runCommand('tag @s add l4');
             player.runCommand('scoreboard players set @s level 4');
             player.runCommand('tag @s remove rank:§gArtisan');
@@ -38,7 +38,7 @@ system.runInterval(() => {
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Four, §l§9Pro§r§b. §dYou have received a netherite upgrade template as a reward for getting 5000 score."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Four, §9Pro!"}]}');
         }
-        if ((score.getScore(player) >= 10000) && !player.hasTag('l5')) {
+        else if ((score.getScore(player) >= 10000) && !player.hasTag('l5')) {
             player.runCommand('tag @s add l5');
             player.runCommand('scoreboard players set @s level 5');
             player.runCommand('tag @s remove rank:§9Pro');
@@ -47,7 +47,7 @@ system.runInterval(() => {
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Five, §l§2Expert§r§b. §dYou have received the water breathing perm effect as a reward for getting 10 thousand score. §ePerm Effects can be disabled and re-enabled from the cubic menu settings tab."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Five, §2Expert!"}]}');
         }
-        if ((score.getScore(player) >= 25000) && !player.hasTag('l6')) {
+        else if ((score.getScore(player) >= 25000) && !player.hasTag('l6')) {
             player.runCommand('tag @s add l6');
             player.runCommand('scoreboard players set @s level 6');
             player.runCommand('tag @s remove rank:§2Expert');
@@ -56,7 +56,7 @@ system.runInterval(() => {
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Six, §l§dUtopian§r§b. §dYou have received the haste perm effect as a reward for getting 25 thousand score. §ePerm Effects can be disabled and re-enabled from the cubic menu settings tab."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Six, §dUtopian!"}]}');
         }
-        if ((score.getScore(player) >= 100000) && !player.hasTag('l7')) {
+        else if ((score.getScore(player) >= 100000) && !player.hasTag('l7')) {
             player.runCommand('tag @s add l7');
             player.runCommand('scoreboard players set @s level 7');
             player.runCommand('tag @s remove rank:§dUtopian');
@@ -65,7 +65,7 @@ system.runInterval(() => {
             player.runCommand('tellraw @s {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b, you are now at Level Seven, §l§4Super Utopian§r§b. §dYou have received the fire resistance effect as a reward for getting 100 thousand score. That is clinically insane."}]}');
             player.runCommand('tellraw @a {"rawtext":[{"text":"[§vProgression§r]§d "},{"selector":"@s"},{"text":"§b has reached Level Seven, §4Super Utopian!"}]}');
         }
-        if ((score.getScore(player) >= 250000) && !player.hasTag('l8')) {
+        else if ((score.getScore(player) >= 250000) && !player.hasTag('l8')) {
             player.runCommand('tag @s add l8');
             player.runCommand('scoreboard players set @s level 8');
             player.runCommand('tag @s remove rank:§4Super_Utopian');
