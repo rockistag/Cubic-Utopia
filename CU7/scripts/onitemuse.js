@@ -70,7 +70,7 @@ function admin(player) {
          player.runCommand('tag @s add reportmenu');
          break;
       case 2:
-         player.runCommand('tp @s[tag=admin] 300 10 0');
+         player.runCommand('tp @s[tag=admin] 300 -10 0');
          break;
       }
   })

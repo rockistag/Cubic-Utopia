@@ -222,6 +222,8 @@ function quick(player) {
       switch(selection) {
       case 0:
          player.runCommand('execute in overworld run tp @s 0 -50 0')
+         player.runCommand('tag @s[tag=pvpoff] remove pvp')
+         player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
          player.sendMessage('Teleported to spawn.')
          player.playSound('random.levelup')
          break;
@@ -235,6 +237,8 @@ function quick(player) {
       case 2:
          player.playSound('random.levelup')
          player.sendMessage('Randomly Teleported.')
+         player.runCommand('tag @s[tag=pvpoff] remove pvp')
+         player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
          player.runCommand('function rtp')
          break;
 
@@ -242,6 +246,8 @@ function quick(player) {
          if (player.hasTag('warp1')) {
              player.runCommand('execute in overworld run tp @s 100.50 -47.00 0.50')
              player.sendMessage('Teleported to market.')
+             player.runCommand('tag @s[tag=pvpoff] remove pvp')
+             player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
              player.playSound('random.levelup')
              break;
          }
@@ -255,6 +261,8 @@ function quick(player) {
          if (player.hasTag('warp2')) {
              player.runCommand('execute in overworld run tp @s 63.00 -47.00 -87.00')
              player.sendMessage('Teleported to combat hub.')
+             player.runCommand('tag @s[tag=pvpoff] remove pvp')
+             player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
              player.playSound('random.levelup')
              break;
          }
@@ -268,6 +276,8 @@ function quick(player) {
          if (player.hasTag('warp3')) {
              player.runCommand('execute in overworld run tp @s 63.00 -47.00 98.00')
              player.sendMessage('Teleported to community hub.')
+             player.runCommand('tag @s[tag=pvpoff] remove pvp')
+             player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
              player.playSound('random.levelup')
              break;
          }
@@ -282,6 +292,8 @@ function quick(player) {
              player.runCommand('execute in overworld run tp @s 321.50 -25.00 580.50')
              player.sendMessage('Teleported to the depths of deepslate.')
              player.playSound('random.levelup')
+             player.runCommand('tag @s[tag=pvpoff] remove pvp')
+             player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
              break;
          }
 
@@ -294,6 +306,8 @@ function quick(player) {
          if (player.hasTag('warp5')) {
              player.runCommand('execute in the_end run tp @s 155.50 7.00 0.50')
              player.sendMessage('Teleported to xp farm.')
+             player.runCommand('tag @s[tag=pvpoff] remove pvp')
+             player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
              player.playSound('random.levelup')
              break;
          }
