@@ -156,7 +156,7 @@ function main(player) {
   main.button('Quick Teleport', 'textures/items/cu1');
   main.button('Player Utilities', 'textures/items/cu2');
   main.button('Featured Warps', 'textures/items/cu3');
-  main.button('Quests Hub', 'textures/items/cu19');
+  main.button('Achievements', 'textures/items/cu19');
   main.button('Settings', 'textures/items/cu4');
   main.button('Forms', 'textures/items/cu5');
   main.button('Wiki', 'textures/items/cu11');
@@ -329,15 +329,14 @@ function quick(player) {
 
 
 
-//quests
+//achievements
 
 function quest(player) {
   const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('New for Season Six! Complete unique tasks and journeys to earn rewards!\n§eQuests are in early access. Expect many more to be added over time.');
+  quests.title('Achievements');
+  quests.body('Your hub for progression');
   quests.button('Achievements \n§0[Undergo unique tasks]', 'textures/items/ender_pearl');
-  quests.button('Story \n§0[Discover the infection]', 'textures/items/infectious_pearl');
-  quests.button('Quests \n§0[Game-loop quests]', 'textures/items/ender_eye');
+  quests.button('Progression Info \n§0[Levels & Info]', 'textures/items/ender_eye');
   quests.button('Playtime Rewards \n§0[Playtime shtuff]', 'textures/items/insta_pearl');
   quests.button('Back');
   quests.show(player).then(({ selection, canceled }) => {
@@ -346,739 +345,17 @@ function quest(player) {
       case 0:
          player.runCommand('tag @s add advancementmenu');
          break;
-        
-      case 1:
-         qStory(player);
-         break;
 
-      case 2:
+      case 1:
          qProg(player);
          break;
 
-      case 3:
+      case 2:
          playtime(player);
          break;
 
-      case 4:
+      case 3:
          main(player);
-         break;
-      }
-  })
-}
-
-function qAchieve(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('Achievements involve sequential tasks like obtaining items and defeating mobs. You unlock higher level quests the more you complete!');
-  quests.button('Level 1 Quests', 'textures/items/ender_pearl');
-  if (player.hasTag('ql2')) quests.button('Level 2 Quests', 'textures/items/insta_pearl');
-  if (player.hasTag('ql3')) quests.button('Challenges', 'textures/items/infectious_pearl');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         qAchieve1(player);
-         break;
-        
-      case 1:
-         if (player.hasTag('ql2')) qAchieve2(player);
-         else quest(player);
-         break;
-
-      case 2:
-         if (player.hasTag('ql3')) qAchieve2(player);
-         else quest(player);
-         break;
-
-      case 3:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function qAchieve1(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('Level 1 Achievement Quests');
-  if (player.hasTag('ach_sco')) quests.button('Scoot Scute\n§2[Complete]', 'textures/items/wolf_armor');
-  else if (player.hasTag('ach_scoIN')) quests.button('Scoot Scute\n§1[In Progress]', 'textures/items/wolf_armor');
-  else quests.button('Scoot Scute\n§0[Get the wolf armors]', 'textures/items/wolf_armor');
-  if (player.hasTag('ach_pas')) quests.button('Passing the Time\n§2[Complete]', 'textures/items/clock_item');
-  else if (player.hasTag('ach_pasIN')) quests.button('Passing the Time\n§1[In Progress]', 'textures/items/clock_item');
-  else quests.button('Passing the Time\n§0[Time is of essense]', 'textures/items/clock_item');
-  if (player.hasTag('ach_han')) quests.button('Hang in there\n§2[Complete]', 'textures/items/mangrove_propagule');
-  else if (player.hasTag('ach_hanIN')) quests.button('Hang in there\n§1[In Progress]', 'textures/items/mangrove_propagule');
-  else quests.button('Hang in there\n§0[Plants defy gravity]', 'textures/items/mangrove_propagule');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         ach_sco(player);
-         break;
-        
-      case 1:
-         ach_pas(player);
-         break;
-
-      case 2:
-         ach_han(player);
-         break;
-
-      case 3:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function ach_sco(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 1 Achievement - Scoot Scute\n§eStep 1- Brush (10 Pts) \nStep 2- Scutes (50 Pts) \nStep 3- Wolf Armor (100 Pts)\n§vGet yourself some scutes and craft wolf armor!\n');
-  if (player.hasTag('ach_sco')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_scoIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_sco')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_scoIN')) {
-            player.runCommand('tag @s[scores={ach_sco=3}] add brush')
-            player.runCommand('tag @s[scores={ach_sco=2}] add brush')
-            player.runCommand('tag @s[scores={ach_sco=3}] add armadillo_scute')
-            player.runCommand('tag @s remove ach_scoIN')
-            player.runCommand('scoreboard players set @s ach_sco 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_scoIN')
-            player.runCommand('scoreboard players set @s ach_sco 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve1(player);
-         break;
-      }
-  })
-}
-
-function ach_pas(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 1 Achievement - Passing the time\n§eStep 1- Quartz (10 Pts) \nStep 2- Clock (50 Pts) \nStep 3- Daylight Detector (100 Pts)\n§vIt is time to get a watch! And some other things...\n');
-  if (player.hasTag('ach_pas')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_pasIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_pas')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_pasIN')) {
-            player.runCommand('tag @s[scores={ach_pas=3}] add quartz')
-            player.runCommand('tag @s[scores={ach_pas=2}] add quartz')
-            player.runCommand('tag @s[scores={ach_pas=3}] add daylight_detector')
-            player.runCommand('tag @s remove ach_pasIN')
-            player.runCommand('scoreboard players set @s ach_pas 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_pasIN')
-            player.runCommand('scoreboard players set @s ach_pas 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve1(player);
-         break;
-      }
-  })
-}
-
-function ach_han(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 1 Achievement - Hang in there\n§eStep 1- Cocoa Beans (10 Pts) \nStep 2- Mangrove Propagules (50 Pts) \nStep 3- Hanging Pale Moss (100 Pts)\n§vFind some plants that happen to be hanging!\n');
-  if (player.hasTag('ach_han')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_hanIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_han')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_hanIN')) {
-            player.runCommand('tag @s[scores={ach_han=3}] add cocoa_beans')
-            player.runCommand('tag @s[scores={ach_han=2}] add cocoa_beans')
-            player.runCommand('tag @s[scores={ach_han=3}] add mangrove_propagule')
-            player.runCommand('tag @s remove ach_hanIN')
-            player.runCommand('scoreboard players set @s ach_han 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_hanIN')
-            player.runCommand('scoreboard players set @s ach_han 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve1(player);
-         break;
-      }
-  })
-}
-
-function qAchieve2(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('Level 2 Achievement Quests');
-  if (player.hasTag('ach_bee')) quests.button('Bee our Guest\n§2[Complete]', 'textures/items/honey_bottle');
-  if (player.hasTag('ach_beeIN')) quests.button('Bee our Guest\n§1[In Progress]', 'textures/items/honey_bottle');
-  else quests.button('Bee our Guest\n§0[Befriend the Bees]', 'textures/items/honey_bottle');
-  if (player.hasTag('ach_cou')) quests.button('Country Lode\n§2[Complete]', 'textures/items/compass');
-  else if (player.hasTag('ach_couIN')) quests.button('Country Lode\n§1[In Progress]', 'textures/items/compass');
-  else quests.button('Country Lode\n§0[Navigation assistance]', 'textures/items/compass');
-  if (player.hasTag('ach_tag')) quests.button('TAGCraft\n§2[Complete]', 'textures/items/name_tag');
-  else if (player.hasTag('ach_tagIN')) quests.button('TAGCraft\n§1[In Progress]', 'textures/items/name_tag');
-  else quests.button('TAGCraft\n§0[Become a TAGCrafter]', 'textures/items/name_tag');
-  if (player.hasTag('ach_buc')) quests.button('Bucket Bukkit\n§2[Complete]', 'textures/items/tadpole_bucket');
-  else if (player.hasTag('ach_bucIN')) quests.button('Bucket Bukkit\n§1[In Progress]', 'textures/items/tadpole_bucket');
-  else quests.button('Bucket Bukkit\n§0[Use a bucket, a lot]', 'textures/items/tadpole_bucket');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         ach_bee(player);
-         break;
-        
-      case 1:
-         ach_cou(player);
-         break;
-
-      case 2:
-         ach_tag(player);
-         break;
-
-      case 3:
-         ach_buc(player);
-         break;
-
-      case 4:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function ach_bee(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 2 Achievement - Bee our Guest\n§eStep 1- Honeycomb (10 Pts) \nStep 2- Bee Nest (100 Pts) \nStep 3- Honey Block (500 Pts)\n§vBecome the bees nees! Or the opposite, they might not be so happy...\n');
-  if (player.hasTag('ach_bee')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_beeIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_bee')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_beeIN')) {
-            player.runCommand('tag @s[scores={ach_bee=3}] add honeycomb')
-            player.runCommand('tag @s[scores={ach_bee=2}] add honeycomb')
-            player.runCommand('tag @s[scores={ach_bee=3}] add bee_nest')
-            player.runCommand('tag @s remove ach_beeIN')
-            player.runCommand('scoreboard players set @s ach_bee 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_beeIN')
-            player.runCommand('scoreboard players set @s ach_bee 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve2(player);
-         break;
-      }
-  })
-}
-
-function ach_cou(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 2 Achievement - Country Lode\n§eStep 1- Chiseled Stone Bricks (10 Pts) \nStep 2- Lodestone (100 Pts) \nStep 3- Lodestone Compass (500 Pts)\n§vGet familiar with lodestones and get unnecessary navigation!\n');
-  if (player.hasTag('ach_cou')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_couIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_cou')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_couIN')) {
-            player.runCommand('tag @s[scores={ach_cou=3}] add chiseled_stone_bricks')
-            player.runCommand('tag @s[scores={ach_cou=2}] add chiseled_stone_bricks')
-            player.runCommand('tag @s[scores={ach_cou=3}] add lodestone')
-            player.runCommand('tag @s remove ach_couIN')
-            player.runCommand('scoreboard players set @s ach_cou 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_couIN')
-            player.runCommand('scoreboard players set @s ach_cou 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve2(player);
-         break;
-      }
-  })
-}
-
-function ach_tag(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 2 Achievement - TAGCraft\n§eStep 1- Blue Wool (10 Pts) \nStep 2- Name Tag (100 Pts) \nStep 3- Crafter (500 Pts)\n§vBecome the ultimate TAGCrafter, totally not an easter egg quest and/or promotion for the TAGCraft YouTube Channel or anything, no...\n');
-  if (player.hasTag('ach_tag')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_tagIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_tag')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_tagIN')) {
-            player.runCommand('tag @s[scores={ach_tag=3}] add blue_wool')
-            player.runCommand('tag @s[scores={ach_tag=2}] add blue_wool')
-            player.runCommand('tag @s[scores={ach_tag=3}] add name_tag')
-            player.runCommand('tag @s remove ach_tagIN')
-            player.runCommand('scoreboard players set @s ach_tag 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_tagIN')
-            player.runCommand('scoreboard players set @s ach_tag 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve2(player);
-         break;
-      }
-  })
-}
-
-function ach_buc(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 2 Achievement - Bucket Bukkit\n§eStep 1- Milk Bucket (10 Pts) \nStep 2- Powder Snow Bucket (100 Pts) \nStep 3- Tadpole Bucket (500 Pts)\n§vBuckets are interesting... so use them!\n');
-  if (player.hasTag('ach_buc')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_bucIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_buc')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_bucIN')) {
-            player.runCommand('tag @s[scores={ach_buc=3}] add milk_bucket')
-            player.runCommand('tag @s[scores={ach_buc=2}] add milk_bucket')
-            player.runCommand('tag @s[scores={ach_buc=3}] add powder_snow_bucket')
-            player.runCommand('tag @s remove ach_bucIN')
-            player.runCommand('scoreboard players set @s ach_buc 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_bucIN')
-            player.runCommand('scoreboard players set @s ach_buc 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve2(player);
-         break;
-      }
-  })
-}
-
-function qAchieve3(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('Achievement Challenges');
-  if (player.hasTag('ach_moc')) quests.button('Mock Straw Man\n§2[Complete]', 'textures/items/heart_of_the_sea');
-  else if (player.hasTag('ach_mocIN')) quests.button('Mock Straw Man\n§1[In Progress]', 'textures/items/heart_of_the_sea');
-  else quests.button('Mock Straw Man\n§5[Obtain conduit power]', 'textures/items/heart_of_the_sea');
-  if (player.hasTag('ach_ser')) quests.button('Serious Dedication\n§2[Complete]', 'textures/items/netherite_hoe');
-  else if (player.hasTag('ach_serIN')) quests.button('Serious Dedication\n§1[In Progress]', 'textures/items/netherite_hoe');
-  else quests.button('Serious Dedication\n§5[Reconsider everything]', 'textures/items/netherite_hoe');
-  if (player.hasTag('ach_tri')) quests.button('Tricky Trials\n§2[Complete]', 'textures/items/ominous_trial_key');
-  else if (player.hasTag('ach_triIN')) quests.button('Tricky Trials\n§1[In Progress]', 'textures/items/ominous_trial_key');
-  else quests.button('Tricky Trials\n§5[Master the Chambers]', 'textures/items/ominous_trial_key');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         ach_moc(player);
-         break;
-        
-      case 1:
-         ach_ser(player);
-         break;
-
-      case 2:
-         ach_tri(player);
-         break;
-
-      case 3:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function ach_moc(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§5Challenge Achievement - Mock Straw Man\n§eStep 1- Nautilus Shell (100 Pts) \nStep 2- Heart of the Sea (1000 Pts) \nStep 3- Conduit (5000 Pts)\n§dGet yourself a conduit for convinient underwater abilities!\n');
-  if (player.hasTag('ach_moc')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_mocIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_moc')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_mocIN')) {
-            player.runCommand('tag @s[scores={ach_moc=3}] add nautilus_shell')
-            player.runCommand('tag @s[scores={ach_moc=2}] add nautilus_shell')
-            player.runCommand('tag @s[scores={ach_moc=3}] add heart_of_the_sea')
-            player.runCommand('tag @s remove ach_mocIN')
-            player.runCommand('scoreboard players set @s ach_moc 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_mocIN')
-            player.runCommand('scoreboard players set @s ach_moc 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve3(player);
-         break;
-      }
-  })
-}
-
-function ach_ser(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§5Challenge Achievement - Serious Dedication\n§eStep 1- Ancient Debris (100 Pts) \nStep 2- Netherite Ingot (1000 Pts) \nStep 3- Netherite Hoe (5000 Pts)\n§dCraft the ultimate sacrifice and proceed to heavily question your life decisions.\n');
-  if (player.hasTag('ach_ser')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_serIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_ser')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_serIN')) {
-            player.runCommand('tag @s[scores={ach_ser=3}] add ancient_debris')
-            player.runCommand('tag @s[scores={ach_ser=2}] add ancient_debris')
-            player.runCommand('tag @s[scores={ach_ser=3}] add netherite_ingot')
-            player.runCommand('tag @s remove ach_serIN')
-            player.runCommand('scoreboard players set @s ach_ser 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_serIN')
-            player.runCommand('scoreboard players set @s ach_ser 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve3(player);
-         break;
-      }
-  })
-}
-
-function ach_tri(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§5Challenge Achievement - Tricky Trials\n§eStep 1- Trial Key (100 Pts) \nStep 2- Ominous Trial Key (1000 Pts) \nStep 3- Mace (5000 Pts)\n§dMaster the Trials and reap the rewards!\n');
-  if (player.hasTag('ach_tri')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_triIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_tri')) {
-            qAchieve1(player)
-            break;
-         }
-         else if (player.hasTag('ach_triIN')) {
-            player.runCommand('tag @s[scores={ach_tri=3}] add trial_key')
-            player.runCommand('tag @s[scores={ach_tri=2}] add trial_key')
-            player.runCommand('tag @s[scores={ach_tri=3}] add ominous_trial_key')
-            player.runCommand('tag @s remove ach_triIN')
-            player.runCommand('scoreboard players set @s ach_tri 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_triIN')
-            player.runCommand('scoreboard players set @s ach_tri 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qAchieve3(player);
-         break;
-      }
-  })
-}
-
-function qStory(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('The infection is deadly and harmful to the world around you, and you must stop it. You unlock higher chapters the more general quests and / or story quests you complete!');
-  quests.button('Chapter 1', 'textures/items/ender_pearl');
-  //if (player.hasTag('ql2')) quests.button('Chapter 2', 'textures/items/insta_pearl');
-  //if (player.hasTag('ql3')) quests.button('Final Chapter', 'textures/items/infectious_pearl');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         qStory1(player);
-         break;
-        
-      case 1:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function qStory1(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§3Chapter 1: The Cubic world has been overrun by a strange infection. It bubbles and listens to everything, consuming more area as things perish. What is causing this?');
-  if (player.hasTag('ach_inf')) quests.button('The Infected Cavern\n§2[Complete]', 'textures/items/echo_shard');
-  else if (player.hasTag('ach_infIN')) quests.button('The Infected Cavern\n§1[In Progress]', 'textures/items/echo_shard');
-  else quests.button('The Infected Cavern\n§0[Quest 1]', 'textures/items/echo_shard');
-  if (player.hasTag('ach_anc')) quests.button('Ancient Remnants\n§2[Complete]', 'textures/items/spiked_echo_shard');
-  else if (player.hasTag('ach_ancIN')) quests.button('Ancient Remnants\n§1[In Progress]', 'textures/items/spiked_echo_shard');
-  else if (player.hasTag('ach_inf')) quests.button('Ancient Remnants\n§0[Quest 2]', 'textures/items/spiked_echo_shard');
-  if (player.hasTag('ach_aba')) quests.button('Abandoned Outpost\n§2[Complete]', 'textures/items/outpost_token');
-  else if (player.hasTag('ach_abaIN')) quests.button('Abandoned Outpost\n§1[In Progress]', 'textures/items/outpost_token');
-  else if (player.hasTag('ach_anc')) quests.button('Abandoned Outpost\n§0[Final Quest]', 'textures/items/outpost_token');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         ach_inf(player);
-         break;
-        
-      case 1:
-         if (player.hasTag('ach_inf')) ach_anc(player);
-         else quest(player);
-         break;
-
-      case 2:
-         if (player.hasTag('ach_anc')) ach_aba(player);
-         else quest(player);
-         break;
-
-      case 3:
-         quest(player);
-         break;
-      }
-  })
-}
-
-function ach_inf(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§3Much of the world has the infection, but one peculiarly large area of sculk may hide some goodies…\n§vExplore the infected cavern near spawn and find the hidden room (250 Points)\n');
-  if (player.hasTag('ach_inf')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_infIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_inf')) {
-            qStory1(player)
-            break;
-         }
-         else if (player.hasTag('ach_scoIN')) {
-            player.runCommand('tag @s remove ach_infIN')
-            player.runCommand('scoreboard players set @s ach_inf 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_infIN')
-            player.runCommand('scoreboard players set @s ach_inf 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qStory1(player);
-         break;
-      }
-  })
-}
-
-function ach_anc(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§3A temple once looked upon as the central for the greats, now abandoned and a victim to the infection.\n§vFind the sculk temple and obtain a spiked echo shard (250 Points)\n');
-  if (player.hasTag('ach_anc')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_ancIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_anc')) {
-            qStory1(player)
-            break;
-         }
-         else if (player.hasTag('ach_ancIN')) {
-            player.runCommand('tag @s remove ach_ancIN')
-            player.runCommand('scoreboard players set @s ach_anc 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_ancIN')
-            player.runCommand('scoreboard players set @s ach_anc 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qStory1(player);
-         break;
-      }
-  })
-}
-
-function ach_aba(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§3One day, a Pillager thought it was a good idea to bring some sculk to his outpost. That, as it turns out, was not a good idea.\n§vTravel to the abandoned outpost and use an outpost token to craft the infectious pearl (250 Points)\n');
-  if (player.hasTag('ach_aba')) quests.body('§2You have completed this quest.');
-  else if (player.hasTag('ach_abaIN')) quests.button('Cancel Quest');
-  else quests.button('Begin Quest!');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         if (player.hasTag('ach_aba')) {
-            qStory1(player)
-            break;
-         }
-         else if (player.hasTag('ach_abaIN')) {
-            player.runCommand('tag @s remove ach_abaIN')
-            player.runCommand('scoreboard players set @s ach_aba 0')
-            player.sendMessage('Quest Cancelled.')
-            player.playSound('random.levelup')
-            break;
-         }
-         else {
-            player.runCommand('tag @s add ach_abaIN')
-            player.runCommand('scoreboard players set @s ach_aba 1')
-            player.sendMessage('Quest Begun!')
-            player.playSound('random.levelup')
-            break;
-         }
-      case 1:
-         qStory1(player);
          break;
       }
   })
@@ -1086,7 +363,7 @@ function ach_aba(player) {
 
 function qProg(player) {
   const quests = new ActionFormData();
-  quests.title('Quests');
+  quests.title('Achievements');
   quests.body('Progression quests are just like achievement quests, except they are constantly active and all are unlocked from the start! You can still use these to unlock higher quests in other categories!');
   if (player.hasTag('ach_its')) quests.button('Level 1: Its a Start!\n§2[Complete]', 'textures/items/diamond');
   else quests.button('Level 1: Its a Start!\n§0[Begin your adventures]', 'textures/items/diamond');
@@ -1129,89 +406,9 @@ function qProg(player) {
   })
 }
 
-function ach_its(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 1 Progression Achievement - Its a Start\n§eStep 1- Cobblestone (10 Pts) \nStep 2- Iron Ingot (50 Pts) \nStep 3- Diamond (100 Pts)\n§vGet your start in the game!\n\n§7This quest is in progress.');
-  if (player.hasTag('ach_its')) quests.body('§2You have completed this quest.');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         qProg(player);
-         break;
-      }
-  })
-}
-
-function ach_int(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 1 Progression Achievement - Into the depths\n§eStep 1- Diamond Pickaxe (10 Pts) \nStep 2- Obsidian (50 Pts) \nStep 3- Enter the Nether (100 Pts)\n§vEnter the depths of the hellish dimension.\n\n§7This quest is in progress.');
-  if (player.hasTag('ach_int')) quests.body('§2You have completed this quest.');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         qProg(player);
-         break;
-      }
-  })
-}
-
-function ach_bun(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§2Level 2 Progression Achievement - Bundles of Storage\n§eStep 1- Barrel (10 Pts) \nStep 2- Bundle (100 Pts) \nStep 3- Shulker Box (500 Pts)\n§vUpgrade your storage as you progress thru the game!\n\n§7This quest is in progress.');
-  if (player.hasTag('ach_bun')) quests.body('§2You have completed this quest.');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         qProg(player);
-         break;
-      }
-  })
-}
-
-function ach_end(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§5Progression Challenge Achievement - The End\n§eStep 1- Enter the End (100 Pts) \nStep 2- Collect Dragon Breath (1000 Pts) \nStep 3- Defeat the Dragon (5000 Pts)\n§dEnter the dark, barren end and defeat the dragon.\n\n§7This quest is in progress.');
-  if (player.hasTag('ach_end')) quests.body('§2You have completed this quest.');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         qProg(player);
-         break;
-      }
-  })
-}
-
-function ach_beg(player) {
-  const quests = new ActionFormData();
-  quests.title('Quests');
-  quests.body('§5Progression Challenge Achievement - The Beginning\n§eStep 1- Get Soul Sand (100 Pts) \nStep 2- Collect Wither Skulls (1000 Pts) \nStep 3- Defeat the Wither (5000 Pts)\n§dDefeat the weathe- er, wither*, and get a nether star!\n\n§7This quest is in progress.');
-  if (player.hasTag('ach_beg')) quests.body('§2You have completed this quest.');
-  quests.button('Back');
-  quests.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         qProg(player);
-         break;
-      }
-  })
-}
-
 function playtime(player) {
     const que = new ActionFormData();
-    que.title('Playtime')
+    que.title('Achievements')
     que.body('Redeem playtime rewards!')
     if (player.hasTag('p1') && player.hasTag('pr1')) que.button('§0Reward Redeemed', 'textures/items/cu7')
     else if (player.hasTag('p1')) que.button('§21 Hour: Golden Apple', 'textures/items/cu9')
@@ -1390,25 +587,35 @@ function warp(player) {
     const warps = new ActionFormData();
     warps.title('Warps');
     warps.body('NOTICE: Server locations have been relocated to the quick menu. This menu holds all non-discoverable warps.');
-    warps.button('Structures\n§0[Natural structures]', 'textures/items/trial_key');
-    warps.button('Biomes\n§0[Nearly all overworld biomes]', 'textures/items/resin_clump');
+    warps.button('Structures', 'textures/items/trial_key');
+    warps.button('Rare Biomes', 'textures/blocks/pale_oak_planks')
+    warps.button('Cold Biomes', 'textures/blocks/ice')
+    warps.button('Common Forests', 'textures/blocks/planks_oak')
+    warps.button('Warm Biomes', 'textures/blocks/sand')
+    warps.button('Cave Biomes', 'textures/blocks/deepslate/deepslate')
     warps.button('Back')
     warps.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
       switch(selection) {
       case 0:
-         server(player);
-         break;
-        
-      case 1:
          struc(player); 
          break;
-        
-      case 2: 
-         biome(player);
+      case 1:
+         rare(player);
          break;
-
-      case 3:
+      case 2:
+         cold(player);
+         break;  
+      case 3: 
+         temp(player);
+         break;
+      case 4:
+         warm(player);
+         break;
+      case 5:
+         cave(player);
+         break;
+      case 6:
          main(player);
          break;
       }
@@ -1478,41 +685,6 @@ function struc(player) {
   })
 }
 
-function biome(player) {
-    const warps = new ActionFormData();
-    warps.title('Biomes')
-    warps.body('All the biome types to teleport to.')
-    warps.button('Rare Biomes', 'textures/blocks/pale_oak_planks')
-    warps.button('Cold Biomes', 'textures/blocks/ice')
-    warps.button('Common Forests', 'textures/blocks/planks_oak')
-    warps.button('Warm Biomes', 'textures/blocks/sand')
-    warps.button('Cave Biomes', 'textures/blocks/deepslate/deepslate')
-    warps.button('Back')
-    warps.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         rare(player);
-         break;
-      case 1:
-         cold(player);
-         break;  
-      case 2: 
-         temp(player);
-         break;
-      case 3:
-         warm(player);
-         break;
-      case 4:
-         cave(player);
-         break;
-      case 5:
-         warp(player);
-         break;
-      }
-  })
-}
-
 function rare(player) {
     const warps = new ActionFormData();
     warps.title('Rare Biomes')
@@ -1543,7 +715,7 @@ function rare(player) {
          player.playSound('random.levelup')
          break;
       case 3:
-         biome(player);
+         warp(player);
          break;
       }
   })
@@ -1600,7 +772,7 @@ function cold(player) {
          player.playSound('random.levelup')
          break;
       case 6:
-         biome(player);
+         warp(player);
          break;
       }
   })
@@ -1643,7 +815,7 @@ function temp(player) {
          player.playSound('random.levelup')
          break;
       case 4:
-         biome(player);
+         warp(player);
          break;
       }
   })
@@ -1693,7 +865,7 @@ function warm(player) {
          player.playSound('random.levelup')
          break;
       case 5:
-         biome(player);
+         warp(player);
          break;
       }
   })
@@ -1736,7 +908,7 @@ function cave(player) {
          player.playSound('random.levelup')
          break;
       case 4:
-         biome(player);
+         warp(player);
          break;
       }
   })
@@ -1792,8 +964,8 @@ function docs(player) {
     faq.title('Docs')
     faq.body('Info on built-in realm systems.')
     faq.button('Points', 'textures/items/emerald')
-    faq.button('Tiers', 'textures/items/experience_bottle')
-    faq.button('Quests', 'textures/items/diamond')
+    faq.button('Levels', 'textures/items/experience_bottle')
+    faq.button('Advancements', 'textures/items/diamond')
     faq.button('Mob Keys', 'textures/items/very_rare_mob_key')
     faq.button('Addons', 'textures/items/compass_item')
     faq.button('Commands', 'textures/items/ender_pearl')
