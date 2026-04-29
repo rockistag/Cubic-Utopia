@@ -5,7 +5,7 @@ world.beforeEvents.itemUse.subscribe((e) => {
     let player = e.source;
     let pos = e.source.location;
     if (e.itemStack.typeId == 'cubic:admin_ui') 
-      if e.source.hasTag('admin')
+      if (e.source.hasTag('admin'))
         system.run(() =>  { admin(e.source) })
     else if (e.itemStack.typeId == 'cubic:insta_pearl') 
       system.run(() =>  { pearl(e.source) })
