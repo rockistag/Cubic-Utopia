@@ -33,7 +33,6 @@ world.afterEvents.playerLeave.subscribe((e) => {
 });
 
 world.afterEvents.playerSpawn.subscribe((e) => {
-// Note: Needs to be updated to include giving player the alylica adv book on join and then clear it so that menu actually works
     const player = e.player;
     if (!player.hasTag("menuGot")) {
         player.runCommand('give @s[hasitem={item=cubic:ui, quantity=0}] cubic:ui 1 0 {"item_lock":{"mode":"lock_in_inventory"}}')
@@ -51,7 +50,7 @@ world.afterEvents.playerSpawn.subscribe((e) => {
         player.runCommand('scoreboard players add @s score 0');
         player.runCommand('scoreboard players add playersJoined points 1');
         player.runCommand('execute as @s run tellraw @a {"rawtext":[{"text":"[§aNew Player§r]§d "},{"selector":"@s"},{"text":"§b has joined for the first time!"}]}');
-        player.runCommand('tellraw @a {"rawtext":[{"text":"§bThere are now §d"},{"score":{"name":"playersJoined","objective":"points"}},{"text":" players §bwho have joined §uSeason Six."}]}');
+        player.runCommand('tellraw @a {"rawtext":[{"text":"§bThere are now §d"},{"score":{"name":"playersJoined","objective":"points"}},{"text":" players §bwho have joined §5Season Seven."}]}');
     }
     if (!player.hasTag("e"))
     {
@@ -140,7 +139,7 @@ function confirm(player) {
          player.runCommand('function reset')
          player.sendMessage('Welcome! Use the Cubic Menu in your inventory to get more information, access warps, report or request things, and access rtp and homes.')
          player.playSound('random.levelup')
-         player.runCommand('tp @s 0 73 0')
+         player.runCommand('tp @s 0 -50 0')
          player.runCommand('clear @s')
          player.runCommand('give @s cubic:ui 1 0 {"item_lock":{"mode":"lock_in_inventory"}}')
          break;
@@ -152,7 +151,7 @@ function confirm(player) {
 function main(player) {
   const main = new ActionFormData();
   main.title('Cubic Utopia 7');
-  main.body('§eWelcome to Cubic Utopia 6! Head to the FAQ section to find more information about our realms unique functions!');
+  main.body('§eWelcome to Cubic Utopia 7! Head to the Wiki section to find more information about our realms unique functions!');
   main.button('Quick Teleport', 'textures/items/cu1');
   main.button('Player Utilities', 'textures/items/cu2');
   main.button('Featured Warps', 'textures/items/cu3');
@@ -926,7 +925,7 @@ function cave(player) {
 
 function faqs(player) {
     const faq = new ActionFormData();
-    faq.title('FAQ')
+    faq.title('Wiki')
     faq.body('All needed info for new and returning players.')
     faq.button('Rules\n§c[NEW Changes for S6]', 'textures/items/diamond_axe')
     faq.button('Docs\n§0[Tutorials & Info]', 'textures/items/book_normal')
@@ -966,8 +965,8 @@ function docs(player) {
     faq.button('Points', 'textures/items/emerald')
     faq.button('Levels', 'textures/items/experience_bottle')
     faq.button('Advancements', 'textures/items/diamond')
+    faq.button('Land Claims', 'textures/items/compass_item')
     faq.button('Mob Keys', 'textures/items/very_rare_mob_key')
-    faq.button('Addons', 'textures/items/compass_item')
     faq.button('Commands', 'textures/items/ender_pearl')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
@@ -986,11 +985,11 @@ function docs(player) {
          break;
 
       case 3: 
-         mobkeys(player);
+         claim(player);
          break;
 
       case 4:
-         addon(player);
+         mobkeys(player);
          break;
 
       case 5:
@@ -1132,38 +1131,6 @@ function achieve(player) {
   })
 }
 
-
-
-function addon(player) {
-    const faq = new ActionFormData();
-    faq.title('Docs')
-    faq.body('Info on realm addon functions.')
-    faq.button('Land Claims', 'textures/items/compass_normal')
-    faq.button('Chest Shops', 'textures/items/diamond')
-    faq.button('Vein & Tree Miner', 'textures/items/diamond_axe')
-    faq.button('Back')
-    faq.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         claim(player);
-         break;
-      
-      case 1:
-         chest(player);
-         break;
-
-      case 2: 
-         vein(player);
-         break;
-
-      case 3:
-         docs(player);
-         break;
-      }
-  })
-}
-
 function mobkeys(player) {
     const faq = new ActionFormData();
     faq.title('Mob Keys')
@@ -1190,41 +1157,12 @@ function claim(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         addon(player);
+         docs(player);
          break;
       }
   })
 }
 
-function chest(player) {
-    const faq = new ActionFormData();
-    faq.title('Chest Shops')
-    faq.body('New for season six, chest shops are simple ways to buy and sell items! \n\nHOW TO CREATE A CHEST SHOP\nIts really simple!\nJust place a chest, then place a sign on the front of it and type CREATESHOP into it. Then, when you click the sign again, a menu will appear! You can configure numerous aspects of your chest shop from this menu.\n\nTo delete your chest shop, simply use the break trigger and delete it in that menu.')
-    faq.button('Back')
-    faq.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         addon(player);
-         break;
-      }
-  })
-}
-
-function vein(player) {
-    const faq = new ActionFormData();
-    faq.title('Vein & Tree Miner')
-    faq.body('Cubic Utopia has had the vein miner for a while now, but the tree miner has made its return for season six. These are really easy to use - by simply crouching while using a pickaxe or axe on ores or logs respectively, you can mine all the connected ores / logs instantly! This will result in the same durability penalty on your tools as if you mined it all individually.\n\nCertain trees are not applicable to the addon due to their size respective to logs (too OP!).')
-    faq.button('Back')
-    faq.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         addon(player);
-         break;
-      }
-  })
-}
 
 
 
@@ -1315,8 +1253,7 @@ function change(player) {
     const faq = new ActionFormData();
     faq.title('Changelogs')
     faq.body('These are changelogs for all the major (and non-hotfix minor) updates to Cubic Utopia.')
-    faq.button('Version 6.0', 'textures/items/ui')
-    faq.button('Version 6.1', 'textures/items/emerald')
+    faq.button('Version 7.0', 'textures/items/ui')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1324,12 +1261,8 @@ function change(player) {
       case 0:
          changeone(player);
          break;
-
-      case 1:
-         changetwo(player);
-         break;
       
-      case 2: 
+      case 1: 
          faqs(player);
          break;
       }
@@ -1340,21 +1273,6 @@ function changeone(player) {
     const set = new ActionFormData();
     set.title('Changelogs')
     set.body('VERSION 6.0\nAfter months of waiting, countless hours of development, and multiple days of delays, we are finally ready to launch Cubic Utopia 6! \n\nCLIMBS & QUESTS\nWelcome to the new season, where we are introducing numerous features related to the market, tiers, ranks, and our new quest system!  \n\nQuest System\nOur new quest system evolves the previous achievements system and adds additional adventures, including new story and progression quests.\n- 22 New Quests have been added!\n- This includes five progression quests, ten achievement quests (and an additional four tiered achievement quests), and chapter one of the story mode quests (three).\n- Achievement quests involve individual steps that the player must complete in sequential order to complete the achievement. Each step rewards the player points seperately. If each step were an achievement in the old system, there would be twice as many as we had last season.\n- Progression quests are similar, but can be completed out of order and are activated until the player completes them. As a result, there are no tip objectives for Progression quests.\n- Story Mode: Discover the Infection. Chapter 1 is now available with three unique quests, where youll find ancient ruins and craft special items. In further changelogs, Story Mode will have its own section. We plan on bringing two more chapters in further updates.\n\nMarket\nThe realm shop has been renamed to the realm market to differentiate it from other shops, which will come up later in this changelog. The Season 6 Market throws back to a Season 3 / 4 style layout, with sections for Ranks, Featured Sales, Selling & Buying, Kits, and Cosmetics.\n- The Market features a record amount of sales!\n- For the first time ever, the Market can be accessed directly from spawn with no teleporting needed (although there is a warp for convinience).\n- Mounts of Mayhem items are available!\n\nRanks\nThe Market will feature two ranks this system, which are cheaper than previously but have less sales. This is to compensate for the introduction of tiered ranks (see Tier System).\n- Catalyst and Shrieker ranks are now available\n- New cosmetic ranks are available including the Warrior rank, which is an ode to Season Two\n\nTier System\nThe new playtime tier system is an overhaul of the levels system, introducing 30 levels across 6 different tiers. Each tier has a unique rank tied to it.\n- Each tier and/or level reached has a unique reward, which scales up in value based on the tier.\n- All tiers have their own sales in the Realm Market via the new Tiered Sales section.\n- Crafter Tiers (Tier 2) and up also have their own quests in the quest system.\n\nMob Keys\n- New Tier Rewards.\n- Spawn a random mob out of a selection of 2-4.\n- Players can only get one of each\n- Shrieker Key can be bought at the Market\n\nGENERAL\nNumerous Quality-of-life enhancements have been made, including the reorganization of the Cubic Menu and some new addons!\n\nNOTICE\nThe Health Bar pack was planned to be a continued inclusion in Season Six, however there appears to be a visual bug related to input that affects packs like this, and as a result we have decided to disable it until the aforementioned bug has been fixed.\nAlso, please report any bugs you encounter! As with any launch, the realm isnt perfectly stable, and wed like to have most of these fixed before the release of 6.1.\n\nMenu\nThe Cubic Menu has been reorganized and made more readable!\n- RTP is now in the Quick Teleport Tab\n- TPA / Homes Button has been renamed to Player Hub due to the addition of the Auction House (see below)\n- Added Quests Menu which is responsible for handling all quests in the new system\n- Added Trading Hub Warp\n- Reorganized FAQ tab with tons of new info stored inside simpler menus\n- Reorganized settings in a similar way, with toggles just showing as one button instead of two in a separate menu\n\nPvp Tag (IMPORTANT!)\nA new PVP tag has been added which will dictate whether players are open to combat with others or not. Punishment will be issued if players kill others that dont have the PVP tag. This can be configured in settings and is enabled by default.\n\nAddons\nSimple Dynamic Lights by AlienEdd\nIntroducing a new dynamic lights addon for CU! This addon is relatively lag-free and non-dependent on the marketplace, so we should have less problems. This addon adds;\n- Lighting when holding or wearing an item that emits light\n- Enchantment Lighting\n- No Nonsense\n\nEdds VeinCapitator by AlienEdd\nThis addon has been present for a little while on CU, but was only used for its vein mining functions. Thanks to some tweaking, weve made the full thing work with this season of Cubic Utopia! This means that we now have;\n- Tree Decapitation when mined with an axe while crouching, works for trees that dont have 4x4 variants\n- Vein Miner (functions like normal)\n- Gravel patches get fully mined when using a shovel while crouching\n\nEssentials Addon by Pao\nChest shops and the auction house are here!\n- Chest Shops allow you to buy and sell items without the need of admin approval\n- Easy to set up and use\n- Auction house allows you to auction items for points\n- Admins may remove auction house items if theyre one-time items like mob keys or overpriced compared to market sales\n\nInfrastructure\nThis seasons spawn is the largest one yet! Were bringing back a Season Two-esque layout with much more simplicity yet much more functionality.\n- Market building drops you into the Realm Market, which is underneath spawn\n- Trading Hub & Public Warps building features trading posts and public warps, as youd expect\n- Combat & Arenas building features physical warps to all Pvp Arenas, Trials, and Parkours\n- Nether and End Portals are present for the first time since Season Three\n- A survival portal is present for the first time, as spawn is enclosed and we would like to avoid the whole issue where players with not very much literacy ask us how to get out of spawn\n\n- Added a tutorial walk for new players\n\nArenas\nPlease note that some arenas are unfinished at the start of Season Six, and we plan on finishing them shortly after release.\n- 1 Combat Arena is present: Spleef-Style Arena. Sculk Maze (an ode to season five) is coming soon.\n- 4 Trials are present: Glassbox Trial, Infectious Cavern, Mineshaft Trial (CU3), and Mountain Trial (CU2)\n- 2 Parkours are present: Aqua Parkour and Ice Parkour (CU4)\n- In addition, a parkour is present at spawn like in Season Five.\n\nPoints Rewards\n- Combat rewards now only work when the killed player has the PVP tag\n- A number of mobs can now be killed for points, including the new Parched mob\n- Boss fights are no longer tracked using command blocks, instead using script\n\nResource Pack\n- Changed logos to reflect new Season\n- Changed some menu textures\n- Added textures for new buttons\n- Added textures for new quest items\n- Added textures for mob keys\n- Freed up space to decrease loading time\n\nBehavior Pack\n- Added functions for new quest and tier systems\n- Added mob key functionality\n- Changed insta pearls to not be used up when above areas that you cant teleport out of\n- World Border now affects all dimensions and is slightly smaller\n- This change is in reaction to the insane file size that CU5 ended up with, making it undownloadable')
-    set.button('Back')
-    set.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         change(player);
-         break;
-      }
-  })
-}
-
-function changetwo(player) {
-    const set = new ActionFormData();
-    set.title('Changelogs')
-    set.body('VERSION 6.1\nThe first minor update is out for Cubic Utopia 6! We have got fixes, leftovers, and some Quality of Life tweaks! Maybe the new arena will interest you? Maybe the new market sales will satisfy you? Who knows!\n\nNOTICE\n- With this update, we are doing a reset of playtime for players out of sync on tiers. We apologize if this inconviniences you, but it is for the best going forward as many players were not receiving rewards.\n- Bundles have been disabled with this update. While you can still craft bundles and have them in your inventory, they no longer store items or have any functionality. This is due to a duping issue that Mojang basically refuses to patch, as they always seem to do with any issue that actually matters.\n- Rank toggles were planned for this update, however we were not able to fit it in with all the other concerns that were more negatively affecting player experience.\n\nQuests\n- Quests now make sounds! Different sounds result from completing steps and completing full quests.\n\nAddons\nLow Fire by The Cubic Company\n- Added a new pack!\n- A small texture pack that lowers the fire effect when you’re on fire.\n- This enhances visibility in situations where you’re on fire, usually in combat.\n\nEssentials Addon by Pao\n- Added a new version, fixing some issues with the Auction House.\n- This also fixes the RTP issue where players were being teleported into caves. If you’d like to warp to caves, you can do so thru the cave biome warps.\n\nTiers\n- Tiers will now make sounds! These can be configured in the settings section of the cubic menu.\n- We have done some tier resets for certain players, see the notice above.\n\nMenu\n- Players with quests activated will now see buttons identifying that they are in progress when in the quests menus.\n- Added credits for new packs.\n\nMarket\nHuge new things have come to the market!\n- Added sales for Pro and Beast Tiers.\n- Added new kits.\n- Added the Shrieker Vault Room.\n- Added new limited-time sales.\n\nInfrastructure\n- The Admin Board has been set up.\n- Changed the theme to winter instead of holidays.\n\nArenas\n- Added the sculk maze arena! We hope you enjoy this CU5-inspired maze.\n\nBehavior Packs\n- Changed some tier functions to reflect the recent tier resets for out-of-sync players.\n- Made some redundancy efforts to many quest and tier functions.')
     set.button('Back')
     set.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1400,11 +1318,12 @@ function credits(player) {
 function settings(player) {
     const set = new ActionFormData();
     set.title('Settings')
-    set.body('All Applicable Realm Settings. Note that for land you must be standing in land you own to configure it.\n§dNEW! Toggle Ranks in the effects tab.')
+    set.body('All Applicable Realm Settings.')
     set.button('General\n§0[Sidebar, Tips, PVP]', 'textures/items/cu15')
-    set.button('Effects\n§0[Perm Effects, Trails]', 'textures/items/cu14')
-    set.button('Land\n§1[Must be standing in a claim!]', 'textures/items/cu10')
-    set.button('Reset\n§c[Deletes your data]', 'textures/items/cu12')
+    set.button('Audio\n§0[Realm Sounds]', 'textures/items/cu15')
+    set.button('Perm Effects\n§0[Indefinite Effects]', 'textures/items/cu14')
+    set.button('Trails\n§0[Particle Trails]', 'textures/items/cu10')
+    set.button('Ranks\n§0[Visibility of Ranks]', 'textures/items/cu11')
     set.button('Back')
     set.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1414,18 +1333,52 @@ function settings(player) {
          break;
 
       case 1:
-         effect(player);
+         sound(player);
          break;
 
       case 2:
-         player.runCommand('give @s slc:claim_shovel');
+         player.runCommand('tag @s[scores={peffect1=1}] add peffect1');
+         player.runCommand('tag @s[scores={peffect2=1}] add peffect2');
+         player.runCommand('tag @s[scores={peffect3=1}] add peffect3');
+         player.runCommand('tag @s[scores={peffect4=1}] add peffect4');
+         player.runCommand('tag @s[scores={peffect5=1}] add peffect5');
+         player.runCommand('tag @s[scores={peffect6=1}] add peffect6');
+         player.runCommand('tag @s[scores={peffect1=1}] add ef1');
+         player.runCommand('tag @s[scores={peffect2=1}] add ef2');
+         player.runCommand('tag @s[scores={peffect3=1}] add ef3');
+         player.runCommand('tag @s[scores={peffect4=1}] add ef4');
+         player.runCommand('tag @s[scores={peffect5=1}] add ef5');
+         player.runCommand('tag @s[scores={peffect6=1}] add ef6');
+         effects(player);
          break;
 
       case 3:
-         reset(player);
+         player.runCommand('tag @s[scores={trail1=1}] add trail1');
+         player.runCommand('tag @s[scores={trail2=1}] add trail2');
+         player.runCommand('tag @s[scores={trail3=1}] add trail3');
+         player.runCommand('tag @s[scores={trail4=1}] add trail4');
+         player.runCommand('tag @s[scores={trail5=1}] add trail5');
+         player.runCommand('tag @s[scores={trail6=1}] add trail6');
+         player.runCommand('tag @s[scores={trail7=1}] add trail7');
+         player.runCommand('tag @s[scores={trail8=1}] add trail8');
+         player.runCommand('tag @s[scores={trail1=1}] add tr1');
+         player.runCommand('tag @s[scores={trail2=1}] add tr2');
+         player.runCommand('tag @s[scores={trail3=1}] add tr3');
+         player.runCommand('tag @s[scores={trail4=1}] add tr4');
+         player.runCommand('tag @s[scores={trail5=1}] add tr5');
+         player.runCommand('tag @s[scores={trail6=1}] add tr6');
+         player.runCommand('tag @s[scores={trail7=1}] add tr7');
+         player.runCommand('tag @s[scores={trail8=1}] add tr8');
+         trails(player);
          break;
 
       case 4:
+         player.runCommand('tag @s[tag=rank:warrior] add war');
+         player.runCommand('tag @s[tag=rank:infectious] add inf');
+         ranks(player);
+         break;
+
+      case 5:
          main(player);
          break;
       }
@@ -1435,7 +1388,7 @@ function settings(player) {
 function settingsGen(player) {
    const set = new ActionFormData();
    set.title('Settings')
-   set.body('General settings for tags related to simple realm functionality. [NEWS: Fixed in 6.0.1]')
+   set.body('General settings for tags related to simple realm functionality.')
    if (player.hasTag('pvp')) set.button('§4Disable PVP', 'textures/items/cu7')
    else set.button('§2Enable PVP', 'textures/items/cu9')
    if (player.hasTag('ignorescoreboard')) set.button('§2Enable Sidebar', 'textures/items/cu9')
@@ -1516,71 +1469,6 @@ function settingsGen(player) {
 }
 
 
-function effect(player) {
-    const set = new ActionFormData();
-    set.title('Settings')
-    set.body('Various Effect Settings.')
-    set.button('Audio\n§0[Realm Sounds]', 'textures/items/cu15')
-    set.button('Perm Effects\n§0[Indefinite Effects]', 'textures/items/cu14')
-    set.button('Trails\n§0[Particle Trails]', 'textures/items/cu10')
-    set.button('Ranks\n§0[Visibility of Ranks]', 'textures/items/cu11')
-    set.button('Back')
-    set.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         sound(player);
-         break;
-
-      case 1:
-         player.runCommand('tag @s[scores={peffect1=1}] add peffect1');
-         player.runCommand('tag @s[scores={peffect2=1}] add peffect2');
-         player.runCommand('tag @s[scores={peffect3=1}] add peffect3');
-         player.runCommand('tag @s[scores={peffect4=1}] add peffect4');
-         player.runCommand('tag @s[scores={peffect5=1}] add peffect5');
-         player.runCommand('tag @s[scores={peffect6=1}] add peffect6');
-         player.runCommand('tag @s[scores={peffect1=1}] add ef1');
-         player.runCommand('tag @s[scores={peffect2=1}] add ef2');
-         player.runCommand('tag @s[scores={peffect3=1}] add ef3');
-         player.runCommand('tag @s[scores={peffect4=1}] add ef4');
-         player.runCommand('tag @s[scores={peffect5=1}] add ef5');
-         player.runCommand('tag @s[scores={peffect6=1}] add ef6');
-         effects(player);
-         break;
-
-      case 2:
-         player.runCommand('tag @s[scores={trail1=1}] add trail1');
-         player.runCommand('tag @s[scores={trail2=1}] add trail2');
-         player.runCommand('tag @s[scores={trail3=1}] add trail3');
-         player.runCommand('tag @s[scores={trail4=1}] add trail4');
-         player.runCommand('tag @s[scores={trail5=1}] add trail5');
-         player.runCommand('tag @s[scores={trail6=1}] add trail6');
-         player.runCommand('tag @s[scores={trail7=1}] add trail7');
-         player.runCommand('tag @s[scores={trail8=1}] add trail8');
-         player.runCommand('tag @s[scores={trail1=1}] add tr1');
-         player.runCommand('tag @s[scores={trail2=1}] add tr2');
-         player.runCommand('tag @s[scores={trail3=1}] add tr3');
-         player.runCommand('tag @s[scores={trail4=1}] add tr4');
-         player.runCommand('tag @s[scores={trail5=1}] add tr5');
-         player.runCommand('tag @s[scores={trail6=1}] add tr6');
-         player.runCommand('tag @s[scores={trail7=1}] add tr7');
-         player.runCommand('tag @s[scores={trail8=1}] add tr8');
-         trails(player);
-         break;
-
-      case 3:
-         player.runCommand('tag @s[tag=rank:warrior] add war');
-         player.runCommand('tag @s[tag=rank:infectious] add inf');
-         ranks(player);
-         break;
-
-      case 4:
-         settings(player);
-         break;
-      }
-  })
-}
-
 function sound(player) {
     const set = new ActionFormData();
     set.title('Settings')
@@ -1611,7 +1499,7 @@ function sound(player) {
          break;
 
       case 3:
-         effect(player);
+         settings(player);
          break;
       }
   })
@@ -1665,7 +1553,7 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
         
@@ -1685,7 +1573,7 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1705,7 +1593,7 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1725,7 +1613,7 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1745,7 +1633,7 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
       
@@ -1765,7 +1653,7 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1785,7 +1673,7 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
       
@@ -1805,12 +1693,12 @@ function trails(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
       case 8:
-         effect(player);
+         settings(player);
          break;
       }
   })
@@ -1852,7 +1740,7 @@ function effects(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
         
@@ -1872,7 +1760,7 @@ function effects(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1892,7 +1780,7 @@ function effects(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1912,7 +1800,7 @@ function effects(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1932,7 +1820,7 @@ function effects(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -1952,12 +1840,12 @@ function effects(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
       case 6:
-         effect(player);
+         settings(player);
          break;
       }
   })
@@ -1997,7 +1885,7 @@ function ranks(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
         
@@ -2015,7 +1903,7 @@ function ranks(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -2033,7 +1921,7 @@ function ranks(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
@@ -2051,12 +1939,12 @@ function ranks(player) {
             break;
          }
          else { 
-            effect(player);
+            settings(player);
             break;
          }
 
       case 4:
-         effect(player);
+         settings(player);
          break;
       }
   })
@@ -2096,7 +1984,7 @@ function resetCon(player) {
       case 0:
          player.runCommand('function reset');
          player.runCommand('execute at @s run clear @s');
-         player.runCommand('tp @s 0 73 0');
+         player.runCommand('tp @s 0 -50 0');
          break;
       case 1:
          reset(player);
