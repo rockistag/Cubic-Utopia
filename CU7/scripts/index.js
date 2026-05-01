@@ -4,7 +4,6 @@ import "./onitemuse.js";
 import "./commandrep.js";
 import "./onmobkill.js";
 import "./playtimecheck.js";
-import "./questcheck.js";
 import "./levelcheck.js";
 import "./gui_menu.js";
 import "./report.js";
