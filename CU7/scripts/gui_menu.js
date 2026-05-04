@@ -963,10 +963,11 @@ function docs(player) {
     faq.title('Docs')
     faq.body('Info on built-in realm systems.')
     faq.button('Points', 'textures/items/emerald')
-    faq.button('Levels', 'textures/items/experience_bottle')
-    faq.button('Advancements', 'textures/items/diamond')
+    faq.button('Levels & Score', 'textures/items/experience_bottle')
+    faq.button('Advancements', 'textures/items/ender_eye')
     faq.button('Land Claims', 'textures/items/compass_item')
     faq.button('Mob Keys', 'textures/items/very_rare_mob_key')
+    faq.button('Playtime Rewards', 'textures/items/diamond')
     faq.button('Commands', 'textures/items/ender_pearl')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
@@ -993,10 +994,14 @@ function docs(player) {
          break;
 
       case 5:
-         tpfaq(player);
+         playtimerew(player);
          break;
 
       case 6:
+         tpfaq(player);
+         break;
+
+      case 7:
          faqs(player);
          break;
       }
@@ -1134,6 +1139,21 @@ function achieve(player) {
 function mobkeys(player) {
     const faq = new ActionFormData();
     faq.title('Mob Keys')
+    faq.body('Mob Keys are a new addition to the rewards system for Season Six! You will get mob keys for reaching new playtime tiers and by completing events. You can also buy the Shrieker Mob Key from the market by simply purchasing the Shrieker rank.\n\nMob keys spawn a random mob of its selection at the players position when used. You cannot use mob keys in protected areas. All the mob keys;\n\nSHRIEKER MOB KEY\nNautilus 50%\nCamel Husk 50%\n\nUNCOMMON MOB KEY\nCold Frog 30%\nArmadillo 30%\nBee 20%\nCamel 20%\n\nRARE MOB KEY\nBrown Mooshroom 20%\nBrown Panda 30%\nMountain Wolf 50%\n\nVERY RARE MOB KEY\nGhastling 20%\nSniffer 30%\nAllay 50%\n\nSUPER MOB KEY\nBlue Axolotl 20%\nSkeleton Horse 30%\nZombie Horse 50%')
+    faq.button('Back')
+    faq.show(player).then(({ selection, canceled }) => {
+      if (canceled) return;
+      switch(selection) {
+      case 0:
+         docs(player);
+         break;
+      }
+  })
+}
+
+function playtimerew(player) {
+    const faq = new ActionFormData();
+    faq.title('Playtime Rewards Docs')
     faq.body('Mob Keys are a new addition to the rewards system for Season Six! You will get mob keys for reaching new playtime tiers and by completing events. You can also buy the Shrieker Mob Key from the market by simply purchasing the Shrieker rank.\n\nMob keys spawn a random mob of its selection at the players position when used. You cannot use mob keys in protected areas. All the mob keys;\n\nSHRIEKER MOB KEY\nNautilus 50%\nCamel Husk 50%\n\nUNCOMMON MOB KEY\nCold Frog 30%\nArmadillo 30%\nBee 20%\nCamel 20%\n\nRARE MOB KEY\nBrown Mooshroom 20%\nBrown Panda 30%\nMountain Wolf 50%\n\nVERY RARE MOB KEY\nGhastling 20%\nSniffer 30%\nAllay 50%\n\nSUPER MOB KEY\nBlue Axolotl 20%\nSkeleton Horse 30%\nZombie Horse 50%')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
