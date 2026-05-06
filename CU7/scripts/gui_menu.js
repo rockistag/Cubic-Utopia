@@ -333,8 +333,8 @@ function quick(player) {
 function quest(player) {
   const quests = new ActionFormData();
   quests.title('Achievements');
-  quests.body('Your hub for progression');
-  quests.button('Achievements \n§0[Undergo unique tasks]', 'textures/items/ender_pearl');
+  quests.body('Your hub for progression!');
+  quests.button('Advancements \n§0[Complete goals for Score]', 'textures/items/ender_pearl');
   quests.button('Progression Info \n§0[Levels & Info]', 'textures/items/ender_eye');
   quests.button('Playtime Rewards \n§0[Playtime shtuff]', 'textures/items/insta_pearl');
   quests.button('Back');
