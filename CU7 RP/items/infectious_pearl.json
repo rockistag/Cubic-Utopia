@@ -1,0 +1,19 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "cubic:infectious_pearl",
+            "category": "Items"
+        },
+        "components": {
+            "minecraft:max_stack_size": 64,
+            "minecraft:icon": "infectious_pearl",
+            "minecraft:use_animation": {
+                "value": "none"
+            },
+            "minecraft:rarity": {
+                "value": "epic"
+            }
+        }
+    }
+}

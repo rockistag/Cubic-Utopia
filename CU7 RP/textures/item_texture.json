@@ -1,0 +1,51 @@
+{
+    "resource_pack_name": "vanilla",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "insta_pearl": {
+            "textures": "textures/items/insta_pearl"
+        },
+        "infectious_pearl": {
+            "textures": "textures/items/infectious_pearl"
+        },
+        "spiked_echo_shard": {
+            "textures": "textures/items/spiked_echo_shard"
+        },
+        "outpost_token": {
+            "textures": "textures/items/outpost_token"
+        },
+        "rare_pumpkin_pie": {
+            "textures": "textures/items/rare_pumpkin_pie"
+        },
+        "golden_pumpkin_pie": {
+            "textures": "textures/items/golden_pumpkin_pie"
+        },
+        "super_pumpkin_pie": {
+            "textures": "textures/items/super_pumpkin_pie"
+        },
+        "ui": {
+            "textures": "textures/items/ui"
+        },
+        "admin_ui": {
+            "textures": "textures/items/admin_ui"
+        },
+        "shrieker_mob_key": {
+            "textures": "textures/items/shrieker_mob_key"
+        },
+        "uncommon_mob_key": {
+            "textures": "textures/items/uncommon_mob_key"
+        },
+        "rare_mob_key": {
+            "textures": "textures/items/rare_mob_key"
+        },
+        "very_rare_mob_key": {
+            "textures": "textures/items/very_rare_mob_key"
+        },
+        "super_mob_key": {
+            "textures": "textures/items/super_mob_key"
+        },
+        "start_ui": {
+            "textures": "textures/items/start_ui"
+        }
+    }
+}
