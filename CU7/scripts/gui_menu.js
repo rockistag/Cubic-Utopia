@@ -152,13 +152,13 @@ function main(player) {
   const main = new ActionFormData();
   main.title('Cubic Utopia 7');
   main.body('§eWelcome to Cubic Utopia 7! Head to the Wiki section to find more information about our realms unique functions!');
-  main.button('Quick Teleport', 'textures/items/cu1');
-  main.button('Player Utilities', 'textures/items/cu2');
-  main.button('Featured Warps', 'textures/items/cu3');
-  main.button('Achievements', 'textures/items/cu19');
-  main.button('Settings', 'textures/items/cu4');
-  main.button('Forms', 'textures/items/cu5');
-  main.button('Wiki', 'textures/items/cu11');
+  main.button('Quick Teleport', 'textures/items/quick');
+  main.button('Player Utilities', 'textures/items/utilities');
+  main.button('Featured Warps', 'textures/items/warps');
+  main.button('Achievements', 'textures/items/achievements');
+  main.button('Settings', 'textures/items/settings');
+  main.button('Forms', 'textures/items/forms');
+  main.button('Wiki', 'textures/items/wiki');
   main.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
       switch(selection) {
@@ -202,19 +202,19 @@ function quick(player) {
   const spawn = new ActionFormData();
   spawn.title('Quick Teleport');
   spawn.body('Choose an option to conveniently teleport.');
-  spawn.button('Warp directly to spawn', 'textures/items/ender_pearl');
-  spawn.button('Get Insta-Pearls for spawn', 'textures/items/insta_pearl');
-  spawn.button('Randomly Teleport', 'textures/items/infectious_pearl')
-  if (player.hasTag('warp1')) spawn.button('Realm Market', 'textures/items/infectious_pearl')
-  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
-  if (player.hasTag('warp2')) spawn.button('Combat Central', 'textures/items/infectious_pearl')
-  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
-  if (player.hasTag('warp3')) spawn.button('Public Warps', 'textures/items/infectious_pearl')
-  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
-  if (player.hasTag('warp4')) spawn.button('Depths Central', 'textures/items/infectious_pearl')
-  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
-  if (player.hasTag('warp5')) spawn.button('Enderman XP Farm', 'textures/items/infectious_pearl')
-  else spawn.button('Undiscovered Warp', 'textures/items/cuempty')
+  spawn.button('Warp directly to spawn', 'textures/items/spawn');
+  spawn.button('Get Insta-Pearls for spawn', 'textures/items/pearl');
+  spawn.button('Randomly Teleport', 'textures/items/rtp')
+  if (player.hasTag('warp1')) spawn.button('Realm Market', 'textures/items/warp1')
+  else spawn.button('Undiscovered Warp', 'textures/items/warp_undiscovered')
+  if (player.hasTag('warp2')) spawn.button('Combat Central', 'textures/items/warp2')
+  else spawn.button('Undiscovered Warp', 'textures/items/warp_undiscovered')
+  if (player.hasTag('warp3')) spawn.button('Public Warps', 'textures/items/warp3')
+  else spawn.button('Undiscovered Warp', 'textures/items/warp_undiscovered')
+  if (player.hasTag('warp4')) spawn.button('Depths Central', 'textures/items/warp4')
+  else spawn.button('Undiscovered Warp', 'textures/items/warp_undiscovered')
+  if (player.hasTag('warp5')) spawn.button('Enderman XP Farm', 'textures/items/warp5')
+  else spawn.button('Undiscovered Warp', 'textures/items/warp_undiscovered')
   spawn.button('Back');
   spawn.show(player).then(({ selection, canceled }) => {
       if (canceled) main(player);
@@ -334,9 +334,9 @@ function quest(player) {
   const quests = new ActionFormData();
   quests.title('Achievements');
   quests.body('Your hub for progression!');
-  quests.button('Advancements \n§0[Complete goals for Score]', 'textures/items/ender_pearl');
-  quests.button('Progression Info \n§0[Levels & Info]', 'textures/items/ender_eye');
-  quests.button('Playtime Rewards \n§0[Playtime shtuff]', 'textures/items/insta_pearl');
+  quests.button('Advancements \n§0[Complete goals for Score]', 'textures/items/cuadvance');
+  quests.button('Progression Info \n§0[Levels & Info]', 'textures/items/prog');
+  quests.button('Playtime Rewards \n§0[Playtime shtuff]', 'textures/items/playtime');
   quests.button('Back');
   quests.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -586,12 +586,12 @@ function warp(player) {
     const warps = new ActionFormData();
     warps.title('Warps');
     warps.body('NOTICE: Server locations have been relocated to the quick menu. This menu holds all non-discoverable warps.');
-    warps.button('Structures', 'textures/items/trial_key');
-    warps.button('Rare Biomes', 'textures/blocks/pale_oak_planks')
-    warps.button('Cold Biomes', 'textures/blocks/ice')
-    warps.button('Common Forests', 'textures/blocks/planks_oak')
-    warps.button('Warm Biomes', 'textures/blocks/sand')
-    warps.button('Cave Biomes', 'textures/blocks/deepslate/deepslate')
+    warps.button('Structures', 'textures/items/structure');
+    warps.button('Rare Biomes', 'textures/items/biome1')
+    warps.button('Cold Biomes', 'textures/items/biome2')
+    warps.button('Common Forests', 'textures/items/biome3')
+    warps.button('Warm Biomes', 'textures/items/biome4')
+    warps.button('Cave Biomes', 'textures/items/biome5')
     warps.button('Back')
     warps.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -927,10 +927,10 @@ function faqs(player) {
     const faq = new ActionFormData();
     faq.title('Wiki')
     faq.body('All needed info for new and returning players.')
-    faq.button('Rules\n§c[NEW Changes for S6]', 'textures/items/diamond_axe')
-    faq.button('Docs\n§0[Tutorials & Info]', 'textures/items/book_normal')
-    faq.button('Changelogs\n§2[Season Six is out!]', 'textures/items/infectious_pearl')
-    faq.button('Credits\n§0[Contributors to CU6]', 'textures/items/amethyst_shard')
+    faq.button('Rules\n§c[NEW Changes for S6]', 'textures/items/rules')
+    faq.button('Docs\n§0[Tutorials & Info]', 'textures/items/docs')
+    faq.button('Changelogs\n§2[Season Six is out!]', 'textures/items/change')
+    faq.button('Credits\n§0[Contributors to CU6]', 'textures/items/credits')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1339,11 +1339,11 @@ function settings(player) {
     const set = new ActionFormData();
     set.title('Settings')
     set.body('All Applicable Realm Settings.')
-    set.button('General\n§0[Sidebar, Tips, PVP]', 'textures/items/cu15')
-    set.button('Audio\n§0[Realm Sounds]', 'textures/items/cu15')
-    set.button('Perm Effects\n§0[Indefinite Effects]', 'textures/items/cu14')
-    set.button('Trails\n§0[Particle Trails]', 'textures/items/cu10')
-    set.button('Ranks\n§0[Visibility of Ranks]', 'textures/items/cu11')
+    set.button('General\n§0[Sidebar, Tips, PVP]', 'textures/items/general')
+    set.button('Audio\n§0[Realm Sounds]', 'textures/items/audio')
+    set.button('Perm Effects\n§0[Indefinite Effects]', 'textures/items/effects')
+    set.button('Trails\n§0[Particle Trails]', 'textures/items/trails')
+    set.button('Ranks\n§0[Visibility of Ranks]', 'textures/items/ranks')
     set.button('Back')
     set.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
