@@ -638,42 +638,42 @@ function struc(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         player.runCommand('execute in overworld run tp @s -294.52 -21.00 31.55')
+         player.runCommand('execute in overworld run tp @s 780.50 -17.00 -418.50')
          player.sendMessage('Teleported to chamber.')
          player.playSound('random.levelup')
          break;
       case 1:
-         player.runCommand('execute in overworld run tp @s 1545.57 -19.00 -2112.48')
+         player.runCommand('execute in overworld run tp @s -1456.50 10.00 -305.50')
          player.sendMessage('Teleported to stronghold.')
          player.playSound('random.levelup')
          break;  
       case 2: 
-         player.runCommand('execute in overworld run tp @s -1007.45 -48.94 1677.60')
+         player.runCommand('execute in overworld run tp @s 2050.50 -49.00 2016.50')
          player.sendMessage('Teleported to ancient city.')
          player.playSound('random.levelup')
          break;
       case 3:
-         player.runCommand('execute in overworld run tp @s -407.87 70.98 3351.72')
+         player.runCommand('execute in overworld run tp @s 3688.50 65.00 1708.50')
          player.sendMessage('Teleported to monument.')
          player.playSound('random.levelup')
          break;
       case 4:
-         player.runCommand('execute in overworld run tp @s 1030.58 -25.00 -633.55')
+         player.runCommand('execute in overworld run tp @s 1238.50 -15.00 758.50')
          player.sendMessage('Teleported to mineshaft.')
          player.playSound('random.levelup')
          break;
       case 5:
-         player.runCommand('execute in nether run tp @s 150.30 65.00 110.30')
+         player.runCommand('execute in nether run tp @s -705.50 67.00 165.50')
          player.sendMessage('Teleported to fortress.')
          player.playSound('random.levelup')
          break;
       case 6:
-         player.runCommand('execute in nether run tp @s -365.70 52.00 79.52')
+         player.runCommand('execute in nether run tp @s -163.50 85.00 -118.50')
          player.sendMessage('Teleported to bastion.')
          player.playSound('random.levelup')
          break;
       case 7:
-         player.runCommand('execute in overworld run tp @s 8591.48 69.50 -6946.70')
+         player.runCommand('execute in overworld run tp @s 1654.50 74.00 -782.50')
          player.sendMessage('Teleported to mansion.')
          player.playSound('random.levelup')
          break;
@@ -696,19 +696,19 @@ function rare(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         player.runCommand('execute in overworld run tp @s -5759.51 72.00 -5391.48')
+         player.runCommand('execute in overworld run tp @s -25.50 73.00 2454.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 1:
-         player.runCommand('execute in overworld run tp @s -5035.47 134.00 -7047.51')
+         player.runCommand('execute in overworld run tp @s 2636.50 133.00 2404.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;  
       case 2: 
-         player.runCommand('execute in overworld run tp @s 4152.49 131.00 -8217.49')
+         player.runCommand('execute in overworld run tp @s -1933.50 121.00 2253.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
@@ -735,37 +735,37 @@ function cold(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         player.runCommand('execute in overworld run tp @s 3160.65 183.00 -4999.47')
+         player.runCommand('execute in overworld run tp @s 2177.50 167.00 1797.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 1:
-         player.runCommand('execute in overworld run tp @s 880.47 200.00 -9906.25')
+         player.runCommand('execute in overworld run tp @s -1606.50 182.00 -5059.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;  
       case 2: 
-         player.runCommand('execute in overworld run tp @s 4861.19 185.00 4612.59')
+         player.runCommand('execute in overworld run tp @s 5914.50 180.00 -3924.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 3: 
-         player.runCommand('execute in overworld run tp @s 5330.16 77.00 708.70')
+         player.runCommand('execute in overworld run tp @s 4840.50 66.00 809.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 4: 
-         player.runCommand('execute in overworld run tp @s -5039.52 68.00 6032.44')
+         player.runCommand('execute in overworld run tp @s -2040.50 67.00 -5838.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 5: 
-         player.runCommand('execute in overworld run tp @s -3844.48 139.00 2500.54')
+         player.runCommand('execute in overworld run tp @s 4994.50 82.00 2165.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
@@ -790,25 +790,25 @@ function temp(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         player.runCommand('execute in overworld run tp @s -557.52 100.00 -5386.43')
+         player.runCommand('execute in overworld run tp @s -1524.50 109.00 -2143.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 1:
-         player.runCommand('execute in overworld run tp @s 2194.52 83.00 -9226.58')
+         player.runCommand('execute in overworld run tp @s 2670.50 107.00 3273.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;  
       case 2: 
-         player.runCommand('execute in overworld run tp @s -907.94 102.00 1483.25')
+         player.runCommand('execute in overworld run tp @s 2892.50 73.00 1581.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 3:
-         player.runCommand('execute in overworld run tp @s -5570.42 79.00 7555.40')
+         player.runCommand('execute in overworld run tp @s 3350.50 97.00 5846.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
@@ -834,31 +834,31 @@ function warm(player) {
       if (canceled) return;
       switch(selection) {
       case 0:
-         player.runCommand('execute in overworld run tp @s 2599.24 124.00 -5682.67')
+         player.runCommand('execute in overworld run tp @s 813.50 87.00 6962.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 1:
-         player.runCommand('execute in overworld run tp @s 2611.48 70.88 3001.42')
+         player.runCommand('execute in overworld run tp @s -431.50 67.00 6040.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;  
       case 2: 
-         player.runCommand('execute in overworld run tp @s -6279.46 91.00 4552.55')
+         player.runCommand('execute in overworld run tp @s -331.50 73.00 -987.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 3:
-         player.runCommand('execute in overworld run tp @s 7352.73 140.00 12.94')
+         player.runCommand('execute in overworld run tp @s -689.50 66.00 -2767.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
          break;
       case 4:
-         player.runCommand('execute in overworld run tp @s 2476.41 93.00 -6479.41')
+         player.runCommand('execute in overworld run tp @s 4370.50 71.00 -5259.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to biome.')
          player.playSound('random.levelup')
@@ -877,25 +877,25 @@ function cave(player) {
     warps.button('Deep Dark', 'textures/blocks/sculk_catalyst_side')
     warps.button('Lush Cave', 'textures/blocks/moss_block')
     warps.button('Dripstone Cave', 'textures/blocks/dripstone_block')
-    warps.button('Massive Cave', 'textures/blocks/stone')
+    warps.button('Sulfur Cave', 'textures/blocks/sulfur')
     warps.button('Back')
     warps.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
       switch(selection) {
       case 0:
-         player.runCommand('execute in overworld run tp @s 2638.72 -35.00 -4667.47')
+         player.runCommand('execute in overworld run tp @s 2287.50 -22.00 -4957.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to cave.')
          player.playSound('random.levelup')
          break;
       case 1:
-         player.runCommand('execute in overworld run tp @s -7171.42 -17.00 4567.37')
+         player.runCommand('execute in overworld run tp @s 1618.50 8.00 -1533.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to cave.')
          player.playSound('random.levelup')
          break;  
       case 2:
-         player.runCommand('execute in overworld run tp @s 5026.65 -19.00 5126.34')
+         player.runCommand('execute in overworld run tp @s 5063.50 -27.00 1509.50')
          player.runCommand('effect @s slow_falling 30 1 true')
          player.sendMessage('Teleported to cave.')
          player.playSound('random.levelup')
