@@ -335,7 +335,7 @@ function quest(player) {
   quests.title('Achievements');
   quests.body('Your hub for progression!');
   quests.button('Advancements \n§0[Complete goals for Score]', 'textures/items/cuadvance');
-  quests.button('Progression Info \n§0[Levels & Info]', 'textures/items/prog');
+  quests.button('Progression Info \n§7[Coming Soon]', 'textures/items/prog');
   quests.button('Playtime Rewards \n§0[Playtime shtuff]', 'textures/items/playtime');
   quests.button('Back');
   quests.show(player).then(({ selection, canceled }) => {
@@ -346,7 +346,7 @@ function quest(player) {
          break;
 
       case 1:
-         qProg(player);
+         quest(player);
          break;
 
       case 2:

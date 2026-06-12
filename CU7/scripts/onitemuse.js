@@ -9,7 +9,9 @@ world.beforeEvents.itemUse.subscribe((e) => {
         system.run(() =>  { admin(e.source) })
     else if (e.itemStack.typeId == 'cubic:insta_pearl') 
       system.run(() =>  { pearl(e.source) })
-    else if ((e.itemStack.typeId == 'cubic:ui') || (e.itemStack.typeId == 'cubic:insta_pearl')) // Excluded from spawn prot
+    else if (e.itemStack.typeId == 'cubic:infectious_pearl') 
+      system.run(() =>  { pearl2(e.source) })
+    else if ((e.itemStack.typeId == 'cubic:ui') || (e.itemStack.typeId == 'cubic:insta_pearl') || (e.itemStack.typeId == 'cubic:infectious_pearl')) // Excluded from spawn prot
       e.cancel = false;  
     else if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 0) {
         if (!player.hasTag('admin')) {
@@ -85,6 +87,19 @@ function pearl(player) {
   player.runCommand('execute in the_end if block ~ 0 ~ deny in overworld run tp @p 0 -50 0')
   player.runCommand('execute in nether if block ~ 0 ~ deny in overworld run tp @s 0 -50 0')
   player.runCommand('clear @s[tag=!Restrict] cubic:insta_pearl 0 1')
+  player.runCommand('title @s[tag=Restrict] title You cannot use that here!')
+  player.runCommand('tag @s remove Restrict')
+};
+
+function pearl2(player) {
+  player.runCommand('execute if block ~ -63 ~ air run tag @s add Restrict')
+  player.runCommand('execute if block ~ -63 ~ bedrock run tp @p 321.50 -25.00 580.50')
+  player.playSound('portal.travel')
+  player.runCommand('execute if block ~ 0 ~ bedrock in overworld run tp @p 321.50 -25.00 580.50')
+  player.runCommand('execute in the_end if block ~ 0 ~ air in overworld run tp @p 321.50 -25.00 580.50')
+  player.runCommand('execute in the_end if block ~ 0 ~ deny in overworld run tp @p 321.50 -25.00 580.50')
+  player.runCommand('execute in nether if block ~ 0 ~ deny in overworld run tp @s 321.50 -25.00 580.50')
+  player.runCommand('clear @s[tag=!Restrict] cubic:infectious_pearl 0 1')
   player.runCommand('title @s[tag=Restrict] title You cannot use that here!')
   player.runCommand('tag @s remove Restrict')
 };
