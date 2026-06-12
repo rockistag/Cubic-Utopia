@@ -88,7 +88,7 @@ function firstpvp(player) {
 function start(player) {
   const main = new ActionFormData();
   main.title('Welcome');
-  main.body("Welcome to Cubic Utopia Season Six!\n\nCubic Utopia is an SMP realm that is based around accessibility and vanilla gameplay with various enhancements. These include;\n\nCustom UI\nFusion Shaderpack\nLand Claims\nHomes [Personal warp locations]\nTPA & RTP\nBiome & Structure Warps\nDynamic Lights [Refreshed for S6]\nMob Health Indicators\nDark Mode GUI\nInvisible Item Frames\nVein Miner\nCustom Trials\nArenas\nParkour\n[NEW] PVP Toggle!\n[NEW] Auction House!\n[NEW] Market!\n[NEW] Points Exchange!\n[NEW] Chest Shops!\n[NEW] Tree Miner!\n[NEW] Quests!\n[NEW] Playtime Tiers!\n\nWe recommend you start a tutorial walk to learn how to use some of the features on the realm. You can also look in the FAQs in the Cubic Menu, but the tutorial walk provides a better visual overview.\n");
+  main.body("Welcome to Cubic Utopia Season Seven!\n\nCubic Utopia is an SMP realm that is based around accessibility and vanilla gameplay with various enhancements. With Season Seven, we are adding advancements, playtime rewards, and discoverable warps, along with a refresh for land claims, homes, and teleport requests, among other things.\n\nUpon joining, you were prompted to download required packs and optional packs. The required packs are all the necessary packs that allow things like our menus and custom items to show up correctly. Our optional packs are the new Enhanced Cubic Experience, which offers lower fire effects, invisible item frames, and custom shaders (coming soon). If you want to play with the enhanced experience, you can rejoin and select the download optional packs option when prompted.\n\nWe recommend you start a tutorial walk to learn how to use some of the features on the realm. You can also look in the FAQs in the Cubic Menu, but the tutorial walk provides a better visual overview.");
   main.button('Start Tutorial Walk');
   main.button('Skip Tutorials\n§c[Not Recommended]');
   main.show(player).then(({ selection, canceled }) => {
@@ -107,8 +107,8 @@ function start(player) {
 
 function rulespre(player) {
     const rules = new ActionFormData();
-    rules.title('Cubic Utopia 6 Rules')
-    rules.body('§cSeverity Color Codes\n§6Orange- Warnings\n§cRed- Tempban\n§uPurple- Permban\n§cIf any violations are towards admins, the punishments will go up a level unless otherwise stated.\n\n§c1-No PVP without the PVP tag being enabled for both players. If you are in a combat arena it is fair game.\n§62-No spawn fighting or hitting players within 100 blocks of spawn. For admins you get one warning only.\n§c3-You may not spam-kill players. If the same parties are involved in 4 consecutive death messages or more, it will be assumed you are points farming and the killing person will be punished.\n4-No combat-logging or teleporting out of a combat arena in the middle of a fight.\n§u5-Do not be disrespectful or harass other players.\n6-No hate-speech or offensive language, even jokingly. Swears are tolerated (to an extent), slurs are not.\n§67-No advertising and/or spamming in chat.\n§c8-Do not ask for admin, operator, or any realm permissions, PERIOD. If you want to be an admin you must apply on our discord. §uYou will get one warning and any further violations will result in a permanent ban.\n9-No stealing, griefing, or unwanted destruction or altercations of anything without the permission from the owner of said thing. Griefing protected areas will result in a permban with no appeal.\n10-No hacking. This is not appealable if confirmed. You will be added to the UniqueShield global banlist.\n11-No duping or using exploits to gain points. This includes the use of tools like X-Ray and auto-clickers. This also includes using the second journey / account function to give your first account more points.\n§c12-Do not give new players overpowered items.\n13-Do not attempt to breach areas that you clearly do not or should not have access to.\n14-Do not bloat reports with duplicate reports / requests.\n§615-Do not spam tp requests to people. §cYou will only get one warning if you tp request an admin.\n16-Second-hand duping. Knowingly accepting items that have been duped will result in a tempban and your points and / or stuff reset.\n§u17-Offensive builds, including symbols, map art, and other things, will result in a permban (or an extended tempban).\n\n§cMain Rules Changes from Season Five:\n-Hackers are added to the UniqueShield global banlist.\n-PVP is now regulated by a PVP tag that you can enable in the Cubic Menu.\n-Asking for any position on our team is not tolerated, you must apply via the discord server.\n-Not new, but we will be continuing to enforce our duping rules, including second-hand duping. If you find free OP items in any chest or container, it has likely been duped or stolen, and you do not have permission to take them.')
+    rules.title('Cubic Utopia 7 Rules')
+    rules.body("The realm rules for Cubic Utopia 7 have been reorganized. This means that rules previously organized as numbers (i.e; rule 8) are now organized differently based on the punishment given, as that is the new organization scheme.\n\nSection A \nThe following rules will result in a warning or mute if broken, and single day temp-ban if broken at the expense or direction of an admin.\n\nA1 - No Spawn-Fighting.\nMore specifically, absolutely no pvp in any way, shape, or form is allowed at spawn or any protected area* that isn\u2019t explicitly a pvp arena.\nA2 - No Advertising.\nDo not advertise other realms, servers, or other things using chat or other forms of communication.\nA3 - No Spamming.\nThis one is pretty self-explanatory. If you trigger the anti-spam you should stop.\nA4 - No Spamming TP Requests.\nAlso pretty self-explanatory. If done towards admins, you may get an extended ban.\n\nSection B\nThe following rules will result in a definite temp-ban if broken.\n\nB1 - No PVP without the PVP tag.\nIn CU, we use a PVP tag to regulate PVP. This is essentially a rank that determines your PVP status and can be toggled. Players who do not have the PVP tag, which is present on their tag as well as in chat, do not consent to being fought with, and it is against the rules to do so. In addition, players who kill others without having the PVP tag themselves can also receive punishment.\nB2 - No Spam-Killing Players.\nIf two players are involved in more than 5 consecutive deaths, it will be assumed that you are farming for points or trapping someone for malicious purposes.\nB3 - No Combat Logging or Teleporting out of Combat.\nThis is a practice which already has preventative measures tied to it, but for the sake of PVP not being totally useless, this is, of course, a rule.\nB4 - Rule 8.\nDo not ask for free stuff, admin, operator, or any realm permissions, PERIOD. If you want to be an admin you must apply on our discord. You will get one warning and any further violations may result in a permanent ban.\nB5 - No giving new players OP items.\nThis also has preventative measures tied to it. OP things such as fully enchanted armor, god apples, totems, and much more is not allowed to be given to new players.\nB6 - Second-Hand Duping.\nSecond-Hand Duping is the act of intentionally accepting duped items or duped shulkers from others. This can also include taking unmistakably OP items from public containers. Due to the nature of this rule largely being up to the interpretation of our admins, punishments for this cannot exceed a tempban, however; if you are found to have been in collaboration with known dupers, a permban may result.\n\nSection C\nIf you are found to have broken the following rules, you will be permanently banned.\n\nC1 - No Harassment or Bullying.\nBe nice. Don't threaten people. Do we really need to specify?\nC2 - No Hate Speech.\nNo slurs or derogatory insults. Swearing is fine, to an extent. This is a PG-13 realm.\nC3 - No Stealing or Griefing.\nDo not alter anything or take anything that isn't yours. Griefing protected areas* will result in a permanent ban without appeal.\nC4 - No Hacking.\nNo using external programs to screw up things or cheat. Bans for this are not appealable.\nC5 - No Duping or Cheating.\nDo not use exploits to dupe or gain items, including the use of X-Ray or auto-clickers. You are the reason we cannot use bundles.\nC6 - No Building Inappropriate Structures or Art.\nYou know what we mean.\n\n*A protected area is an area in which players are intentionally unable to place or break blocks, such as spawn.\n\nWhile no big rules have been added, it should be noted that killing other players illegally now results in a points penalty, which can be hefty.")
     rules.button('Next')
     rules.show(player).then(({ selection, canceled }) => {
       if (canceled) rulespre(player);
@@ -122,8 +122,8 @@ function rulespre(player) {
 
 function confirm(player) {
     const rules = new ActionFormData();
-    rules.title('Cubic Utopia 6')
-    rules.body('To start your journey, press the start button!\n\n§cBy starting using the button below, you agree that you have read the CU rules and will accept the punishments listed for any rules you breach.')
+    rules.title('Cubic Utopia 7')
+    rules.body('To start your journey in Season 7, press the start button!\n\n§cBy starting using the button below, you agree that you have read the CU rules and will accept the punishments listed for any rules you breach.')
     rules.button('Back')
     rules.button('Accept and Start')
     rules.show(player).then(({ selection, canceled }) => {
@@ -138,10 +138,10 @@ function confirm(player) {
          player.runCommand('function start')
          player.runCommand('function reset')
          player.sendMessage('Welcome! Use the Cubic Menu in your inventory to get more information, access warps, report or request things, and access rtp and homes.')
-         player.playSound('random.levelup')
          player.runCommand('tp @s 0 -50 0')
          player.runCommand('clear @s')
          player.runCommand('give @s cubic:ui 1 0 {"item_lock":{"mode":"lock_in_inventory"}}')
+         player.playSound('random.levelup')
          break;
       
       }
@@ -591,7 +591,7 @@ function warp(player) {
     warps.button('Cold Biomes', 'textures/items/biome2')
     warps.button('Common Forests', 'textures/items/biome3')
     warps.button('Warm Biomes', 'textures/items/biome4')
-    warps.button('Cave Biomes', 'textures/items/biome5')
+    warps.button('Cave Biomes \n§a[New Biome!]', 'textures/items/biome5')
     warps.button('Back')
     warps.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -927,10 +927,10 @@ function faqs(player) {
     const faq = new ActionFormData();
     faq.title('Wiki')
     faq.body('All needed info for new and returning players.')
-    faq.button('Rules\n§c[NEW Changes for S6]', 'textures/items/rules')
+    faq.button('Rules\n§c[REDONE FOR S7]', 'textures/items/rules')
     faq.button('Docs\n§0[Tutorials & Info]', 'textures/items/docs')
-    faq.button('Changelogs\n§2[Season Six is out!]', 'textures/items/change')
-    faq.button('Credits\n§0[Contributors to CU6]', 'textures/items/credits')
+    faq.button('Changelogs\n§2[Pre-6.0 is out!]', 'textures/items/change')
+    faq.button('Credits\n§0[Contributors to CU7]', 'textures/items/credits')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1011,7 +1011,7 @@ function docs(player) {
 function rules(player) {
     const rules = new ActionFormData();
     rules.title('Rules')
-    rules.body('§cSeverity Color Codes\n§6Orange- Warnings\n§cRed- Tempban\n§uPurple- Permban\n§cIf any violations are towards admins, the punishments will go up a level unless otherwise stated.\n\n§c1-No PVP without the PVP tag being enabled for both players. If you are in a combat arena it is fair game.\n§62-No spawn fighting or hitting players within 100 blocks of spawn. For admins you get one warning only.\n§c3-You may not spam-kill players. If the same parties are involved in 4 consecutive death messages or more, it will be assumed you are points farming and the killing person will be punished.\n4-No combat-logging or teleporting out of a combat arena in the middle of a fight.\n§u5-Do not be disrespectful or harass other players.\n6-No hate-speech or offensive language, even jokingly. Swears are tolerated (to an extent), slurs are not.\n§67-No advertising and/or spamming in chat.\n§c8-Do not ask for admin, operator, or any realm permissions, PERIOD. If you want to be an admin you must apply on our discord. §uYou will get one warning and any further violations will result in a permanent ban.\n9-No stealing, griefing, or unwanted destruction or altercations of anything without the permission from the owner of said thing. Griefing protected areas will result in a permban with no appeal.\n10-No hacking. This is not appealable if confirmed. You will be added to the UniqueShield global banlist.\n11-No duping or using exploits to gain points. This includes the use of tools like X-Ray and auto-clickers. This also includes using the second journey / account function to give your first account more points.\n§c12-Do not give new players overpowered items.\n13-Do not attempt to breach areas that you clearly do not or should not have access to.\n14-Do not bloat reports with duplicate reports / requests.\n§615-Do not spam tp requests to people. §cYou will only get one warning if you tp request an admin.\n16-Second-hand duping. Knowingly accepting items that have been duped will result in a tempban and your points and / or stuff reset.\n§u17-Offensive builds, including symbols, map art, and other things, will result in a permban (or an extended tempban).\n\n§cMain Rules Changes from Season Five:\n-Hackers are added to the UniqueShield global banlist.\n-PVP is now regulated by a PVP tag that you can enable in the Cubic Menu.\n-Asking for any position on our team is not tolerated, you must apply via the discord server.\n-Not new, but we will be continuing to enforce our duping rules, including second-hand duping. If you find free OP items in any chest or container, it has likely been duped or stolen, and you do not have permission to take them.')
+    rules.body("The realm rules for Cubic Utopia 7 have been reorganized. This means that rules previously organized as numbers (i.e; rule 8) are now organized differently based on the punishment given, as that is the new organization scheme.\n\nSection A \nThe following rules will result in a warning or mute if broken, and single day temp-ban if broken at the expense or direction of an admin.\n\nA1 - No Spawn-Fighting.\nMore specifically, absolutely no pvp in any way, shape, or form is allowed at spawn or any protected area* that isn\u2019t explicitly a pvp arena.\nA2 - No Advertising.\nDo not advertise other realms, servers, or other things using chat or other forms of communication.\nA3 - No Spamming.\nThis one is pretty self-explanatory. If you trigger the anti-spam you should stop.\nA4 - No Spamming TP Requests.\nAlso pretty self-explanatory. If done towards admins, you may get an extended ban.\n\nSection B\nThe following rules will result in a definite temp-ban if broken.\n\nB1 - No PVP without the PVP tag.\nIn CU, we use a PVP tag to regulate PVP. This is essentially a rank that determines your PVP status and can be toggled. Players who do not have the PVP tag, which is present on their tag as well as in chat, do not consent to being fought with, and it is against the rules to do so. In addition, players who kill others without having the PVP tag themselves can also receive punishment.\nB2 - No Spam-Killing Players.\nIf two players are involved in more than 5 consecutive deaths, it will be assumed that you are farming for points or trapping someone for malicious purposes.\nB3 - No Combat Logging or Teleporting out of Combat.\nThis is a practice which already has preventative measures tied to it, but for the sake of PVP not being totally useless, this is, of course, a rule.\nB4 - Rule 8.\nDo not ask for free stuff, admin, operator, or any realm permissions, PERIOD. If you want to be an admin you must apply on our discord. You will get one warning and any further violations may result in a permanent ban.\nB5 - No giving new players OP items.\nThis also has preventative measures tied to it. OP things such as fully enchanted armor, god apples, totems, and much more is not allowed to be given to new players.\nB6 - Second-Hand Duping.\nSecond-Hand Duping is the act of intentionally accepting duped items or duped shulkers from others. This can also include taking unmistakably OP items from public containers. Due to the nature of this rule largely being up to the interpretation of our admins, punishments for this cannot exceed a tempban, however; if you are found to have been in collaboration with known dupers, a permban may result.\n\nSection C\nIf you are found to have broken the following rules, you will be permanently banned.\n\nC1 - No Harassment or Bullying.\nBe nice. Don't threaten people. Do we really need to specify?\nC2 - No Hate Speech.\nNo slurs or derogatory insults. Swearing is fine, to an extent. This is a PG-13 realm.\nC3 - No Stealing or Griefing.\nDo not alter anything or take anything that isn't yours. Griefing protected areas* will result in a permanent ban without appeal.\nC4 - No Hacking.\nNo using external programs to screw up things or cheat. Bans for this are not appealable.\nC5 - No Duping or Cheating.\nDo not use exploits to dupe or gain items, including the use of X-Ray or auto-clickers. You are the reason we cannot use bundles.\nC6 - No Building Inappropriate Structures or Art.\nYou know what we mean.\n\n*A protected area is an area in which players are intentionally unable to place or break blocks, such as spawn.")
     rules.button('Back')
     rules.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1029,7 +1029,7 @@ function rules(player) {
 function points(player) {
     const faq = new ActionFormData();
     faq.title('Points')
-    faq.body('Points are a currency / rewards system for Cubic Utopia. You can spend points for items at chest shops and for ranks, kits, and more items from the market. There are a few main ways to earn points:\n\nPLAYTIME\nYou earn 5 points (and 1 claim block) per minute by simply being on the realm. You will also earn levels and/or tiers procedurally corresponding to your playtime. More info on playtime tiers is found in the tiers section of the FAQ.\n\nQUESTS\nYou can earn anywhere from 10 to 5000 points for completing steps in quests. You do not have to fully complete quests to receive points! More information can be found in the quests section of the FAQ.\n\nSELLING\nYou can earn points by selling minerals, jewels, keys, or woods at the market. You can also earn points by creating a chest shop, which can be done by placing a chest and then placing a sign on the front of it and writing CREATESHOP.\n\nCOMBAT\nYou can earn points by fighting mobs or players. The points earned by fighting players correlate with their playtime tiers, and more info on that can be found in the tiers section of the FAQ. You can find the points rewards for mobs using the button below!')
+    faq.body("Points are a currency system for Cubic Utopia. You can spend points for items at chest shops and for ranks, kits, and more items from the market. There are a few main ways to earn points:\n\nPLAYTIME\nYou earn 5 points per minute by simply being on the realm. You can also receive playtime rewards by meeting certain playtime requirements. More information can be found in the achievements tab of the Cubic Menu.\n\nADVANCEMENTS\nYou can earn anywhere from 100 to 10000 points for completing advancements. More information on advancements can be found in the advancements section of the docs.\n\nSELLING\nYou can earn points by selling minerals, jewels, keys, or woods at the market. You can also sell items to other players using the trading posts in the trading / warps hub.\n\nCOMBAT\nYou can earn points by fighting mobs or players. The points earned by fighting players correlate with their levels, and more info on that can be found in the levels section of the docs. You can find the points rewards for mobs using the button below!")
     faq.button('Mobs Kill Value')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
@@ -1048,7 +1048,7 @@ function points(player) {
 function pointsone(player) {
     const faq = new ActionFormData();
     faq.title('Points')
-    faq.body('The following is a directory for the amount of points you can gain from killing specific mobs.\n\nCOMMON ANIMALS & FISH\n+5 Points for each killed\n-Pig\n-Cow\n-Sheep\n-Chicken\n-Cod\n-Salmon\n-Pufferfish\n-Tropical Fish\n\nMEDIUM ENEMIES\n+10 Points for each killed\n-Zombie\n-Zombie Villager\n-Husk\n-Drowned\n-Skeleton\n-Bogged\n-Stray\n-Parched\n-Spider\n-Cave Spider\n-Slime\n-Magma Cube\n-Pillager\n\nHARD ENEMIES\n+50 Points for each killed\n-Creeper\n-Phantom\n-Witch\n-Breeze\n-Blaze\n-Guardian\n-Iron Golem\n-Endermite\n-Piglin\n-Hoglin\n-Shulker\n\nVERY HARD ENEMIES\n+100 Points for each killed\n-Vex\n-Piglin Brute\n-Ghast\n-Evoker\n-Vindicator\n-Ravager\n\nBOSSES\nVarying points rewards\n-Warden +1000\n-Elder Guardian +1000\n-Ender Dragon +5000\n-Wither +10000\n')
+    faq.body("The following is a directory for the amount of points you can gain from killing specific mobs.\n\nLvl 1 Mobs: Passive Animals\nRewards: 5 Points, 1 Score per kill\nIncludes;\n- Pigs\n- Cows\n- Chickens\n- Sheep\n- Goats\n- Cod\n- Salmon\n- Tropical Fish\n\nLvl 2 Mobs: Neutral & Weak Aggressive Mobs\nRewards: 10 Points, 2 Score per kill\nIncludes;\n- Zombies\n- Drowned\n- Skeletons\n- Spiders\n- Slimes\n- Endermites\n- Silverfish\n- Pufferfish\n\nLvl 3 Mobs: Medium Aggressive Mobs\nRewards: 25 Points, 5 Score per Kill\nIncludes;\n- Creepers\n- Husks\n- Strays\n- Bogged\n- Parched\n- Pillagers\n- Cave Spiders\n- Magma Cubes\n\nLvl 4 Mobs: Hard Aggressive Mobs\nRewards: 50 Points, 10 Score per Kill\nIncludes;\n- Witch\n- Breeze\n- Blaze\n- Iron Golem\n- Piglin\n- Hoglin\n- Shulker\n- Phantoms\n\nLvl 5 Mobs: Very Aggressive Mobs\nRewards: 100 Points, 20 Score per Kill\nIncludes;\n- Guardian\n- Vex\n- Piglin Brute\n- Ghast\n- Evoker\n- Vindicator\n- Ravager\n- Zombie Nautilus\n\nBosses\n- Warden: 1000 Points, 50 Score\n- Elder Guardian: 1000 Points, 50 Score\n- Ender Dragon: 5000 Points, 100 Score\n- Wither: 5000 Points, 100 Score")
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1064,37 +1064,18 @@ function pointsone(player) {
 
 function level(player) {
     const faq = new ActionFormData();
-    faq.title('Tiers')
-    faq.body('Playtime tiers are an evolution of the previous levels system, new for season six! There are 30 unique rewards you can attain by simply playing long enough - 200% more than last season. There are six tiers in CU6, which all have corresponding ranks:\n\n-Tier 1: Beginner, Starter Tier\n-Tier 2: Crafter, Reached at four hours\n-Tier 3: Pro, Reached at fifteen hours\n-Tier 4: Beast, Reached at thirty hours\n-Tier 5: Ultra, Reached at fifty hours\n-Tier 6: God, Reached at ninety hours\nEach tier has five levels. For each level you reach, you get a reward!\nCombat and deaths are scaled based on tiers.')
-    faq.button('Tier Rewards')
-    faq.button('Combat & Deaths')
+    faq.title('Levels & Score')
+    faq.body("A new levels system has been introduced for Season Seven, reintroducing score from CU3 to determine your progress! You can get score from killing mobs (see the points tab in the docs), killing players with the PVP tag, and completing advancements (see the advancements tab in the docs).\n\nThere are a total of eight levels;\n\n- Level 1: Beginner\n10 Score Required\nReward: Bucket\n- Level 2: Apprentice\n500 Score Required\nReward: Ender Chest\n- Level 3: Artisan\n2000 Score Required\nReward: Dune Armor Trim\n- Level 4: Pro\n5000 Score Required\nReward: Netherite Upgrade\n- Level 5: Expert\n10000 Score Required\nReward: Water Breathing Effect\n- Level 6: Utopian\n25000 Score Required\nReward: Haste Perm Effect + Utopian Kit Access\n- Level 7: Super Utopian\n100000 Score Required\nReward: Fire Resistance Perm Effect\n- Level 8: Ultra Utopian\n250000 Score Required\nReward: Speed Perm Effect\n\nEach level has its own section in the Levels hall of the market, in which exclusive sales and rewards can be redeemed!\n\nCombat rewards and penalties are also scaled based on player levels, with a cap at level 6.")
+    faq.button('Combat Level Scale')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
       switch(selection) {
       case 0:
-         levelone(player);
-         break;
-      case 1:
          leveltwo(player);
          break;
-      case 2:
+      case 1:
          docs(player);
-         break;
-      }
-  })
-}
-
-function levelone(player) {
-    const faq = new ActionFormData();
-    faq.title('Tiers')
-    faq.body('The following is a list of tier and level rewards.\n\nTIER 1: BEGINNER\n10 Minutes = Level 1 > 100 Points\n30 Minutes = Level 2 > Saddle\n1 Hour = Level 3 > Ender Chest\n2 Hour = Level 4 > Gapple\n3 Hour = Level 5 > Uncommon Mob Key\n\nTIER 2: CRAFTER\n4 Hour = Level 1 > Dunes Trim\n6 Hour = Level 2 > Magenta Shulker Box\n8 Hour = Level 3 > 2000 Claim Blocks\n10 Hour = Level 4 > Netherite Ingot\n12 Hour = Level 5 > Rare Mob Key\n\nTIER 3: PRO\n15 Hour = Level 1 > Spire Trim\n18 Hour = Level 2 > 32 End Crystals\n21 Hour = Level 3 > Vault\n24 Hour = Level 4 > God Apple\n27 Hour = Level 5 > Very Rare Mob Key\n\nTIER 4: BEAST\n30 Hour = Level 1 > Snout Trim\n34 Hour = Level 2 > Relic Disc\n38 Hour = Level 3 > Super Mob Key\n42 Hour = Level 4 > Heavy Core\n46 Hour = Level 5 > Beacon\n\nTIER 5: ULTRA\n50 Hour = Level 1 > Ward Trim\n55 Hour = Level 2 > Netherite Block\n60 Hour = Level 3 > Perm Effect: Speed\n70 Hour = Level 4 > Perm Effect: Haste\n80 Hour = Level 5 > Perm Effect: Leap\n\nTIER 6: GOD\n90 Hour = Level 1 >  Utopia Kit Access\n105 Hour = Level 2 > Perm Effect: Night Vision\n120 Hour = Level 3 > Perm Effect: Water Breathing\n135 Hour = Level 4 > Perm Effect: Fire Resistance\n150 Hour = Level MAX > Silence Trim')
-    faq.button('Back')
-    faq.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         level(player);
          break;
       }
   })
@@ -1102,8 +1083,8 @@ function levelone(player) {
 
 function leveltwo(player) {
     const faq = new ActionFormData();
-    faq.title('Tiers')
-    faq.body('The following is a list of tier-scaled points rewards and penalties.\n\nPVP REWARDS\nPoints for killing a player of a certain tier\nTier 1 = 200 Points\nTier 2 = 400 Points\nTier 3 = 700 Points\nTier 4 = 1000 Points\nTier 5 = 1400 Points\nTier 6 = 2000 Points\n\nDEATH PENALTIES\nPoints lost for players of certain tiers\nTier 1 - 100 Points\nTier 2 - 300 Points\nTier 3 - 500 Points\nTier 4 - 750 Points\nTier 5 - 1000 Points\nTier 6 - 1500 Points')
+    faq.title('Levels & Score')
+    faq.body("The following is a list of level-scaled combat rewards and penalties.\n\nCombat Rewards, Given to the killing player based on the dying player\u2019s level;\nLvl 0: 0 Score - 100 Pts\nLvl 1: 1 Score + 100 Pts\nLvl 2: 5 Score + 300 Pts\nLvl 3: 10 Score + 600 Pts\nLvl 4: 20 Score + 1000 Pts\nLvl 5: 35 Score + 1500 Pts \nLvl 6 and Up: 50 Score + 2000 Pts\n\nDeath Penalties, Given to a dying player based on their level;\nLvl 1: -100 Points\nLvl 2: -200 Points\nLvl 3: -400 Points\nLvl 4: -600 Points\nLvl 5: -1000 Points\nLvl 6 and Up: -1500 Points")
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1123,8 +1104,8 @@ function leveltwo(player) {
 
 function achieve(player) {
     const faq = new ActionFormData();
-    faq.title('Quests')
-    faq.body('Quests are task-based journeys that function as both an evolution of the old achievement systems and as a new story-based system. Quests (and their points rewards) are scaled on three levels, those being level one (chapter 1 in the case of story quests), level two, and challenges (level three). There are three main types of quests:\n\nSTORY QUESTS\nA new story awaits in season six! Travel to infected monuments and complete tasks in order to save the world from the sculk infection. Currently, only chapter 1 is available, but more chapters are coming soon!\n\nACHIEVEMENT QUESTS\nAn evolution of the old achievement system that was being used from Season two, these are task-based and involve obtaining items from certain places and killing certain mobs. Points scale based on significance! Level 2 achievements are unlocked once three level 1 quests have been completed (from any quest type), and challenges are unlocked when nine quests have been completed. There are also playtime tier-exclusive achievement quests that are independently scaled!\n\nPROGRESSION QUESTS\nThese are similar to achievement quests, but do not require tasks to be completed in any particular order, involve natural game progression, and are always active. All progression quests / challenges are unlocked from the start, so if you dont complete any quests beforehand, you can still get rewarded for completing higher level progression quests.\n\nUnlike previous seasons, its up to you to find out what quests there are and what the rewards are (these are visible on individual quest pages once theyre unlocked) - so good luck, and happy journeys!')
+    faq.title('Advancements')
+    faq.body("New for Season Seven, Advancements are a system carried over from Java Edition using the Alylica's Advancements addon. Advancements check for progression and challenge requirements and give rewards once they're met, requiring no menu input, unlike quests. There are several tiers of advancements, including the advancement, challenge, and goal tiers, which scale their rewards. \n\n- Advancements Reward a range of values in score from 10 to 100 based on their difficulty.\n- Goals & Challenges reward 250 or 500 score based on their difficulty.\n- The How Did We Get Here Advancement exclusively rewards a whopping 1000 score.\n\nAll advancements also reward points, with the specific amounts being correlated to their score; for any score reward in an advancement, you will receive five times as much in points.")
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1139,7 +1120,7 @@ function achieve(player) {
 function mobkeys(player) {
     const faq = new ActionFormData();
     faq.title('Mob Keys')
-    faq.body('Mob Keys are a new addition to the rewards system for Season Six! You will get mob keys for reaching new playtime tiers and by completing events. You can also buy the Shrieker Mob Key from the market by simply purchasing the Shrieker rank.\n\nMob keys spawn a random mob of its selection at the players position when used. You cannot use mob keys in protected areas. All the mob keys;\n\nSHRIEKER MOB KEY\nNautilus 50%\nCamel Husk 50%\n\nUNCOMMON MOB KEY\nCold Frog 30%\nArmadillo 30%\nBee 20%\nCamel 20%\n\nRARE MOB KEY\nBrown Mooshroom 20%\nBrown Panda 30%\nMountain Wolf 50%\n\nVERY RARE MOB KEY\nGhastling 20%\nSniffer 30%\nAllay 50%\n\nSUPER MOB KEY\nBlue Axolotl 20%\nSkeleton Horse 30%\nZombie Horse 50%')
+    faq.body("New for Season Seven, Advancements are a system carried over from Java Edition using the Alylica's Advancements addon. Advancements check for progression and challenge requirements and give rewards once they're met, requiring no menu input, unlike quests. There are several tiers of advancements, including the advancement, challenge, and goal tiers, which scale their rewards. \n\n- Advancements Reward a range of values in score from 10 to 100 based on their difficulty.\n- Goals & Challenges reward 250 or 500 score based on their difficulty.\n- The How Did We Get Here Advancement exclusively rewards a whopping 1000 score.\n\nAll advancements also reward points, with the specific amounts being correlated to their score; for any score reward in an advancement, you will receive five times as much in points.")
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1154,7 +1135,7 @@ function mobkeys(player) {
 function playtimerew(player) {
     const faq = new ActionFormData();
     faq.title('Playtime Rewards Docs')
-    faq.body('Mob Keys are a new addition to the rewards system for Season Six! You will get mob keys for reaching new playtime tiers and by completing events. You can also buy the Shrieker Mob Key from the market by simply purchasing the Shrieker rank.\n\nMob keys spawn a random mob of its selection at the players position when used. You cannot use mob keys in protected areas. All the mob keys;\n\nSHRIEKER MOB KEY\nNautilus 50%\nCamel Husk 50%\n\nUNCOMMON MOB KEY\nCold Frog 30%\nArmadillo 30%\nBee 20%\nCamel 20%\n\nRARE MOB KEY\nBrown Mooshroom 20%\nBrown Panda 30%\nMountain Wolf 50%\n\nVERY RARE MOB KEY\nGhastling 20%\nSniffer 30%\nAllay 50%\n\nSUPER MOB KEY\nBlue Axolotl 20%\nSkeleton Horse 30%\nZombie Horse 50%')
+    faq.body("Playtime Rewards are redeemable rewards that can be unlocked by reaching playtime goals. Rewards are redeemed in the achievements hub of the Cubic Menu.\n\nRewards for hours reached;\n1 Hour: Gapple\n5 Hours: Uncommon Mob Key\n10 Hours: Spire Trim\n15 Hours: Rare Mob Key\n20 Hours: Snout Trim\n30 Hours: Very Rare Mob Key\n40 Hours: Ward Trim\n50 Hours: Super Mob Key\n75 Hours: Jump Boost Perm Effect\n100 Hours: Night Vision Perm Effect")
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1171,7 +1152,7 @@ function playtimerew(player) {
 function claim(player) {
     const faq = new ActionFormData();
     faq.title('Land Claims')
-    faq.body('Land claims are a neat way to protect your builds from bad guys! Claims can be made with a golden shovel and require a claim block for every block you claim. Claims can be configured to allow certain or all players to open chests and do other things (commands for this found in the command section of the FAQ), but by default it is your own plot of land, safe from griefing.\n\nHOW TO CLAIM\nSimply use a golden shovel on the first corner of the land you want to claim, and then crouch and use the golden shovel on the opposite corner diagonal from the initial one. After that, just use the §d.land claim§r command to claim the land!')
+    faq.body("Land Claims are used to protect your base from griefers and bad actors.\n\nA new addon is being used for land claims in CU7! This addon uses its own menu, which is accessed with the claim shovel (obtained via spawn barrel). This menu can be used for pretty much anything land claim related, including permissions, resizing and claiming land, and even customization!\n\nAt the start, you receive 200 claim blocks. Claim blocks are needed to claim an area of land, and is independently handled by the addon; you will receive 60 additional claim blocks for every hour of playtime, which, due to the nature of the addon, may be handled out of sync of CU playtime.")
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1195,73 +1176,19 @@ function tpfaq(player) {
     const faq = new ActionFormData();
     faq.title('Commands')
     faq.body('Our addons and packs have an assortment of custom commands! Commands for the TPA / Homes / Land Claiming / RTP / Report Addon can also be found by typing the §u.help§r command in chat when you forget.\n\n§cAll custom commands have the prefix . instead of / or !§r')
-    faq.button('Tpa & Homes')
-    faq.button('Land Claims')
-    faq.button('Other')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
       switch(selection) {
       case 0:
-         tpfaqone(player);
-         break;
-      case 1:
-         tpfaqtwo(player);
-         break;
-      case 2:
-         tpfaqthree(player);
-         break;
-      case 3:
          docs(player);
          break;
       }
   })
 }
 
-function tpfaqone(player) {
-    const faq = new ActionFormData();
-    faq.title('Commands')
-    faq.body('The following can be done in the homes / tpa menu, but may be quicker in chat.\n\nTeleport Requests\nUse §u.tpa §6<playername>§r to make a teleport request to someone without going through the menu.\nUse .tpahere §6<playername>§r to make a request for someone to teleport to you.\nUse §u.tpacancel§r to cancel teleport requests.\nUse §u.tpaccept§r to accept a teleport request.\nUse §u.tpasetting§r to configure personal teleport request settings.\n\nHomes\nPlayer-created homes are custom teleport locations that only you can access.\nUse §u.home§r to access the homes menu from chat.\nUse §u.home §6<homename>§r to teleport directly to a home you have set.\nUse §u.sethome §6<homename>§r to set a home at your current location.\nUse §u.delhome §6<homename>§r to delete a home you have set.\nUse §u.listhome§r to list your homes in chat.')
-    faq.button('Back')
-    faq.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         tpfaq(player);
-         break;
-      }
-  })
-}
 
-function tpfaqtwo(player) {
-    const faq = new ActionFormData();
-    faq.title('Commands')
-    faq.body('Land claims have specific commands for claim setting and configuration. Some of these functions can be accessed in the land claims menu, but may be quicker in chat.\n\nUse §u.land§r to get a full list of land commands, including commands you can use as a substitute for the golden shovels.\nUse §u.land setting§r in a land claim to open a settings menu for that land claim, including changing permissions for certain players.')
-    faq.button('Back')
-    faq.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         tpfaq(player);
-         break;
-      }
-  })
-}
 
-function tpfaqthree(player) {
-    const faq = new ActionFormData();
-    faq.title('Commands')
-    faq.body('These commands are useful for certain functions and information but do not fit in a specific category.\n\nUse §u.rtp§r to randomly teleport without using this menu.\nUse §u.back§r to go back to the location you were at before you last teleported or died.\nUse §u.playerlist§r to get a list of currently online players.\nUse §u.auctionhouse§r to immediately access the auction house.\nUse §u.tps§r to get the current ticks per second, which if is more than 2-3 below 20, should be relayed to an admin or owner immediately.')
-    faq.button('Back')
-    faq.show(player).then(({ selection, canceled }) => {
-      if (canceled) return;
-      switch(selection) {
-      case 0:
-         tpfaq(player);
-         break;
-      }
-  })
-}
 
 
 
