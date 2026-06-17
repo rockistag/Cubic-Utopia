@@ -13,7 +13,7 @@ world.beforeEvents.itemUse.subscribe((e) => {
       system.run(() =>  { pearl2(e.source) })
     else if ((e.itemStack.typeId == 'cubic:ui') || (e.itemStack.typeId == 'cubic:insta_pearl') || (e.itemStack.typeId == 'cubic:infectious_pearl')) // Excluded from spawn prot
       e.cancel = false;  
-    else if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 0) {
+    else if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
         if (!player.hasTag('admin')) {
             e.cancel = true;
             player.sendMessage("You cannot use non-menu items at spawn!");
@@ -36,7 +36,7 @@ world.beforeEvents.itemUse.subscribe((e) => {
 world.beforeEvents.playerBreakBlock.subscribe((e) => {
     let player = e.player;
     let pos = e.block.location;
-    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 0) {
+    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
         if (!player.hasTag('admin')) { 
             e.cancel = true;
             player.sendMessage("You cannot break blocks at spawn!");
@@ -47,7 +47,7 @@ world.beforeEvents.playerBreakBlock.subscribe((e) => {
 world.beforeEvents.playerPlaceBlock.subscribe((e) => {
     let player = e.player;
     let pos = e.block.location;
-    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 0) {
+    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
         if (!player.hasTag('admin')) {
             e.cancel = true;
             player.sendMessage("You cannot place blocks at spawn!");
