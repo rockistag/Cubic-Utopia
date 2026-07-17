@@ -2,17 +2,17 @@
     "format_version": 2,
     "header": {
         "description": "The Official Resource Pack for Cubic Utopia 7",
-        "name": "Cubic Utopia 7 Resource Pack",
-        "uuid": "16a46007-65b8-4d1c-a985-3afd4f1e4726",
-        "version": [7, 0, 0],
+        "name": "Cubic Utopia 7.0.1 Resource Pack",
+        "uuid": "97ba6ebc-9b91-47c7-b107-c11527da6b3a",
+        "version": [7, 0, 1],
         "min_engine_version": [ 1, 21, 40 ]
     },
     "modules": [
         {
-            "description": "Cubic Utopia Resource Pack 6.4",
+            "description": "Cubic Utopia Resource Pack 7.0",
             "type": "resources",
-            "uuid": "d149ab0c-ce6c-4279-80e6-f1d49618063c",
-            "version": [7, 0, 0]
+            "uuid": "9c86957c-7991-4ea6-951d-44469999e1f7",
+            "version": [7, 0, 1]
         }
     ]
 }

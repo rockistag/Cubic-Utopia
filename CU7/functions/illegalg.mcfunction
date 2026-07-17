@@ -3,6 +3,7 @@ kill @e[type=phantom]
 execute in overworld run kill @e[type=ender_crystal, r=30000]
 execute in the_end run clear @a[rm=1] sticky_piston
 execute in the_end run clear @a[rm=1] piston
+effect @e[type=armor_stand] clear infested
 clear @a beehive
 clear @a bundle
 clear @a white_bundle

@@ -24,20 +24,20 @@ system.runInterval(() => {
 });
 
 const messages = [
-    'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a {"rawtext":[{"text":"[§6News§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a {"rawtext":[{"text":"[§6News§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a {"rawtext":[{"text":"[§cNotice§r] §bWelcome to Cubic Utopia 7!"}]}'
+    'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bNeed an SMP with more community-driven events? Join our partners at §eValmere SMP! §dRealm Code: RNG6x3UsKGZRWWs"}]}',
+    'tellraw @a {"rawtext":[{"text":"[§6News§r] §dCubic Utopia 7 §bhas launched with various changes! Please contact us via §9discord §bor the §dCubic Menu forms §bto send feedback."}]}',
+    'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bSubscribe to §eTAGCraft §bon §cYouTube §bto see new Cubic Realms trailers and other content!"}]}',
+    'tellraw @a {"rawtext":[{"text":"[§6News§r] §vLeveled Sales §bare now available in the §dRealm Market! §bBuy kits and redeem trails for your level achievements."}]}',
+    'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bPlease refer to §aAdmins §bon our §sDiscord §bfor any questions on the §crules."}]}',
+    'tellraw @a {"rawtext":[{"text":"[§cNotice§r] §bA new rule has been added prohibiting laggy farms. §cMalicious activity will be punished."}]}'
 ];
 const tips = [
-    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bWelcome to Cubic Utopia 7!"}]}',
-    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bWelcome to Cubic Utopia 7!"}]}'
+    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bUsing the §aclaim shovel, §byou can create land claims to protect your builds. You need to crouch and use it at the same time."}]}',
+    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bYou can request for a public warp to be made by sending the name and coords you want in the forms section of the §dCubic Menu."}]}',
+    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bUse §dInsta-Pearls §bfrom the quick teleport menu to escape to spawn in emergencies!"}]}',
+    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bYou can redeem §aPlaytime Rewards §bfrom the §vAchievements §bsection of the §dCubic Menu."}]}',
+    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bThere is a wiki at the bottom of the §dCubic Menu §bthat holds any information you might need."}]}',
+    'tellraw @a[tag=tips] {"rawtext":[{"text":"[§eTip§r] §bWant to disable these or other things related to our realm? Just go to the §csettings §bsection of the §dCubic Menu!"}]}'
 ];
 
 let messageIndex = 0;

@@ -1,24 +1,65 @@
-import { world, ItemStack, system, Player } from "@minecraft/server";
+import { world, system, Player, EntityTypes } from "@minecraft/server";
 import { ActionFormData, ModalFormData, FormCancelationReason, MessageFormData } from "@minecraft/server-ui";
+
+world.beforeEvents.playerBreakBlock.subscribe((e) => {
+    let player = e.player;
+    let pos = e.block.location;
+    if (player.dimension.id === "minecraft:overworld") {
+        if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
+            if (!player.hasTag('admin')) { 
+                e.cancel = true;
+                player.sendMessage("You cannot break blocks at spawn!");
+            }
+        }
+    }
+});
+
+world.beforeEvents.playerPlaceBlock.subscribe((e) => {
+    let player = e.player;
+    let pos = e.block.location;
+    if (player.dimension.id === "minecraft:overworld") {
+        if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
+            if (!player.hasTag('admin')) {
+                e.cancel = true;
+                player.sendMessage("You cannot place blocks at spawn!");
+            }
+        }
+    }
+});
+
+const blockedBuckets = [
+    "minecraft:water_bucket",
+    "minecraft:lava_bucket",
+    "minecraft:bucket",
+    "minecraft:cod_bucket",
+    "minecraft:salmon_bucket",
+    "minecraft:tropical_fish_bucket",
+    "minecraft:pufferfish_bucket",
+    "minecraft:axolotl_bucket",
+    "minecraft:tadpole_bucket"
+];
+
+world.beforeEvents.playerInteractWithBlock.subscribe((e) => {
+    let player = e.player;
+    let pos = e.block.location;
+    if ((blockedBuckets.includes(e.itemStack.typeId)) && ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63)) {
+      e.cancel = true;
+    }
+});
+
 
 world.beforeEvents.itemUse.subscribe((e) => {
     let player = e.source;
+    let playere = e.player;
     let pos = e.source.location;
-    if (e.itemStack.typeId == 'cubic:admin_ui') 
-      if (e.source.hasTag('admin'))
-        system.run(() =>  { admin(e.source) })
+    if ((e.itemStack.typeId == 'cubic:admin_ui') && (e.source.hasTag('admin')))
+      system.run(() =>  { admin(e.source) })
     else if (e.itemStack.typeId == 'cubic:insta_pearl') 
       system.run(() =>  { pearl(e.source) })
     else if (e.itemStack.typeId == 'cubic:infectious_pearl') 
       system.run(() =>  { pearl2(e.source) })
     else if ((e.itemStack.typeId == 'cubic:ui') || (e.itemStack.typeId == 'cubic:insta_pearl') || (e.itemStack.typeId == 'cubic:infectious_pearl')) // Excluded from spawn prot
-      e.cancel = false;  
-    else if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
-        if (!player.hasTag('admin')) {
-            e.cancel = true;
-            player.sendMessage("You cannot use non-menu items at spawn!");
-        }
-    }
+      e.cancel = false;
     else if (e.itemStack.typeId == 'cubic:shrieker_mob_key') 
       system.run(() =>  { shrieker(e.source) })
     else if (e.itemStack.typeId == 'cubic:uncommon_mob_key') 
@@ -29,36 +70,14 @@ world.beforeEvents.itemUse.subscribe((e) => {
       system.run(() =>  { very_rare(e.source) })
     else if (e.itemStack.typeId == 'cubic:super_mob_key') 
       system.run(() =>  { sper(e.source) })
-    else if (e.itemStack.typeId == 'minecraft:golden_shovel') 
-      system.run(() =>  { landd(e.source) })
-});
-
-world.beforeEvents.playerBreakBlock.subscribe((e) => {
-    let player = e.player;
-    let pos = e.block.location;
-    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
-        if (!player.hasTag('admin')) { 
-            e.cancel = true;
-            player.sendMessage("You cannot break blocks at spawn!");
-        }
-    }
-});
-
-world.beforeEvents.playerPlaceBlock.subscribe((e) => {
-    let player = e.player;
-    let pos = e.block.location;
-    if ((pos.x < 500 && pos.x > -500) && (pos.z < 500 && pos.z > -500) && pos.y < 63) {
-        if (!player.hasTag('admin')) {
-            e.cancel = true;
-            player.sendMessage("You cannot place blocks at spawn!");
-        }
-    }
+    else if (e.itemStack.typeId == 'cz:land_claimer') 
+      system.run(() =>  { claim(e.source) })
 });
 
 function admin(player) {
   const main = new ActionFormData();
   main.title('Admin Menu');
-  main.body("Please check reports frequently and record your actions in the discord.");
+  main.body("Please check reports frequently and record your actions in the discord. If you have not already, use !op to give yourself perms to use admin utils.");
   main.button('Admin Utils');
   main.button('Reports');
   main.button('Teleport to admin hub');
@@ -81,7 +100,6 @@ function admin(player) {
 function pearl(player) {
   player.runCommand('execute if block ~ -63 ~ air run tag @s add Restrict')
   player.runCommand('execute if block ~ -63 ~ bedrock run tp @p 0 -50 0')
-  player.playSound('portal.travel')
   player.runCommand('execute if block ~ 0 ~ bedrock in overworld run tp @p 0 -50 0')
   player.runCommand('execute in the_end if block ~ 0 ~ air in overworld run tp @p 0 -50 0')
   player.runCommand('execute in the_end if block ~ 0 ~ deny in overworld run tp @p 0 -50 0')
@@ -89,12 +107,18 @@ function pearl(player) {
   player.runCommand('clear @s[tag=!Restrict] cubic:insta_pearl 0 1')
   player.runCommand('title @s[tag=Restrict] title You cannot use that here!')
   player.runCommand('tag @s remove Restrict')
+  player.runCommand('tag @s[tag=pvpoff] remove pvp')
+  player.runCommand('tag @s[tag=pvpoff] remove pvpoff')
+  player.playSound('portal.travel')
+};
+
+function claim(player) {
+  player.runCommand('tellraw @p[r=5] {"rawtext":[{"text":"You have "},{"score":{"name":"@p","objective":"claimblocks"}},{"text":" available claimblocks. These are gained based on playtime or from the market. In order to do claims with this item, you need to crouch and use it. "}]}')
 };
 
 function pearl2(player) {
   player.runCommand('execute if block ~ -63 ~ air run tag @s add Restrict')
   player.runCommand('execute if block ~ -63 ~ bedrock run tp @p 321.50 -25.00 580.50')
-  player.playSound('portal.travel')
   player.runCommand('execute if block ~ 0 ~ bedrock in overworld run tp @p 321.50 -25.00 580.50')
   player.runCommand('execute in the_end if block ~ 0 ~ air in overworld run tp @p 321.50 -25.00 580.50')
   player.runCommand('execute in the_end if block ~ 0 ~ deny in overworld run tp @p 321.50 -25.00 580.50')
@@ -102,6 +126,7 @@ function pearl2(player) {
   player.runCommand('clear @s[tag=!Restrict] cubic:infectious_pearl 0 1')
   player.runCommand('title @s[tag=Restrict] title You cannot use that here!')
   player.runCommand('tag @s remove Restrict')
+  player.playSound('portal.travel')
 };
 
 function shrieker(player) {
@@ -193,9 +218,4 @@ function sper(player) {
   player.playSound('block.creaking_heart.step')
   player.runCommand('title @s[tag=Restrict] title You cannot use that here!')
   player.runCommand('tag @s remove Restrict')
-};
-
-function landd(player) {
-   player.runCommand('tellraw @p[r=5] {"rawtext":[{"text":"You have "},{"score":{"name":"@p","objective":"claimblocks"}},{"text":" available claimblocks. These are gained based on playtime or from the market."}]}');
-   player.sendMessage('To set the end corner of your land, crouch and use the same shovel. Type .land claim in chat to claim the land from the corners you set.')
 };

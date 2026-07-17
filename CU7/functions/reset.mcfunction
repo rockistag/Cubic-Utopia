@@ -2,6 +2,7 @@ clear @p[r=1]
 scoreboard players set @p[r=2] points 0
 scoreboard players set @p[r=2] claimblocks 0
 scoreboard players set @p[r=2] minutes 0
+scoreboard players set @p[r=2] score 0
 scoreboard players set @p[r=2] hours 0
 scoreboard players set @p[r=2] level 0
 scoreboard players set @p[r=2] tier 1
@@ -141,3 +142,4 @@ tag @p remove ach_pay
 tag @p remove ach_cav
 tag @p remove ach_mou
 tag @p remove ach_bal
+tag @p remove l1
