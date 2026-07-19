@@ -150,7 +150,7 @@ function confirm(player) {
 
 function main(player) {
   const main = new ActionFormData();
-  main.title('§5Cubic Utopia 7.0.2');
+  main.title('§5Cubic Utopia 7.1');
   main.body('§eWelcome to Cubic Utopia 7! Head to the Wiki section to find more information about our realms unique functions!\n§cNEWS 7.0.2 - The Rules have been updated with the addition of rule C7, which makes farms that cause lots of lag illegal.');
   main.button('§dQuick Teleport', 'textures/items/quick');
   main.button('§2Player Utilities', 'textures/items/utilities');
@@ -907,7 +907,7 @@ function faqs(player) {
     faq.body('All needed info for new and returning players.')
     faq.button('Rules\n§c[NEW RULE C7]', 'textures/items/book_normal')
     faq.button('Docs\n§f[Tutorials & Info]', 'textures/items/paper')
-    faq.button('Changelogs\n§2[7.0 is out!]', 'textures/items/book_of_advancements')
+    faq.button('Changelogs\n§a[7.1 is out!]', 'textures/items/book_of_advancements')
     faq.button('Credits\n§f[Contributors to CU7]', 'textures/items/emerald')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
@@ -1179,6 +1179,7 @@ function change(player) {
     faq.title('Changelogs')
     faq.body('These are changelogs for all the major (and non-hotfix minor) updates to Cubic Utopia.')
     faq.button('Version 7.0', 'textures/items/ui')
+    faq.button('Version 7.1', 'textures/items/nether_star')
     faq.button('Back')
     faq.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1186,8 +1187,12 @@ function change(player) {
       case 0:
          changeone(player);
          break;
-      
-      case 1: 
+
+      case 1:
+         changetwo(player);
+         break;
+
+      case 2: 
          faqs(player);
          break;
       }
@@ -1198,6 +1203,21 @@ function changeone(player) {
     const set = new ActionFormData();
     set.title('Changelogs')
     set.body("VERSION 7.0\nCubic Utopia 7 has finally released. In one of the most foundational updates we've ever made, the Cubic Realms team brings a brand new world with a dedicated team of builders, an entirely redone backend with script-based systems, and new mechanics and addons for players to engage in. It is set to be the most foundational seasons in CU's history.\n\nDEPTHS OF DEEPSLATE\nOn the front of the fifth anniversary of the realm, where in its original form it was known as the \u2018Deepslate SMP', we bring you a new event area centered around the history and legacy of the realm. Here, you'll find several amenities to enjoy and even more secrets to discover\u2026\n\n- In its current form, the Depths feature a parkour course and a trial.\n- In between both are a set of village houses which make up the majority of the Depths.\n- We plan to expand on the story and detail of the Depths in the future.\n- In order to find the Depths, you can either visit either of its arena warps or find its pearl in one of the spawn cottages.\n\nCubic Utopia 7's Spawn reflects this overall Deepslate theme, which is expanded upon in the Infrastructure section of the changelog.\n\nADDONS\nWe've done a complete rework of our addon selection to ensure stability within the realm. Only one addon has been carried over from Season Six, with it receiving minor changes.\n\nAlylica's Advancements\nThis addon brings the entire Java advancements system to Bedrock!\n- There are three tiers of advancements, those being advancements, goals, and challenges.\n- We've made it so that advancements give out score with our new systems, scaled based off of their difficulty.\n- There are over 100 advancements to complete!\n\nChat Ranks by Luibara\nWe've got chat ranks!\n- This was a function that was a part of Pao's Essentials in Season six, providing ranks among player messages in chat.\n- This works essentially the same with the minor difference that ranks don't show up on player name tags. We may try to reimplement this functionality at a later time.\n\nParadox Anti-Cheat by Visual1mpact\nA massively refined anti-cheat that most notably keeps nukers from crashing the realm and reimplements some realm functions.\n- We've used this addon to implement our utilities section of the Cubic Menu, which directs to paradox's utilities.\n- Utilities include a selection of homes, teleport requests, and chat channels among other features.\n- While these may function differently to Essential's host of those features, most functionality remains in one way or another.\n\nLand Claims by Cozmoz\nAfter a tumultuous early access period, we decided to switch over to Cozmoz's nifty land claim addon for the feature's implementation in season seven.\n- Land claims function in a dramatically different way in their creation, requiring a dedicated claimer item to be used while crouching.\n- Claimblocks are required to claim land, working similar to last season.\n- Players may invite up to three members to their claim to build and maintain areas with each other.\n\nBetter Scoreboard by Pao\nThe one addon carried over from Season Six. Is responsible for the sidebar.\n- The textures have been changed with the addon to reflect Season Seven.\n- This addon used to give out kill credits for mobs. We've made it so it doesn't anymore.\n- KNOWN ISSUE: The addon causes a flickering square in the center of player's screens when toggled off. This addon has not been updated in over a year and we are considering alternatives going forward.\n\nCU PACKS\nWith Cubic Utopia 7, we are introducing a revamped behavior pack that is set to take care of everything from realm functionality to custom items.\n\nCubic Menu\nThe Cubic Menu is now located inside the Cubic Utopia Behavior Pack!\n- The Menu has been reorganized, with seven sections for players to use. Those being Quick Teleport, Player Utilities, Featured Warps, Achievements, Settings, Forms, and the Wiki.\n- Quick Teleport includes spawn warps, random teleport, and discoverable warps, which are located all around the world.\n- Player Utilities direct to the Paradox Utilities Menu.\n- Featured Warps include structure and biome warps.\n- Achievements give access to the advancements menu and playtime rewards.\n- Settings have been relatively unchanged.\n- Forms use our new built-in forms menu, which allow players to report and request things.\n- The wiki gives access to the rules, docs, changelogs, and credits.\n\nBehavior Pack\n- Now responsible for pretty much everything we used to do with command blocks.\n- Everything from broadcast, player reports, points and levels, custom items, and menus are all handled in this pack.\n- Forms are now handled in this pack using a template from Tixoma Craft.\n\nResource Pack\n- Menu textures have been revamped for Season Seven.\n- The texture of the infectious pearl has changed as it is now used as the depths pearl.\n\nMECHANICS\nCU7 introduces brand new mechanics and refines on existing ones!\n\nLevels & Score\nAfter two years with confusing playtime-based levels and tiers, we're introducing a brand new score-based levels system that allows players to gain levels at their own pace.\n- There are 8 levels, with 6 being attributed to the main gameplay loop and the last 2 simply being extras for those who go further than anyone else.\n- Levels are based off of score, which can be gained by killing mobs and completing advancements.\n- Reaching a level gives the player a reward, just like before.\n- Levels have their own benefits and sales at the Realm Market.\n- Tiers have been removed entirely.\n\nPlaytime Rewards\nBecause levels no longer address playtime in any way, we're adding playtime-specific rewards, which are redeemable in the Cubic Menu.\n- There are 10 playtime rewards to redeem, the first of which is unlocked at 1 hour, and the last at 100.\n- Rewards can be redeemed in the Achievements section of the Cubic Menu.\n- Some rewards include mob keys, which have returned from season six and are relatively unchanged.\n\nPoints\nOur economy system has once again returned for another season!\n- Mob points rewards have been revamped and are now based in the new Cubic Utopia Behavior Pack.\n- At the moment, points exchange is not implemented. We are looking at potential solutions to this problem.\n\nPvP Tag\n- Now automatically applied when players enter combat arenas.\n- It is toggled off when players use quick warps and had it off previously.\n- We may be retiring this feature soon as Paradox has a dedicated PvP system.\n\nINFRASTRUCTURE\nFor Season Seven, we're introducing big new builds and styles to our infrastructure from our newly established team of builders!\n\nMarket\nA brand new market comes with Season Seven, bringing the same great sales from Season Six with a new style!\n- The Market has four halls, each dedicated to specific types of sales.\n- Featured sales have been moved to the corners of the central room.\n- At launch, every sale is complete barring three kits, which are planned to be complete by 7.1.\n\nSpawn\nWith our dedicated team of builders, spawn is looking better than ever in Season Seven!\n- Spawn includes the same amenities as Season Six with some brand new cottages present for this season.\n- These cottages give access to a bed, the tutorials, the enchantment room, and another secret\u2026\n\nWarps\nYour experience with featured warps has been transformed with new warp stations!\n- Warp stations include a dedicated structure with a crafting table and other utility blocks to utilize.\n- Stations are color-coded to show what type of biome or structure they represent.\n- The Featured Trial Chamber now has a vault room and dedicated trial key exchange like how the Cubic Unity ones did it!\n\nArenas\nThis season includes the most trials and arenas of any CU season at launch!\n- Six trials are present, four of which are inspired from past season trials.\n- Four PvP Arenas are present, three of which are inspired from past season arenas.\n- Two standalone Parkour Courses are present, with the Spooky Parkour from Season Three returning.\n- Most Arenas are much larger and more detailed than seasons past, giving players a better and more immersive combat experience.\n- Trials now feature a clearmob system which automatically clears leftover mobs when players enter a trial.")
+    set.button('Back')
+    set.show(player).then(({ selection, canceled }) => {
+      if (canceled) return;
+      switch(selection) {
+      case 0:
+         change(player);
+         break;
+      }
+  })
+}
+
+function changetwo(player) {
+    const set = new ActionFormData();
+    set.title('Changelogs')
+    set.body("VERSION 7.1\nThe first update for Cubic Utopia 7 is out today! We\u2019ve got new market sales, including the Utopian Kit release, and new changes for you to enjoy in this update.\n\nNOTICE\nWe have unfortunately had to delay the introduction of the new tutorial hub, which was planned for this update. We are currently short on staff and Rocked is especially busy right now with other projects and life developments. We do not currently have an ETA for the tutorial hub.\n\nADDONS\nAdditions\n- Readded the Bundle Disabler. This is a precautionary measure to ensure that if someone does manage to somehow get their hands on a bundle, they won\u2019t be able to put items in it.\n\nCU PACKS\nWith this update, we\u2019re bringing many more notification sounds that were missing from release 7.0!\n\nBehavior Pack\n- Sounds have been added along with notifications for level-ups, playtime rewards, and ranks.\n- These sounds can be adjusted in the Cubic Menu using the sounds section of settings.\n\nCubic Menu\n- Made some adjustments to the wording of several wiki and settings entries.\n\nINFRASTRUCTURE\nNew Market Sales, including the new Utopian Kit and limited-time deals, are coming with 7.1!\n\nMarket\n- Added the Utopian Kit, which is an exclusive one-time redeemable item for those who reach level 6, the Utopian level. This kit features several OP and exclusive items that cannot be found anywhere else.\n- Added the Music Kit for Experts, completing the leveled sales section of the Realm Market.\n- Added new limited-time sales, including a requested one!\n\nSpawn\n- Fixed anti-void applying to everywhere in the overworld.")
     set.button('Back')
     set.show(player).then(({ selection, canceled }) => {
       if (canceled) return;
@@ -1397,7 +1417,7 @@ function settingsGen(player) {
 function sound(player) {
     const set = new ActionFormData();
     set.title('Settings')
-    set.body('§2All Sounds On- Sound will play for player achievements, boss fights, and level-ups.\n§eLimited Sounds- Sound will play only for boss fights.\n§cAll Sounds Off- No Realm Sounds at all.')
+    set.body('§2All Sounds On- Sound will play for player rank-ups, boss fights, and level-ups.\n§eLimited Sounds- Sound will play only for player levelups.\n§cAll Sounds Off- No Realm Sounds at all.')
     set.button('§2All Sounds On', 'textures/items/audio1')
     set.button('§eLimited Sounds', 'textures/items/audio2')
     set.button('§4All Sounds Off', 'textures/items/audio3')

@@ -2,24 +2,24 @@
   "format_version": 2,
   "header": {
     "description": "Official BP 7.0",
-    "name": "Cubic Utopia Behavior Pack 7.0.8",
-    "uuid": "151363e7-5662-40e0-93c6-48e9f810f1d5",
-    "version": [7, 0, 9],
+    "name": "Cubic Utopia Behavior Pack 7.1.0_2",
+    "uuid": "e9310a30-8210-4b47-9d53-6286c4962c98",
+    "version": [7, 1, 0],
     "min_engine_version": [1, 20, 100]
   },
   "modules": [
     {
       "description": "Official BP",
       "type": "data",
-      "uuid": "d635f07c-25e2-4dad-8b0c-10fec92e1c65",
-      "version": [7, 0, 9]
+      "uuid": "060cb0aa-8f3c-4cb4-8ce5-ce65015583cd",
+      "version": [7, 1, 0]
     },
     {
       "description": "Official BP",
       "type": "script",
       "language": "javascript",
-      "uuid": "abfd2af4-74a4-4fdb-b8f7-6011aa0e78bd",
-      "version": [7, 0, 9],
+      "uuid": "88b54250-89c9-4c2b-a4b0-9eb3abe3a3db",
+      "version": [7, 1, 0],
       "entry": "scripts/index.js"
     }
   ],

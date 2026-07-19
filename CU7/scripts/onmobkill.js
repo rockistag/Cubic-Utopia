@@ -8,13 +8,13 @@ world.afterEvents.entityDie.subscribe(({ damageSource: { damagingEntity }, deadE
          damagingEntity.runCommand('scoreboard players add @a[rm=3, r=100, hasitem={item=mace, quantity=0}] points 1000');
          damagingEntity.runCommand('scoreboard players add @s[hasitem={item=mace, quantity=0}] points 5000');
          damagingEntity.runCommand('scoreboard players add @s[hasitem={item=mace, quantity=0}] score 500');
-         damagingEntity.runCommand('playsound mob.enderdragon.death @a[scores={sound=!2}]');
+         damagingEntity.runCommand('playsound mob.enderdragon.death @a[scores={sound=0}]');
       }
       else if (deadEntity.typeId === 'minecraft:wither') {
          damagingEntity.runCommand('execute at @p run tellraw @a {"rawtext":[{"text":"[§5Boss§r] §d"},{"selector":"@p"},{"text":"§b has defeated the §5wither."}]}');
          damagingEntity.runCommand('scoreboard players add @s points 5000');
          damagingEntity.runCommand('scoreboard players add @s score 500');
-         damagingEntity.runCommand('playsound mob.wither.death @a[scores={sound=!2}]');
+         damagingEntity.runCommand('playsound mob.wither.death @a[scores={sound=0}]');
       }
       else if (deadEntity.typeId === 'minecraft:elder_guardian' || deadEntity.typeId === 'minecraft:warden') {
          damagingEntity.runCommand('scoreboard players add @s points 1000');

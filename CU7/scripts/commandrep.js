@@ -25,9 +25,9 @@ system.runInterval(() => {
 
 const messages = [
     'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bNeed an SMP with more community-driven events? Join our partners at §eValmere SMP! §dRealm Code: RNG6x3UsKGZRWWs"}]}',
-    'tellraw @a {"rawtext":[{"text":"[§6News§r] §dCubic Utopia 7 §bhas launched with various changes! Please contact us via §9discord §bor the §dCubic Menu forms §bto send feedback."}]}',
+    'tellraw @a {"rawtext":[{"text":"[§6News§r] §dCubic Utopia 7.1 §bhas been made available with the new §5Utopian Kit! §bAlso enjoy various QoL fixes and changes."}]}',
     'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bSubscribe to §eTAGCraft §bon §cYouTube §bto see new Cubic Realms trailers and other content!"}]}',
-    'tellraw @a {"rawtext":[{"text":"[§6News§r] §vLeveled Sales §bare now available in the §dRealm Market! §bBuy kits and redeem trails for your level achievements."}]}',
+    'tellraw @a {"rawtext":[{"text":"[§6News§r] §vNew kits §bare now available in the §dRealm Market! §bBuy kits and more from the leveled sales section."}]}',
     'tellraw @a[tag=broadcast] {"rawtext":[{"text":"[§bBroadcast§r] §bPlease refer to §aAdmins §bon our §sDiscord §bfor any questions on the §crules."}]}',
     'tellraw @a {"rawtext":[{"text":"[§cNotice§r] §bA new rule has been added prohibiting laggy farms. §cMalicious activity will be punished."}]}'
 ];
