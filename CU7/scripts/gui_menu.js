@@ -44,6 +44,18 @@ world.afterEvents.playerSpawn.subscribe((e) => {
     else {
         return;
     }
+    if (!player.hasTag("sorry")) {
+        player.runCommand('scoreboard players add @s points 1000')
+        player.runCommand('tag @s add sorry')
+        if (!player.hasTag("Valid"))
+        {
+            player.runCommand('scoreboard players reset @s points')
+        }
+        else
+        {
+            player.sendMessage('Due to a critical land claims issue - which has now been fixed - we have had to set progress back 24 hours. We apologize for the inconvenience. You have recieved 1k free points as some compensation.')
+        }
+    }
     if (!player.hasTag("joined")) {
         player.addTag("joined");
         player.runCommand('function add');
@@ -150,8 +162,8 @@ function confirm(player) {
 
 function main(player) {
   const main = new ActionFormData();
-  main.title('§5Cubic Utopia 7.1');
-  main.body('§eWelcome to Cubic Utopia 7! Head to the Wiki section to find more information about our realms unique functions!\n§cNEWS 7.0.2 - The Rules have been updated with the addition of rule C7, which makes farms that cause lots of lag illegal.');
+  main.title('§5Cubic Utopia 7.1.1');
+  main.body('§eWelcome to Cubic Utopia 7! §dHead to the Wiki section to find more information about our realms unique functions!');
   main.button('§dQuick Teleport', 'textures/items/quick');
   main.button('§2Player Utilities', 'textures/items/utilities');
   main.button('§1Featured Warps', 'textures/items/warps');
